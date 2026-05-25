@@ -255,6 +255,15 @@ body.nav-open { overflow: hidden; }
   border-radius: 0;
 }
 .btn-ghost:hover { color: var(--brass); border-bottom-color: var(--brass); }
+.btn-brass {
+  background: var(--brass);
+  color: var(--ink);
+  border-color: var(--brass);
+}
+.btn-brass:hover { background: #C99A57; }
+.btn-brass:active { transform: scale(0.985); }
+.btn-brass .arrow { transition: transform var(--dur-base) var(--ease-editorial); }
+.btn-brass:hover .arrow { transform: translateX(3px); }
 .btn-sm { padding: 9px 14px; font-size: 12px; }
 .btn-on-dark.btn-primary {
   background: var(--brass);
@@ -645,10 +654,23 @@ body.nav-open { overflow: hidden; }
   line-height: 0.5;
   text-align: center;
 }
-.audience-list strong { color: var(--fg); font-weight: 500; font-style: italic; }
+.audience-list strong { color: var(--brass); font-weight: 600; font-style: italic; }
 
-/* ---------- ENGAGEMENT ---------- */
-#engagement { background: var(--paper); }
+/* ---------- ENGAGEMENT ----------
+   Section bg is ink (dark) so it flows from the cream audience above
+   into the dark footer below as one continuous dark "end zone." The
+   primary card inside gets a brass top accent so it still reads as
+   the featured offer. */
+#engagement {
+  background: var(--ink);
+  color: var(--bone);
+  border-top: 0;
+}
+#engagement .section-marker,
+#engagement .section-marker span { color: rgba(244,240,232,0.55); }
+#engagement .section-title { color: var(--bone); }
+#engagement .section-title em,
+#engagement .section-title .brass-em { color: var(--brass); }
 .engagement-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -697,7 +719,10 @@ body.nav-open { overflow: hidden; }
   gap: var(--space-3);
 }
 .engagement-card ul li {
-  font: var(--type-body);
+  font: var(--type-serif-lg);
+  font-style: italic;
+  font-size: clamp(16px, 1.4vw, 18px);
+  line-height: 1.5;
   color: var(--fg-2);
   padding-left: var(--space-5);
   position: relative;
@@ -719,7 +744,8 @@ body.nav-open { overflow: hidden; }
 .engagement-card.primary {
   background: var(--ink);
   color: var(--bone);
-  border-color: var(--ink);
+  border: 1px solid rgba(244,240,232,0.12);
+  border-top: 2px solid var(--brass);
 }
 .engagement-card.primary .marker { color: rgba(244,240,232,0.6); }
 .engagement-card.primary h3,
@@ -789,7 +815,16 @@ footer {
 @media (min-width: 720px) {
   .footer-grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: var(--space-10); }
 }
-.footer-brand { display: flex; flex-direction: column; gap: var(--space-3); }
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+}
+@media (min-width: 720px) {
+  .footer-brand { align-items: flex-start; text-align: left; }
+}
 .footer-brand img, .footer-brand svg {
   height: 28px;
   width: auto;
