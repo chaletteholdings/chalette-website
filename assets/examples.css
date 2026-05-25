@@ -136,6 +136,24 @@
 }
 .example-c:first-of-type { border-top: 0; padding-top: 0; }
 
+/* Feature variant: the synthesis crescendo. Brass top rule + a
+   touch more breathing room mark it as the payoff. */
+.example-c--feature {
+  border-top: 2px solid var(--brass);
+  padding-top: var(--space-16);
+  margin-top: var(--space-4);
+}
+.task-emphasis {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--fg-muted);
+  margin-left: 6px;
+}
+
 .example-c-head {
   margin-bottom: var(--space-8);
   display: grid;
