@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Security &amp; data detail &mdash; Chalette Command Room</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="How Command Room handles your data. Plain English up top, real depth underneath. Written to survive an IT/security review — every claim maps to a control you can verify in your own admin console or in Anthropic's Trust Center.">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Security &amp; data detail &mdash; Chalette Command Room">
+  <meta property="og:description" content="Architecture, connectors, OAuth, certifications, audit logging, retention &mdash; the full picture for your IT and security team.">
+
+  <link rel="icon" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/chalette.css">
+  <link rel="stylesheet" href="assets/landing.css">
+  <link rel="stylesheet" href="assets/article.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="nav-logo" href="index.html" aria-label="Chalette home">
+      <img src="assets/logo-lockup.svg" alt="Chalette">
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html#what">What you get</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#engagement">Engagement</a>
+      <a href="security.html" aria-current="page">Security</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="index.html#book">
+      Book a discovery call
+      <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</header>
+
+<main>
+
+<article class="article">
+  <div class="wrap article-wrap">
+
+    <p class="breadcrumb">
+      <a href="security.html">&larr; Security</a>
+    </p>
+
+    <header class="article-head">
+      <p class="article-eyebrow">
+        <span class="firm">Chalette</span>
+        <span class="sep" aria-hidden="true">&middot;</span>
+        <span class="product">Security &amp; data detail</span>
+      </p>
+      <h1 class="article-title">
+        How Command Room handles <em>your data.</em>
+      </h1>
+      <p class="article-lede">
+        Plain English up top. Real depth underneath. If you&rsquo;re an IT or security reviewer, skip to <a href="#for-it">For your IT &amp; security team</a> &mdash; every claim there maps to a control you can verify in your own admin console or in Anthropic&rsquo;s Trust Center.
+      </p>
+    </header>
+
+    <!-- The short version -->
+    <section class="prose">
+      <h2 class="prose-h2">The short version.</h2>
+      <p>
+        Command Room is <strong>instructions, not infrastructure.</strong> There is no Chalette server sitting between you and your data. Your &ldquo;brain folder&rdquo; lives in storage you already own and govern &mdash; Google Drive, OneDrive, or your local disk. The AI model and the connectors are operated by <strong>Anthropic</strong>, whose security and compliance posture governs how your data is handled at runtime. Chalette never gets a standing copy of your data.
+      </p>
+      <p>
+        Practically: <strong>if your organization is comfortable with your team using Claude against your own files and accounts, you are comfortable using Command Room.</strong> Command Room doesn&rsquo;t add a new place your data goes &mdash; it adds a structured set of instructions that makes Claude useful at the speed of your business instead of the speed of copy-paste.
+      </p>
+      <p>Two honest caveats we put up front, because a real security review will find them anyway:</p>
+      <ul class="prose-list">
+        <li>Command Room is <strong>not</strong> local-only or air-gapped. When the AI does work for you, your prompts and the connector data it reads travel to Anthropic for the model to process, and your Claude chat history is retained by Anthropic under the data-handling terms of <strong>whichever Claude plan you&rsquo;re on</strong> (this matters &mdash; see <em>Anthropic is the trust layer</em>).</li>
+        <li>Whether your data can be used to improve Anthropic&rsquo;s models <strong>depends on your Claude plan and one account setting.</strong> On business (commercial) plans it never is. On individual (consumer) plans it is governed by a setting you must confirm is off. We walk you through this at setup.</li>
+      </ul>
+    </section>
+
+    <!-- i. Plugin = instructions -->
+    <section class="prose">
+      <h2 class="prose-h2">
+        <span class="prose-num">i.</span>
+        Command Room is a plugin. A plugin is <em>instructions.</em>
+      </h2>
+      <p>
+        When most people hear &ldquo;software,&rdquo; they picture a backend somewhere &mdash; servers, databases, an account layer, a vendor holding a copy of your data. Command Room is not that.
+      </p>
+      <p>
+        Command Room is a <strong>plugin</strong>: a structured set of Markdown (plain-text) files that tell an AI assistant how to do specific things &mdash; how to triage your inbox, write a follow-up in your voice, log a decision, assemble a board pack from your meeting notes. The AI reads those instructions the way a new hire reads an SOP binder.
+      </p>
+      <p>
+        That is the entire surface Chalette ships. No backend. No database. No login. No Chalette account to off-board. If you opened the plugin folder you&rsquo;d see text files. You could read them, change them, or delete them. (There is a small amount of helper code &mdash; Python used to render on-screen widgets and write documents &mdash; but no Chalette-operated server and no Chalette data store.)
+      </p>
+      <p>
+        <strong>Updates</strong> arrive the same way: as updated instructions you choose to install. The runtime checks for them; <strong>Chalette cannot push anything to your machine.</strong> Updates are manual, user-initiated, and inspectable before you accept them.
+      </p>
+    </section>
+
+    <!-- ii. Cowork is the runtime -->
+    <section class="prose">
+      <h2 class="prose-h2">
+        <span class="prose-num">ii.</span>
+        Cowork is the runtime. Your brain folder lives in <em>your storage.</em>
+      </h2>
+      <p>
+        Plugins need somewhere to run. For Command Room that&rsquo;s <strong>Claude&rsquo;s Cowork mode</strong> &mdash; part of Anthropic&rsquo;s Claude desktop app &mdash; which loads the plugin, talks to the model, and reads and writes the files in your brain folder.
+      </p>
+      <p>
+        Those reads and writes are scoped to the folder you point Cowork at. When a skill needs last week&rsquo;s meeting notes, it opens the file in your folder. When it drafts tomorrow&rsquo;s briefing, it saves the file in your folder. The folder is the system.
+      </p>
+      <ul class="prose-list">
+        <li>Put the folder in <strong>Google Drive</strong> &rarr; the files live in Google Drive, under your existing Workspace governance.</li>
+        <li>Put it in <strong>OneDrive / SharePoint</strong> &rarr; same, under your Microsoft 365 governance.</li>
+        <li>Keep it on a <strong>local disk</strong> &rarr; it stays on that disk.</li>
+      </ul>
+      <p>
+        <strong>What&rsquo;s honest about &ldquo;local&rdquo;:</strong> the brain folder is <em>yours</em> and is <em>not</em> sent to Chalette. But it is a working memory layer, and over time it accumulates a real corpus &mdash; names of people and projects you work with, meeting summaries, decisions, commitments, and, for voice-matching, <strong>verbatim text of some of your own sent emails.</strong> It&rsquo;s all in storage you own, readable and deletable by you. Treat the brain folder with the same DLP posture you&rsquo;d apply to any folder that contains business notes and correspondence.
+      </p>
+    </section>
+
+    <!-- iii. Where your data actually goes -->
+    <section class="prose">
+      <h2 class="prose-h2">
+        <span class="prose-num">iii.</span>
+        Where your data <em>actually goes.</em>
+      </h2>
+      <p>It helps to trace one request end-to-end.</p>
+      <blockquote class="prose-blockquote">
+        <p><strong>&ldquo;Triage my inbox.&rdquo;</strong></p>
+        <p>Your email is read <strong>on-demand</strong> through Anthropic&rsquo;s connector &rarr; sent to <strong>Anthropic</strong>, where Claude processes it and produces the triage &rarr; the result is written back into a file in <strong>your brain folder</strong> (e.g., in your Google Drive or OneDrive). No intermediate Chalette environment exists in that path.</p>
+      </blockquote>
+      <p>Two things to be precise about:</p>
+      <ol class="prose-list ordered">
+        <li><strong>Processing happens at Anthropic, not on your laptop.</strong> The model is Anthropic&rsquo;s. Your prompt and the data the connector returns transit to Anthropic over encrypted channels to be processed.</li>
+        <li><strong>Your chat history is stored by Anthropic</strong> under your plan&rsquo;s retention terms. Connector results that appear in a chat are retained as part of that chat. This is the same behavior as any Claude conversation &mdash; Command Room doesn&rsquo;t change it.</li>
+      </ol>
+    </section>
+
+    <!-- iv. Connectors -->
+    <section class="prose">
+      <h2 class="prose-h2">
+        <span class="prose-num">iv.</span>
+        Connectors: OAuth, least privilege, and <em>your IT stays in control.</em>
+      </h2>
+      <p>
+        Command Room reaches outside the brain folder for live signal &mdash; email, calendar, Teams/Slack, meeting transcripts &mdash; through <strong>connectors</strong> operated by Anthropic. This is the part IT cares most about, so here is exactly how it works (using the Microsoft 365 connector, the most scrutinized, as the worked example).
+      </p>
+
+      <p class="prose-h3">It&rsquo;s delegated, per-user OAuth.</p>
+      <p>You authenticate on Microsoft&rsquo;s (or Google&rsquo;s) own login screen. Claude acts <strong>on your behalf</strong> and can only see and do what <em>you</em> can already see and do in that tool. It cannot reach another user&rsquo;s private mail or files, and it cannot bypass your existing SharePoint/folder permissions or DLP policies. Anthropic never receives your password.</p>
+
+      <p class="prose-h3">It is read-only (Microsoft 365).</p>
+      <p>The current Microsoft 365 connector has <strong>no write capability</strong> &mdash; it cannot send email, modify documents, schedule meetings, or post in Teams. (Some other connectors, e.g. Gmail or Calendar, <em>do</em> offer send/create tools &mdash; those are governed by the per-tool approval gates below, and you can leave them off.)</p>
+
+      <p class="prose-h3">Admin consent is required &mdash; by design.</p>
+      <p>A Microsoft Entra <strong>Global Administrator</strong> must grant a one-time consent before anyone in the tenant can connect, and on Team/Enterprise plans an Owner must also enable the connector in Claude&rsquo;s org settings. Your admin is in the loop on purpose; there is no way to side-step it.</p>
+
+      <p class="prose-h3">You can scope it down or shut it off, at several layers:</p>
+      <ul class="prose-list">
+        <li>Revoke individual Graph permissions in Entra (e.g., drop <code>Sites.Read.All</code> to block SharePoint, <code>Mail.Read</code> to block email) &mdash; changes take effect immediately.</li>
+        <li>Restrict the connector to a <strong>specific pilot user or security group</strong> via Entra enterprise-app assignment before any wider rollout.</li>
+        <li>Enforce your existing <strong>conditional access</strong>: MFA, managed/compliant devices, IP/VPN restrictions, group-based access all apply unchanged.</li>
+        <li>Disconnect per-user in seconds, or disable org-wide as an Owner.</li>
+      </ul>
+
+      <p class="prose-h3">Nothing runs silently.</p>
+      <p>By default each connector tool requires your <strong>explicit approval</strong> before it executes; you can set any tool to auto-approve, ask-each-time, or block.</p>
+
+      <p class="prose-h3">It&rsquo;s auditable in your own logs.</p>
+      <p>Every Graph API call the connector makes is recorded in your <strong>Microsoft 365 audit log</strong> (Compliance Center) &mdash; timestamp, user, operation, resource &mdash; under your own retention policy. Anthropic additionally logs authentication and tool-execution events.</p>
+
+      <p class="prose-h3">Tokens are handled securely.</p>
+      <p>The connector uses OAuth 2.0 On-Behalf-Of with PKCE; access/refresh tokens are encrypted and held by Anthropic&rsquo;s backend (never by Chalette), and tokens are cryptographically scoped to your tenant so there&rsquo;s no cross-tenant access.</p>
+
+      <blockquote class="prose-blockquote">
+        <p>One real-world note from live setups: because the connector inherits <em>your</em> permissions, connecting an account that already has tenant-wide access (e.g., a CEO or admin) means Claude can read broadly <strong>as that person.</strong> That&rsquo;s expected behavior, not a leak &mdash; but if you want a tighter blast radius, connect a least-privilege account or revoke the specific Graph scopes you don&rsquo;t need. Read-only access + on-demand retrieval + full audit logging are the controls that bound it.</p>
+      </blockquote>
+    </section>
+
+    <!-- v. Anthropic is the trust layer -->
+    <section class="prose">
+      <h2 class="prose-h2">
+        <span class="prose-num">v.</span>
+        Anthropic is <em>the trust layer.</em>
+      </h2>
+      <p>
+        Because the model and the connector grants live at Anthropic, <strong>Anthropic&rsquo;s security and compliance posture governs the runtime data story.</strong> The trust evaluation your team would run on Command Room is, in substance, the trust evaluation of Anthropic &mdash; which many organizations have already done.
+      </p>
+
+      <p class="prose-h3">Certifications &amp; compliance</p>
+      <p>Verify current status and request reports at <a href="https://trust.anthropic.com" target="_blank" rel="noopener">trust.anthropic.com</a>:</p>
+      <ul class="prose-list">
+        <li><strong>SOC 2 Type II</strong> (annual third-party audit)</li>
+        <li><strong>ISO/IEC 27001:2022</strong> (information security management)</li>
+        <li><strong>ISO/IEC 42001:2023</strong> (AI management systems)</li>
+        <li><strong>HIPAA</strong> &mdash; BAA available to qualifying customers</li>
+        <li><strong>GDPR</strong> &mdash; Data Processing Addendum (DPA) available</li>
+        <li>Encryption in transit and at rest; reports available under NDA via the Trust Center</li>
+      </ul>
+
+      <p class="prose-h3">Model training &mdash; this is plan-dependent, so read carefully:</p>
+      <ul class="prose-list">
+        <li><strong>Business / commercial plans</strong> (Claude Team, Enterprise, and the Anthropic API / Claude for Work): your data is <strong>contractually never used to train models.</strong> This is the cleanest posture for an organization and the one we recommend for company data.</li>
+        <li><strong>Individual / consumer plans</strong> (Claude Free, Pro, Max): training is governed by a single account setting, <strong>&ldquo;Help Improve Claude.&rdquo;</strong> If it&rsquo;s <strong>off</strong>, your chats are not used for training. If a user opts <strong>in</strong>, content can be retained de-identified for up to <strong>5 years</strong> in training pipelines.</li>
+      </ul>
+
+      <p class="prose-h3">So you have two ways to guarantee your data is never used for training &mdash; pick either:</p>
+      <ol class="prose-list ordered">
+        <li><strong>Use a business (commercial) account</strong> &mdash; Claude Team, Enterprise, or the API. Training is contractually prohibited; nothing to toggle. (Recommended for company data.)</li>
+        <li><strong>Turn off &ldquo;Help Improve Claude&rdquo;</strong> on your individual account. Desktop/browser: click your name &rarr; <strong>Settings</strong> &rarr; <strong>Privacy</strong> (<code>claude.ai/settings/data-privacy-controls</code>) &rarr; toggle <strong>&ldquo;Help Improve Claude&rdquo;</strong> off. Mobile: your name &rarr; <strong>Settings</strong> &rarr; <strong>Privacy</strong> &rarr; toggle it off. Once off, new chats aren&rsquo;t used for training and previously stored chats stop being used in future training runs.</li>
+      </ol>
+
+      <p>At setup we confirm you&rsquo;re on one of these two footings before connecting any company data. (On either plan, the only carve-out is that conversations flagged by safety classifiers may still be used for trust-and-safety purposes.)</p>
+
+      <p class="prose-h3">Retention</p>
+      <p>(Also plan-dependent.) On consumer plans, deleting a conversation removes it and it&rsquo;s purged from Anthropic&rsquo;s back-end within ~30 days; if model-improvement is off, the standard retention window applies rather than the 5-year training window. On commercial plans, retention is shorter and configurable, and <strong>Zero-Data-Retention agreements</strong> are available to qualifying enterprise customers. Trust-and-safety exceptions (flagged content) and legal holds apply on every plan.</p>
+
+      <p class="prose-aside">
+        <strong>The takeaway:</strong> for company data, run Command Room on a <strong>commercial Claude plan</strong> (Team/Enterprise/API) and you get no-training-by-default, a DPA, shorter retention, SSO/role-based access and audit logs, and optional ZDR. On a consumer plan, the one thing to lock down is the model-improvement setting.
+      </p>
+    </section>
+
+    <!-- vi. What Chalette sees -->
+    <section class="prose">
+      <h2 class="prose-h2">
+        <span class="prose-num">vi.</span>
+        What Chalette sees &mdash; and <em>doesn&rsquo;t.</em>
+      </h2>
+      <p>Chalette is a consulting firm, not a software host. There is no Chalette backend and no Chalette copy of your brain folder.</p>
+
+      <p class="prose-h3">What Chalette sees:</p>
+      <ul class="prose-list">
+        <li>What you show us in working sessions. If you screen-share, we see your screen. If you send us a doc or transcript, we see that doc.</li>
+        <li>What lands in spaces we explicitly share with you (a shared channel or folder).</li>
+        <li>Anything you deliberately grant during setup &mdash; e.g., a one-time look at your brain folder while we configure a skill.</li>
+      </ul>
+
+      <p class="prose-h3">What Chalette does <em>not</em> see:</p>
+      <ul class="prose-list">
+        <li>Your brain folder in steady state. It lives in your storage; we have no ambient access.</li>
+        <li>Your inbox, calendar, Teams/Slack. We hold no connector grants of our own.</li>
+        <li>Anything the model reads or writes between our sessions &mdash; that&rsquo;s strictly between Cowork and your folder.</li>
+      </ul>
+
+      <p class="prose-h3">One honest exception.</p>
+      <p>Command Room includes an optional <strong>&ldquo;report a bug&rdquo;</strong> action. If you ever use it, it drafts an email to Chalette containing limited diagnostics &mdash; plugin version, active connector <em>names</em>, anonymized workspace <em>counts</em> (no names), and your first name &mdash; <strong>no message content, no files.</strong> Nothing sends until you review the draft and click send. If your policy forbids even that, the feature can be disabled or pointed at your own helpdesk.</p>
+    </section>
+
+    <!-- vii. Off-boarding -->
+    <section class="prose">
+      <h2 class="prose-h2">
+        <span class="prose-num">vii.</span>
+        Off-boarding takes about <em>five minutes.</em>
+      </h2>
+      <p>Because there&rsquo;s no Chalette account to close and no Chalette data store to purge:</p>
+      <ol class="prose-list ordered">
+        <li><strong>Revoke the connectors</strong> &mdash; one action per service in your Google / Microsoft / Slack admin. The plugin loses its inputs immediately.</li>
+        <li><strong>Uninstall the plugin</strong> from Cowork &mdash; the instructions leave the runtime.</li>
+        <li><strong>Keep, archive, or delete the brain folder</strong> &mdash; it&rsquo;s yours, in your storage. Keep it as a structured record, archive it cold, or delete it.</li>
+        <li><strong>Purge Claude history if desired</strong> &mdash; to remove the conversation history held by Anthropic, delete your chats (purged within ~30 days) or close your Claude account, per Anthropic&rsquo;s retention terms.</li>
+      </ol>
+      <p>No data-deletion request to file with Chalette, because Chalette never held the data. No lock-in, because the folder is portable plain-text Markdown.</p>
+    </section>
+
+    <!-- For your IT & security team -->
+    <section class="prose it-checklist" id="for-it">
+      <h2 class="prose-h2">For your IT &amp; security team.</h2>
+      <p>A one-page checklist so you can sign off with confidence.</p>
+
+      <div class="it-checklist__group">
+        <h3 class="it-checklist__group-title">Recommended posture for company data</h3>
+        <ul class="prose-list">
+          <li>Use a <strong>commercial Claude plan</strong> (Team / Enterprise / API): no model training by default, DPA available, shorter/configurable retention, SSO + role-based access + audit logs, optional Zero Data Retention.</li>
+          <li>If a user is on a <strong>consumer plan</strong>, confirm the <strong>model-improvement / training setting is OFF</strong> before connecting company accounts.</li>
+        </ul>
+      </div>
+
+      <div class="it-checklist__group">
+        <h3 class="it-checklist__group-title">Connector governance (you control all of this)</h3>
+        <ul class="prose-list">
+          <li>Connectors are <strong>Anthropic-hosted</strong>, <strong>OAuth 2.0 delegated, per-user</strong> &mdash; Claude inherits the connecting user&rsquo;s existing permissions and nothing more.</li>
+          <li><strong>Microsoft 365 connector is read-only</strong> (no send/modify/post). Gate any write-capable connectors via per-tool approvals.</li>
+          <li><strong>Admin consent is mandatory</strong> (Entra Global Admin); Team/Enterprise add an Owner-level enable step.</li>
+          <li><strong>Scope down</strong> by revoking specific Graph permissions (<code>Mail.Read</code>, <code>Sites.Read.All</code>, <code>Files.Read.All</code>, <code>Chat.Read</code>, <code>Calendars.Read</code>) &mdash; effective immediately.</li>
+          <li><strong>Pilot safely</strong> via Entra enterprise-app assignment to a named test group.</li>
+          <li><strong>Conditional access applies</strong> unchanged: MFA, device compliance, IP restrictions, group-based access.</li>
+          <li><strong>Audit</strong> every connector call in your M365 Compliance Center (Graph API logs) and Google admin logs.</li>
+          <li><strong>Revoke</strong> at user, permission, or tenant level at any time.</li>
+        </ul>
+      </div>
+
+      <div class="it-checklist__group">
+        <h3 class="it-checklist__group-title">Data flow &amp; residency</h3>
+        <ul class="prose-list">
+          <li>Brain folder = <strong>your storage</strong> (Drive / OneDrive / local), under your governance.</li>
+          <li>Runtime processing = <strong>Anthropic</strong>; chat history retained per your plan. No Chalette server in the path.</li>
+          <li>Connector data is <strong>retrieved on-demand</strong>, not bulk-cached by the connector.</li>
+        </ul>
+      </div>
+
+      <div class="it-checklist__group">
+        <h3 class="it-checklist__group-title">Vendor (Chalette) risk</h3>
+        <ul class="prose-list">
+          <li>No standing access to your data; no Chalette data store; cannot push updates to your machine.</li>
+          <li>Engagement is a <strong>services agreement</strong> (like any consultant); we&rsquo;ll sign a mutual NDA. A DPA for the data layer comes from <strong>Anthropic</strong>, the entity that actually processes data.</li>
+        </ul>
+      </div>
+
+      <div class="it-checklist__group">
+        <h3 class="it-checklist__group-title">Documentation you can request</h3>
+        <ul class="prose-list">
+          <li>Anthropic SOC 2 Type II / ISO 27001 / ISO 42001 reports and subprocessor list &mdash; <a href="https://trust.anthropic.com" target="_blank" rel="noopener">trust.anthropic.com</a> (under NDA).</li>
+          <li>Microsoft 365 connector security guide (Anthropic) for the exact permission and token model.</li>
+          <li>A read-through of the plugin&rsquo;s Markdown instruction files on request &mdash; there is no hidden code path.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Common questions FAQ -->
+    <section class="prose faq-block">
+      <h2 class="prose-h2">Common questions from IT reviews.</h2>
+
+      <div class="faq-row">
+        <p class="faq-q">&ldquo;Does this give the AI access to our whole tenant / everyone&rsquo;s data?&rdquo;</p>
+        <p>No. Access is <strong>delegated to the single connecting user</strong> and is capped at what that user can already access. It can&rsquo;t reach other users&rsquo; private mail or files. If that user is a broad-access admin, scope it down with a least-privilege account or by revoking specific Graph permissions.</p>
+      </div>
+
+      <div class="faq-row">
+        <p class="faq-q">&ldquo;Is our data used to train the model?&rdquo;</p>
+        <p>You can guarantee no, two ways: use a business account (Team/Enterprise/API &mdash; training is contractually prohibited), or, on an individual account, turn off the <strong>&ldquo;Help Improve Claude&rdquo;</strong> setting under Settings &rarr; Privacy. We confirm one of these is in place before connecting company data.</p>
+      </div>
+
+      <div class="faq-row">
+        <p class="faq-q">&ldquo;Can the AI send email or change files on its own?&rdquo;</p>
+        <p>The Microsoft 365 connector is read-only. Write-capable connectors exist (e.g., Gmail send) but every tool is approval-gated by default and can be left off.</p>
+      </div>
+
+      <div class="faq-row">
+        <p class="faq-q">&ldquo;What can we audit, and how do we revoke?&rdquo;</p>
+        <p>All connector activity appears in your own M365/Google audit logs. Revoke per-user, per-permission, or tenant-wide in your admin console &mdash; instantly.</p>
+      </div>
+
+      <div class="faq-row">
+        <p class="faq-q">&ldquo;What if Anthropic has a breach?&rdquo;</p>
+        <p>Your exposure is that of any Anthropic customer using Claude with connectors; the pathway runs through Anthropic, not a separate Chalette layer. Anthropic&rsquo;s breach-notification and remediation processes (and DPA terms, on commercial plans) apply.</p>
+      </div>
+
+      <div class="faq-row">
+        <p class="faq-q">&ldquo;Can we run this air-gapped?&rdquo;</p>
+        <p>No. The model runs at Anthropic and the runtime needs network access. If air-gap is a hard requirement, Command Room isn&rsquo;t a fit today.</p>
+      </div>
+
+      <div class="faq-row">
+        <p class="faq-q">&ldquo;Does our legal/compliance team need to review something Chalette-specific?&rdquo;</p>
+        <p>Mostly the review is: <em>is Anthropic / Claude on our approved-vendor list, and are our connector grants within policy?</em> The Chalette piece is a standard services contract plus an NDA.</p>
+      </div>
+    </section>
+
+    <!-- Close + back-link -->
+    <section class="prose">
+      <p><strong>Questions we didn&rsquo;t answer here?</strong> Bring them to the call &mdash; we&rsquo;re happy to walk you or your security team through any of this live.</p>
+      <p>
+        <a href="index.html#book" class="prose-cta">Book a discovery call &rarr;</a>
+      </p>
+    </section>
+
+    <p class="back-to-overview">
+      <a href="security.html">&larr; Back to the Security overview</a>
+    </p>
+
+    <p class="article-status">
+      <em>Status: revised draft, 2026-05-24. Architectural claims verified against Anthropic&rsquo;s published documentation (Trust Center, Microsoft 365 connector security guide, consumer &amp; commercial data-retention policies) and against Command Room&rsquo;s own architecture. Plan-dependent terms (training, retention) change over time &mdash; re-verify against trust.anthropic.com before quoting specifics to a customer&rsquo;s security team.</em>
+    </p>
+
+  </div>
+</article>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo-lockup.svg" alt="Chalette">
+        <p>Executive AI Implementation</p>
+      </div>
+      <div class="footer-col">
+        <h5>Firm</h5>
+        <ul>
+          <li><a href="index.html#what">What you get</a></li>
+          <li><a href="index.html#how">How it works</a></li>
+          <li><a href="index.html#audience">Who it&rsquo;s for</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#what">Command Room</a></li>
+          <li><a href="index.html#engagement">Engagement</a></li>
+          <li><a href="security.html">Security</a></li>
+          <li><a href="security-detail.html">Security detail</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="index.html#book">Book a discovery call</a></li>
+          <li><a href="mailto:Matthew@chaletteholdings.com">Matthew@chaletteholdings.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <span>&copy; Chalette</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
