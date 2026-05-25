@@ -83,19 +83,16 @@
 
 
 /* ---------- SHARED OUTPUT TYPOGRAPHY ---------- */
-.col-c .col-c--cr > p,
-.sub-c > p {
+.col-c > p {
   font: var(--type-body);
   font-size: 14.5px;
   line-height: 1.55;
   color: var(--fg-2);
   margin: 0 0 var(--space-3);
 }
-.col-c .col-c--cr > p:last-child,
-.sub-c > p:last-child { margin-bottom: 0; }
+.col-c > p:last-child { margin-bottom: 0; }
 
-.sub-c ol, .sub-c ul,
-.col-c--cr ol, .col-c--cr ul {
+.col-c ol, .col-c ul {
   margin: 0 0 var(--space-3);
   padding-left: var(--space-5);
   font: var(--type-body);
@@ -103,8 +100,7 @@
   line-height: 1.55;
   color: var(--fg-2);
 }
-.sub-c li,
-.col-c--cr li { margin-bottom: 4px; }
+.col-c li { margin-bottom: 4px; }
 
 .output-strong {
   font-family: var(--font-serif) !important;
@@ -137,11 +133,19 @@
 .example-c:first-of-type { border-top: 0; padding-top: 0; }
 
 /* Feature variant: the synthesis crescendo. Brass top rule + a
-   touch more breathing room mark it as the payoff. */
+   touch more breathing room mark the start of the synthesis pair.
+   When two features are back-to-back, the second one inherits a
+   normal hairline so the brass rule reads as "entering synthesis"
+   rather than repeating. */
 .example-c--feature {
   border-top: 2px solid var(--brass);
   padding-top: var(--space-16);
   margin-top: var(--space-4);
+}
+.example-c--feature + .example-c--feature {
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-12);
+  margin-top: 0;
 }
 .task-emphasis {
   font-family: var(--font-serif);
@@ -218,25 +222,6 @@
   box-shadow: var(--shadow-2);
 }
 .col-c--cr .col-c-label { color: var(--brass); }
-
-.sub-c {
-  padding-top: var(--space-3);
-}
-.sub-c + .sub-c {
-  margin-top: var(--space-3);
-  padding-top: var(--space-5);
-  border-top: 1px dashed var(--border);
-}
-.sub-c-tag {
-  font: var(--type-meta);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--fg-3);
-  margin: 0 0 var(--space-3) !important;
-  font-size: 10px !important;
-  font-family: var(--font-mono) !important;
-  font-style: normal !important;
-}
 
 
 /* =============================================================
