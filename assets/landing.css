@@ -277,21 +277,12 @@ body.nav-open { overflow: hidden; }
   padding-bottom: clamp(80px, 10vw, 140px);
   border-top: 0;
 }
-.hero-eyebrow {
-  font: var(--type-meta);
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--fg-muted);
+.hero-logo {
+  display: block;
+  width: clamp(140px, 16vw, 200px);
+  height: auto;
   margin: 0 0 var(--space-8);
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  flex-wrap: wrap;
 }
-.hero-eyebrow .firm { color: var(--fg-muted); }
-.hero-eyebrow .product { color: var(--brass); }
-.hero-eyebrow .category { color: var(--fg-muted); }
-.hero-eyebrow .sep { color: var(--fg-muted); opacity: 0.6; font-size: 14px; }
 .hero h1 {
   font: var(--type-display-1);
   font-size: clamp(44px, 7vw, 96px);
