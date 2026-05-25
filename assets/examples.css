@@ -1,7 +1,7 @@
 /* ----------------------------------------------------------
    Chalette · Examples page
-   Three visual treatments (A/B/C) of the same content so the
-   reader can compare. All built from chalette.css tokens.
+   Two-column "Everything else" vs Command Room layout.
+   Built on chalette.css tokens.
    ---------------------------------------------------------- */
 
 /* ---------- HERO / INTRO ---------- */
@@ -33,13 +33,12 @@
   max-width: 50ch;
 }
 
-/* Legend strip: three colored chips explaining the three AIs */
+/* Legend strip: three chips explaining the three AIs */
 .legend {
   list-style: none;
-  margin: 0 0 var(--space-8);
-  padding: var(--space-8) 0;
+  margin: 0;
+  padding: var(--space-8) 0 0;
   border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-4);
@@ -81,71 +80,9 @@
   color: var(--fg-2);
   font-size: 16px;
 }
-.examples-note {
-  font: var(--type-meta);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--brass);
-  margin: 0;
-}
-.examples-note em {
-  text-transform: none;
-  letter-spacing: 0;
-  font: var(--type-serif);
-  font-style: italic;
-  font-size: 16px;
-  color: var(--fg-2);
-  margin-left: var(--space-3);
-}
 
-/* ---------- STYLE BANNER (shared, used at top of each style) ---------- */
-.style-banner {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-2);
-  margin-bottom: var(--space-12);
-  padding-bottom: var(--space-8);
-  border-bottom: 1px solid var(--border);
-}
-@media (min-width: 880px) {
-  .style-banner {
-    grid-template-columns: 140px 1fr 1.6fr;
-    gap: var(--space-8);
-    align-items: baseline;
-  }
-}
-.style-banner-tag {
-  font: var(--type-meta);
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--brass);
-  margin: 0;
-}
-.style-banner-name {
-  font: var(--type-display-3);
-  font-size: clamp(24px, 2.6vw, 32px);
-  line-height: 1.15;
-  letter-spacing: -0.005em;
-  color: var(--fg);
-  margin: 0;
-  font-family: var(--font-serif);
-  font-weight: 500;
-}
-.style-banner-desc {
-  font: var(--type-serif);
-  font-style: italic;
-  font-size: clamp(15px, 1.3vw, 17px);
-  line-height: 1.55;
-  color: var(--fg-2);
-  margin: 0;
-  max-width: 60ch;
-}
 
-/* ---------- SHARED OUTPUT-INSIDE TYPOGRAPHY ----------
-   Used by all three styles. Output paragraphs are sans-serif body
-   so they read as "the AI said this". Lists are tight. */
-.col-a-output p,
-.card-b-output p,
+/* ---------- SHARED OUTPUT TYPOGRAPHY ---------- */
 .col-c .col-c--cr > p,
 .sub-c > p {
   font: var(--type-body);
@@ -154,14 +91,11 @@
   color: var(--fg-2);
   margin: 0 0 var(--space-3);
 }
-.col-a-output p:last-child,
-.card-b-output p:last-child,
 .col-c .col-c--cr > p:last-child,
 .sub-c > p:last-child { margin-bottom: 0; }
 
-.col-a-output ol, .col-a-output ul,
-.card-b-output ol, .card-b-output ul,
-.sub-c ol, .sub-c ul {
+.sub-c ol, .sub-c ul,
+.col-c--cr ol, .col-c--cr ul {
   margin: 0 0 var(--space-3);
   padding-left: var(--space-5);
   font: var(--type-body);
@@ -169,9 +103,8 @@
   line-height: 1.55;
   color: var(--fg-2);
 }
-.col-a-output li,
-.card-b-output li,
-.sub-c li { margin-bottom: 4px; }
+.sub-c li,
+.col-c--cr li { margin-bottom: 4px; }
 
 .output-strong {
   font-family: var(--font-serif) !important;
@@ -192,209 +125,19 @@
 
 
 /* =============================================================
-   STYLE A · THREE-COLUMN EDITORIAL
+   EXAMPLES SET · two-column "Everything else" vs Command Room
    ============================================================= */
 
-.style-a { background: var(--cream); }
+.examples-set { background: var(--cream); }
 
-.example-a {
+.example-c {
   padding-block: var(--space-12);
   border-top: 1px solid var(--border);
 }
-.example-a:first-of-type { border-top: 0; padding-top: 0; }
-
-.example-a-head {
-  margin-bottom: var(--space-8);
-  display: grid;
-  gap: var(--space-3);
-}
-.example-a-num {
-  font: var(--type-meta);
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--fg-muted);
-  margin: 0;
-}
-.example-a-num span {
-  color: var(--brass);
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 18px;
-  letter-spacing: 0;
-  text-transform: none;
-  margin-right: 10px;
-}
-.example-a-prompt {
-  font: var(--type-serif-lg);
-  font-style: italic;
-  font-size: clamp(20px, 2vw, 26px);
-  line-height: 1.35;
-  color: var(--fg);
-  margin: 0;
-  max-width: 48ch;
-}
-.example-a-prompt em { color: var(--brass); font-style: italic; }
-
-.cols-a {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-4);
-}
-@media (min-width: 960px) {
-  .cols-a {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 0;
-    align-items: stretch;
-  }
-}
-.col-a {
-  padding: var(--space-6);
-  background: var(--paper);
-  border-top: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-@media (min-width: 960px) {
-  .col-a {
-    border-top: 1px solid var(--border);
-    border-left: 1px solid var(--border);
-  }
-  .col-a:first-child { border-left: 1px solid var(--border); }
-  .col-a:last-child { border-right: 1px solid var(--border); }
-}
-.col-a--generic { opacity: 0.78; }
-.col-a--prompt {}
-.col-a--cr {
-  background: var(--paper);
-  border-top: 2px solid var(--brass) !important;
-  position: relative;
-}
-@media (min-width: 960px) {
-  .col-a--cr { box-shadow: var(--shadow-2); z-index: 1; }
-}
-.col-a-label {
-  font: var(--type-meta);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--fg-muted);
-  margin: 0;
-}
-.col-a--cr .col-a-label { color: var(--brass); }
-
-
-/* =============================================================
-   STYLE B · STACKED TIER CARDS
-   ============================================================= */
-
-.style-b { background: var(--bone); }
-
-.example-b-head {
-  margin-bottom: var(--space-10);
-  display: grid;
-  gap: var(--space-3);
-}
-.example-b-num {
-  font: var(--type-meta);
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--fg-muted);
-  margin: 0;
-}
-.example-b-num span {
-  color: var(--brass);
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 18px;
-  letter-spacing: 0;
-  text-transform: none;
-  margin-right: 10px;
-}
-.example-b-prompt {
-  font: var(--type-serif-lg);
-  font-style: italic;
-  font-size: clamp(20px, 2vw, 26px);
-  line-height: 1.35;
-  color: var(--fg);
-  margin: 0;
-  max-width: 48ch;
-}
-.example-b-prompt em { color: var(--brass); font-style: italic; }
-
-.cards-b {
-  display: grid;
-  gap: var(--space-6);
-  max-width: 780px;
-}
-.card-b {
-  background: var(--paper);
-  border: 1px solid var(--border);
-  padding: var(--space-6) var(--space-6);
-  display: grid;
-  gap: var(--space-4);
-  position: relative;
-}
-.card-b-head {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding-bottom: var(--space-3);
-  border-bottom: 1px solid var(--border-soft);
-  flex-wrap: wrap;
-}
-.card-b-num {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 24px;
-  color: var(--brass);
-  line-height: 1;
-  width: 28px;
-  flex-shrink: 0;
-}
-.card-b-label {
-  font: var(--type-h4);
-  color: var(--fg);
-  font-weight: 600;
-}
-.card-b-tag {
-  margin-left: auto;
-  font: var(--type-meta);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--fg-muted);
-  padding: 4px 8px;
-  background: var(--cream);
-  border-radius: var(--radius-1);
-}
-
-.card-b--generic { opacity: 0.82; }
-.card-b--generic .card-b-num { color: var(--fg-muted); }
-
-.card-b--prompt .card-b-num { color: var(--ink-3); }
-
-.card-b--cr {
-  background: var(--paper);
-  border: 1px solid var(--border);
-  border-top: 2px solid var(--brass);
-  box-shadow: var(--shadow-2);
-}
-.card-b--cr .card-b-tag {
-  background: var(--brass);
-  color: var(--ink);
-}
-
-
-/* =============================================================
-   STYLE C · TWO-COLUMN "EVERYTHING ELSE" vs COMMAND ROOM
-   ============================================================= */
-
-.style-c { background: var(--cream); }
+.example-c:first-of-type { border-top: 0; padding-top: 0; }
 
 .example-c-head {
-  margin-bottom: var(--space-10);
+  margin-bottom: var(--space-8);
   display: grid;
   gap: var(--space-3);
 }
@@ -479,7 +222,7 @@
 
 
 /* =============================================================
-   CLOSER (shared)
+   CLOSER
    ============================================================= */
 
 .examples-closer {
@@ -509,7 +252,7 @@
   font-family: var(--font-serif);
   font-weight: 500;
   text-wrap: balance;
-  max-width: 22ch;
+  max-width: 28ch;
 }
 .closer-line em { font-style: italic; color: var(--brass); }
 .closer-sub {
