@@ -28,8 +28,27 @@
       <a href="index.html#engagement">Engagement</a>
       <a href="security.html" aria-current="page">Security</a>
     </nav>
-    <a class="btn btn-primary btn-sm" href="index.html#book">
-      Book a discovery call
+    <div class="nav-actions">
+      <a class="btn btn-primary btn-sm nav-cta" href="mailto:Matthew@chaletteholdings.com">
+        Contact
+        <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <nav class="mobile-menu-links" aria-label="Mobile primary">
+      <a href="index.html#what">What you get</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#engagement">Engagement</a>
+      <a href="security.html" aria-current="page">Security</a>
+    </nav>
+    <a class="btn btn-primary mobile-menu-cta" href="mailto:Matthew@chaletteholdings.com">
+      Contact
       <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
   </div>
@@ -358,7 +377,7 @@
     <section class="prose">
       <p><strong>Questions we didn&rsquo;t answer here?</strong> Bring them to the call &mdash; we&rsquo;re happy to walk you or your security team through any of this live.</p>
       <p>
-        <a href="index.html#book" class="prose-cta">Book a discovery call &rarr;</a>
+        <a href="mailto:Matthew@chaletteholdings.com" class="prose-cta">Contact &rarr;</a>
       </p>
     </section>
 
@@ -374,6 +393,8 @@
 </article>
 
 </main>
+
+<script src="assets/nav.js" defer></script>
 
 <footer>
   <div class="wrap">
@@ -402,7 +423,7 @@
       <div class="footer-col">
         <h5>Contact</h5>
         <ul>
-          <li><a href="index.html#book">Book a discovery call</a></li>
+          <li><a href="mailto:Matthew@chaletteholdings.com">Contact</a></li>
           <li><a href="mailto:Matthew@chaletteholdings.com">Matthew@chaletteholdings.com</a></li>
         </ul>
       </div>
