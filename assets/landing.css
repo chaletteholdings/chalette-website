@@ -544,6 +544,47 @@ body.nav-open { overflow: hidden; }
   color: var(--fg-muted);
 }
 
+/* Synthesis closer below the three steps. */
+.how-close {
+  margin-top: var(--space-10);
+  padding-top: var(--space-8);
+  border-top: 2px solid var(--brass);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.how-close-marker {
+  font: var(--type-meta);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin: 0;
+}
+.how-close-line {
+  font: var(--type-display-3);
+  font-size: clamp(28px, 3.6vw, 44px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  text-wrap: balance;
+}
+.how-close-line em {
+  font-style: italic;
+  color: var(--brass);
+}
+.how-close-sub {
+  font: var(--type-serif-lg);
+  font-style: italic;
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.5;
+  color: var(--fg-2);
+  margin: var(--space-2) 0 0;
+  max-width: 56ch;
+}
+
 /* ---------- WHO IT'S FOR ---------- */
 .audience { background: var(--cream); }
 .audience-grid {
@@ -598,6 +639,7 @@ body.nav-open { overflow: hidden; }
 .audience-list strong { color: var(--fg); font-weight: 500; font-style: italic; }
 
 /* ---------- ENGAGEMENT ---------- */
+#engagement { background: var(--paper); }
 .engagement-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -611,6 +653,9 @@ body.nav-open { overflow: hidden; }
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
+}
+@media (max-width: 720px) {
+  .engagement-card { padding: var(--space-6); gap: var(--space-5); }
 }
 .engagement-card .marker {
   font: var(--type-meta);
@@ -772,6 +817,15 @@ footer {
 
 /* small helpers */
 .arrow { width: 14px; height: 14px; }
+
+/* brass-emphasis utility: italic + brass + slightly heavier weight.
+   Use for product/brand phrases that need to pop inside body copy
+   (e.g. "AI Chief of Staff", "Chief of Staff"). */
+.brass-em {
+  color: var(--brass);
+  font-weight: 600;
+  font-style: italic;
+}
 .visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
 
 ::selection { background: var(--brass); color: var(--ink); }
