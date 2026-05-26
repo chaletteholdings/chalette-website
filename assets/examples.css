@@ -293,3 +293,416 @@
   color: var(--brass);
   border-bottom-color: var(--brass);
 }
+
+
+/* =============================================================
+   SCHEDULED-TASK WIDGETS
+   The actual chat artifacts your Chief of Staff fires through
+   the week. Stylized to look like captured screenshots of the
+   Cowork chat surface, not marketing graphics.
+   ============================================================= */
+
+.examples-widgets {
+  padding-block: clamp(64px, 9vw, 120px);
+  border-top: 1px solid var(--border);
+}
+
+.widgets-head {
+  max-width: 760px;
+  margin: 0 auto var(--space-16);
+  text-align: left;
+}
+.widgets-marker {
+  font: var(--type-meta);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin: 0 0 var(--space-5);
+}
+.widgets-title {
+  font: var(--type-display-2);
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--fg);
+  margin: 0 0 var(--space-6);
+  max-width: 22ch;
+  text-wrap: balance;
+}
+.widgets-title em { font-style: italic; color: var(--brass); }
+.widgets-lede {
+  font: var(--type-serif-lg);
+  font-size: clamp(18px, 1.6vw, 22px);
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--fg-2);
+  margin: 0 0 var(--space-5);
+  max-width: 62ch;
+}
+.widgets-note {
+  font: var(--type-serif);
+  font-size: 15px;
+  color: var(--fg-muted);
+  margin: 0;
+  max-width: 62ch;
+}
+.widgets-note strong { color: var(--brass); font-weight: 600; }
+
+/* per-widget block — head + the widget card */
+.widget-example {
+  margin-bottom: var(--space-16);
+}
+.widget-example:last-child { margin-bottom: 0; }
+.we-head {
+  margin-bottom: var(--space-8);
+  max-width: 760px;
+}
+.we-eyebrow {
+  font: var(--type-meta);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin: 0 0 var(--space-3);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+.we-eyebrow .num {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 22px;
+  color: var(--brass);
+  letter-spacing: 0;
+  text-transform: none;
+}
+.we-head h3 {
+  font: var(--type-display-3);
+  font-size: clamp(28px, 3.6vw, 40px);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  margin: 0 0 var(--space-3);
+  max-width: 22ch;
+  text-wrap: balance;
+}
+.we-head h3 em { font-style: italic; color: var(--brass); }
+.we-meta {
+  font: var(--type-meta);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin: 0;
+}
+.we-meta .dot { color: var(--brass); padding: 0 var(--space-2); }
+.we-desc {
+  font: var(--type-serif-lg);
+  font-size: clamp(17px, 1.5vw, 19px);
+  line-height: 1.55;
+  font-style: italic;
+  color: var(--fg-2);
+  margin: var(--space-4) 0 0;
+  max-width: 56ch;
+}
+
+/* ---------- the widget card ---------- */
+.widget {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-2);
+  box-shadow: var(--shadow-2);
+  max-width: 720px;
+  overflow: hidden;
+  font-family: var(--font-sans);
+}
+
+.widget-head {
+  padding: var(--space-5) var(--space-6);
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--paper) 0%, color-mix(in oklab, var(--cream) 60%, var(--paper)) 100%);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+.widget-head .widget-title {
+  font: 600 15px/1.3 var(--font-sans);
+  color: var(--fg);
+  letter-spacing: -0.005em;
+  margin: 0;
+}
+.widget-head .widget-stamp {
+  font: 500 11px/1.4 var(--font-mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.widget-body {
+  padding: var(--space-5) var(--space-6);
+}
+
+/* section labels inside the widget */
+.w-section-label {
+  font: 600 10px/1.4 var(--font-mono);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin: var(--space-5) 0 var(--space-3);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+.w-section-label:first-child { margin-top: 0; }
+.w-section-label--alert { color: var(--accent); }
+.w-section-label .count {
+  color: var(--fg-muted);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+}
+
+/* item rows */
+.w-item {
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--border-soft);
+}
+.w-item:first-of-type { border-top: 0; padding-top: var(--space-2); }
+.w-item .w-num {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--brass);
+  letter-spacing: 0;
+  margin-right: 8px;
+}
+.w-item .w-headline {
+  font: 500 14px/1.45 var(--font-sans);
+  color: var(--fg);
+  margin: 0 0 6px;
+}
+.w-item .w-headline .w-icon {
+  display: inline-block;
+  width: 14px;
+  color: var(--fg-muted);
+  margin-right: 4px;
+}
+.w-item .w-headline a {
+  color: var(--fg);
+  border-bottom: 1px dotted var(--fg-muted);
+}
+.w-item .w-headline a:hover { color: var(--brass); border-bottom-color: var(--brass); }
+.w-item .w-sub {
+  font: 400 13px/1.5 var(--font-sans);
+  color: var(--fg-2);
+  margin: 0 0 8px;
+}
+.w-item .w-sub a {
+  color: var(--info);
+  border-bottom: 1px dotted var(--info);
+}
+.w-item .w-sub a:hover { opacity: 0.75; }
+
+/* indented preview block */
+.w-preview {
+  margin: var(--space-3) 0;
+  padding: 10px 14px;
+  background: var(--bg);
+  border-left: 2px solid var(--brass);
+  border-radius: 0 var(--radius-2) var(--radius-2) 0;
+  font: 400 13px/1.55 var(--font-sans);
+  color: var(--fg-2);
+}
+.w-preview .w-preview-meta {
+  font: 500 11px/1.3 var(--font-mono);
+  letter-spacing: 0.06em;
+  color: var(--fg-muted);
+  margin-bottom: 4px;
+}
+.w-preview em {
+  font-style: italic;
+  color: var(--fg-2);
+}
+
+/* per-item button row */
+.w-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+.w-btn {
+  font: 500 12px/1 var(--font-sans);
+  padding: 7px 12px;
+  border: 1px solid var(--border-strong);
+  background: var(--paper);
+  color: var(--fg);
+  border-radius: var(--radius-2);
+  cursor: pointer;
+  letter-spacing: 0;
+  transition: all var(--dur-base) var(--ease-editorial);
+  font-family: var(--font-sans);
+}
+.w-btn:hover {
+  background: var(--ink);
+  color: var(--bone);
+}
+.w-btn-primary {
+  background: var(--ink);
+  color: var(--bone);
+}
+.w-btn-primary:hover { background: var(--brass); color: var(--ink); border-color: var(--brass); }
+
+/* bottom batch row */
+.w-foot {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+.w-counter {
+  font: 500 12px/1.4 var(--font-mono);
+  letter-spacing: 0.06em;
+  color: var(--fg-muted);
+}
+.w-counter strong { color: var(--brass); font-weight: 600; }
+.w-foot-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+
+/* quick read block */
+.w-quickread {
+  margin-top: var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  background: var(--cream);
+  border-left: 2px solid var(--brass);
+  border-radius: 0 var(--radius-2) var(--radius-2) 0;
+}
+.w-quickread .w-qr-label {
+  font: 600 10px/1.4 var(--font-mono);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin: 0 0 var(--space-2);
+}
+.w-quickread p {
+  font: 400 13px/1.6 var(--font-sans);
+  color: var(--fg-2);
+  margin: 0;
+}
+.w-quickread p + p { margin-top: 6px; }
+
+/* ---------- markdown-digest variants (morning brief, friday wrap) ----------
+   No buttons; these fire as plain chat posts in the real product. */
+.w-digest .widget-body { padding: var(--space-6) var(--space-6); }
+.w-digest .w-h {
+  font: 600 12px/1.4 var(--font-mono);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin: var(--space-5) 0 var(--space-3);
+}
+.w-digest .w-h:first-child { margin-top: 0; }
+.w-digest .w-sub-h {
+  font: 600 13px/1.4 var(--font-sans);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--fg);
+  margin: var(--space-4) 0 var(--space-2);
+}
+.w-digest p, .w-digest li {
+  font: 400 14px/1.55 var(--font-sans);
+  color: var(--fg-2);
+  margin: 0 0 var(--space-2);
+}
+.w-digest ul {
+  margin: 0 0 var(--space-3);
+  padding: 0;
+  list-style: none;
+}
+.w-digest ul li {
+  padding-left: 18px;
+  position: relative;
+}
+.w-digest ul li::before {
+  content: '·';
+  position: absolute;
+  left: 4px;
+  color: var(--brass);
+  font-weight: 700;
+}
+.w-digest .w-time {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--fg-muted);
+  letter-spacing: 0.04em;
+  margin-right: 6px;
+}
+.w-digest a {
+  color: var(--info);
+  border-bottom: 1px dotted var(--info);
+}
+.w-digest a:hover { opacity: 0.75; }
+.w-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin: 0 0 var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg);
+  border-left: 2px solid var(--brass);
+  font: 500 12px/1.4 var(--font-mono);
+  letter-spacing: 0.08em;
+  color: var(--fg-2);
+  text-transform: uppercase;
+}
+.w-counts strong {
+  color: var(--brass);
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  margin-right: 3px;
+}
+.w-first-move {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 2px solid var(--brass);
+}
+.w-first-move .label {
+  font: 600 10px/1.4 var(--font-mono);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin: 0 0 6px;
+}
+.w-first-move p {
+  font: italic 500 16px/1.45 var(--font-serif);
+  color: var(--fg);
+  margin: 0;
+  max-width: 56ch;
+}
+.w-saved-as {
+  margin-top: var(--space-5);
+  font: 500 12px/1.4 var(--font-mono);
+  letter-spacing: 0.08em;
+  color: var(--fg-muted);
+  text-transform: uppercase;
+}
+.w-saved-as a {
+  font-family: var(--font-mono);
+  color: var(--info);
+}
+
+/* tighten on small screens */
+@media (max-width: 720px) {
+  .widget-head { padding: var(--space-4); }
+  .widget-body { padding: var(--space-4); }
+  .w-item .w-headline { font-size: 13.5px; }
+  .w-btn { padding: 6px 10px; font-size: 11.5px; }
+}
