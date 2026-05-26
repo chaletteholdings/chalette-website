@@ -631,6 +631,15 @@ a.w-btn { line-height: 1; }
 .w-counter strong { color: var(--brass); font-weight: 600; }
 .w-foot-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; }
 
+/* collapsed FYI / low-priority line — replaces multiple item cards when
+   the section is intentionally truncated for display */
+.w-fyi-line {
+  font: italic 400 13px/1.5 var(--font-serif);
+  color: var(--fg-muted);
+  margin: 0 0 var(--space-4);
+  max-width: 64ch;
+}
+
 /* quick read block */
 .w-quickread {
   margin-top: var(--space-5);
@@ -1139,74 +1148,60 @@ a.w-btn { line-height: 1; }
 
 
 /* =============================================================
-   BRIEF CTA — prominent button below meetings widgets
-   Surfaces the "click to see an example brief" path outside
-   the widget itself so visitors actually find it.
+   BRIEF CTA — big brass button below meetings widgets
+   Single-line primary action, unambiguous. The "drafted
+   automatically" framing already lives in the widget's intro
+   note above, so the button itself is just the click target.
    ============================================================= */
 
 .brief-cta {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 6px;
-  padding: var(--space-6) var(--space-7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: 22px var(--space-7);
   margin-top: var(--space-5);
   max-width: 720px;
   width: 100%;
-  background: var(--ink);
-  color: var(--bone);
-  border: 1px solid var(--ink);
-  border-top: 2px solid var(--brass);
-  border-radius: var(--radius-2);
+  background: var(--brass);
+  color: var(--ink);
+  border: 1px solid var(--brass);
+  border-radius: var(--radius-3);
+  font: 600 19px/1.2 var(--font-sans);
+  letter-spacing: -0.005em;
   text-decoration: none;
+  text-align: center;
   transition: background var(--dur-base) var(--ease-editorial),
               transform var(--dur-base) var(--ease-editorial),
               box-shadow var(--dur-base) var(--ease-editorial);
-  box-shadow: 0 4px 14px -6px rgba(26,23,20,0.20);
+  box-shadow: 0 4px 14px -6px rgba(184,139,74,0.32);
 }
 .brief-cta:hover {
-  background: #2A2420;
+  background: #C99A57;
+  border-color: #C99A57;
   transform: translateY(-1px);
-  box-shadow: 0 12px 28px -10px rgba(26,23,20,0.32);
+  box-shadow: 0 12px 28px -10px rgba(184,139,74,0.48);
 }
 .brief-cta:active { transform: translateY(0); }
 
-.brief-cta-eyebrow {
-  font: 500 11px/1.2 var(--font-mono);
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--brass);
-  margin: 0;
-}
 .brief-cta-line {
-  font: 600 22px/1.25 var(--font-sans);
-  letter-spacing: -0.005em;
-  color: var(--bone);
-  margin: 0;
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-3);
-  flex-wrap: wrap;
+  color: var(--ink);
 }
-.brief-cta-line em { font-style: italic; color: var(--brass); }
 .brief-cta-arrow {
-  font-family: var(--font-serif);
-  font-style: italic;
-  color: var(--brass);
-  font-size: 26px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  color: var(--ink);
+  font-size: 22px;
   line-height: 1;
   transition: transform var(--dur-base) var(--ease-editorial);
   display: inline-block;
 }
 .brief-cta:hover .brief-cta-arrow { transform: translateX(6px); }
-.brief-cta-sub {
-  font: italic 400 16px/1.5 var(--font-serif);
-  color: rgba(244,240,232,0.78);
-  margin: 4px 0 0;
-  max-width: 56ch;
-}
 
 @media (max-width: 720px) {
-  .brief-cta { padding: var(--space-5) var(--space-6); }
-  .brief-cta-line { font-size: 19px; }
-  .brief-cta-sub { font-size: 15px; }
+  .brief-cta {
+    padding: 18px var(--space-6);
+    font-size: 16px;
+  }
+  .brief-cta-arrow { font-size: 19px; }
 }
