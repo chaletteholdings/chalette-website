@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <title>Examples | Chalette Command Room</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Same task, two AIs. See what changes when AI actually knows you and your business: generic AI vs. Command Room.">
+  <meta name="description" content="How Command Room works. The working folder that knows your business, the scheduled chats that run on their own, and what you can ask it for on demand.">
 
   <meta property="og:type" content="article">
   <meta property="og:title" content="Examples | Chalette Command Room">
-  <meta property="og:description" content="Same task, two AIs. See the contrast.">
+  <meta property="og:description" content="How Command Room works. What runs on its own. What you ask it for.">
 
   <link rel="icon" href="assets/favicon.svg">
   <link rel="stylesheet" href="assets/chalette.css">
@@ -63,221 +63,75 @@
 
 <main id="top">
 
+
 <!-- ============================================================
-     HERO / INTRO
+     HERO — HOW COMMAND ROOM WORKS
+     Opens with the brain folder concept, the substrate that
+     makes everything else possible.
      ============================================================ -->
 <section class="examples-hero">
   <div class="wrap">
-    <div class="section-marker"><span>Examples</span></div>
+    <div class="section-marker"><span>How it works</span></div>
     <h1 class="examples-h1">
-      What changes when AI <span class="brass-em">knows you.</span>
+      How Command Room <span class="brass-em">knows you.</span>
     </h1>
     <p class="examples-lede">
-      Same task. Generic AI vs. Command Room. The contrast is everything.
+      Every Command Room install starts with one thing: a <em>working folder</em> on your computer that holds everything about your business. The AI reads from it on every interaction. That&rsquo;s why nothing it produces feels generic.
     </p>
 
-    <ul class="legend">
-      <li>
-        <span class="legend-tag legend-tag--generic">Generic AI</span>
-        <span class="legend-text">A fresh chat. Knows nothing about you.</span>
+    <ul class="brain-folder" aria-label="What's in the working folder">
+      <li class="bf-card">
+        <p class="bf-label">People</p>
+        <p class="bf-text">Your team, your clients, your investors. How each one works, what matters to them, the last six months of contact.</p>
       </li>
-      <li>
-        <span class="legend-tag legend-tag--cr">Command Room</span>
-        <span class="legend-text">Knows you, your people, your last six months.</span>
+      <li class="bf-card">
+        <p class="bf-label">Projects</p>
+        <p class="bf-text">Every active workstream. Current state, what got decided, what&rsquo;s blocked, who owes what.</p>
+      </li>
+      <li class="bf-card">
+        <p class="bf-label">Decisions</p>
+        <p class="bf-text">Every decision logged with the reasoning behind it. Searchable. So you never relitigate the same call twice.</p>
+      </li>
+      <li class="bf-card">
+        <p class="bf-label">Commitments</p>
+        <p class="bf-text">A live ledger of what&rsquo;s owed to you, what you owe. Captured from meetings and emails as they happen.</p>
+      </li>
+      <li class="bf-card">
+        <p class="bf-label">Voice</p>
+        <p class="bf-text">How you write. Learned from your sent mail so drafts come back sounding like you, not like AI.</p>
       </li>
     </ul>
+
+    <div class="two-modes">
+      <p class="two-modes-eyebrow">You use it two ways</p>
+      <div class="two-modes-grid">
+        <a class="mode-card" href="#examples-widgets">
+          <p class="mode-num">01</p>
+          <h2 class="mode-title">What runs <em>on its own.</em></h2>
+          <p class="mode-text">Five scheduled chats fire on their own through the week. Morning brief, meetings, inbox, recap. Finished artifacts you read like any other message.</p>
+          <p class="mode-link">See the five scheduled chats &darr;</p>
+        </a>
+        <a class="mode-card" href="#examples-on-demand">
+          <p class="mode-num">02</p>
+          <h2 class="mode-title">What you <em>ask it for.</em></h2>
+          <p class="mode-text">Ask anything, anytime &mdash; meeting prep, project status, follow-ups, a draft, a synthesis across people and threads. The answer comes back with your context baked in.</p>
+          <p class="mode-link">See on-demand examples &darr;</p>
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
 
 <!-- ============================================================
-     THE EXAMPLES
-     Two-column Generic AI vs Command Room for each task.
-     The last two (v. & vi.) are the synthesis crescendo.
-     ============================================================ -->
-<section class="examples-set">
-  <div class="wrap">
-
-    <!-- Task i: Meeting prep -->
-    <article class="example-c">
-      <header class="example-c-head">
-        <p class="example-c-num"><span>i.</span> Meeting prep</p>
-        <p class="example-c-prompt">You ask, <em>&ldquo;Prep me for my 2pm with Sarah Chen.&rdquo;</em></p>
-      </header>
-
-      <div class="cols-c">
-        <div class="col-c col-c--else">
-          <p class="col-c-label">Generic AI</p>
-          <p>Of course! I&rsquo;d be happy to help you prepare. Could you tell me more about Sarah Chen, your relationship with her, the meeting&rsquo;s purpose, and any recent context I should know about?</p>
-        </div>
-
-        <div class="col-c col-c--cr">
-          <p class="col-c-label">Command Room</p>
-          <p class="output-strong">2pm &middot; Sarah Chen &middot; Atlas Partners</p>
-          <p>Last met April 22. She owes you the revised MSA. You pinged her May 9, no reply.</p>
-          <p>She replied <em>&ldquo;let me think&rdquo;</em> to the Q3 forecast you forwarded May 18.</p>
-          <p>Open thread: pricing on the Tier 2 package. You said you&rsquo;d come back with three options.</p>
-          <p class="output-footer">Walk in with: the three options, the MSA timeline, your read on whether they&rsquo;re stalling or just slow.</p>
-        </div>
-      </div>
-    </article>
-
-    <!-- Task ii: Synthesis - across a project -->
-    <article class="example-c example-c--feature">
-      <header class="example-c-head">
-        <p class="example-c-num"><span>ii.</span> Joining the dots <span class="task-emphasis">&middot; across a project</span></p>
-        <p class="example-c-prompt">You ask, <em>&ldquo;Where are we on the pricing rollout?&rdquo;</em></p>
-      </header>
-
-      <div class="cols-c">
-        <div class="col-c col-c--else">
-          <p class="col-c-label">Generic AI</p>
-          <p>I don&rsquo;t have visibility into your pricing rollout. If you share what stage it&rsquo;s at, who&rsquo;s involved, and the recent status, I can help you organize the next steps!</p>
-        </div>
-
-        <div class="col-c col-c--cr">
-          <p class="col-c-label">Command Room</p>
-          <p class="output-strong">Pricing rollout &middot; <em>on track for June 15. Two blockers.</em></p>
-          <p class="output-strong">Where it stands.</p>
-          <ul>
-            <li>Three tiers approved at Tuesday&rsquo;s offsite (your decision, logged).</li>
-            <li>Maya finished the customer comms draft Friday. Awaiting your sign-off.</li>
-            <li>Legal cleared the new MSA language Monday.</li>
-          </ul>
-          <p class="output-strong">Open blockers.</p>
-          <ol>
-            <li><strong>Sales objection-handling doc.</strong> Owner: Tom. Due Friday, slipped. He flagged complexity on Tuesday&rsquo;s call.</li>
-            <li><strong>Legacy-account migration plan.</strong> Owner: you. Notes in your folder, not yet drafted.</li>
-          </ol>
-          <p>Pattern worth flagging: Tom&rsquo;s slip is his third missed deadline this quarter. Worth raising in your 1:1 Thursday.</p>
-          <p class="output-footer">Drawn from: 4 team meetings, 23 emails across the rollout group, 3 logged decisions, last 60 days.</p>
-        </div>
-      </div>
-    </article>
-
-    <!-- Task iii: Morning brief -->
-    <article class="example-c">
-      <header class="example-c-head">
-        <p class="example-c-num"><span>iii.</span> Morning brief</p>
-        <p class="example-c-prompt">You ask, <em>&ldquo;What&rsquo;s my day look like?&rdquo;</em></p>
-      </header>
-
-      <div class="cols-c">
-        <div class="col-c col-c--else">
-          <p class="col-c-label">Generic AI</p>
-          <p>I don&rsquo;t have access to your calendar or email, but I&rsquo;d be glad to help you organize your day if you share your schedule and priorities!</p>
-        </div>
-
-        <div class="col-c col-c--cr">
-          <p class="col-c-label">Command Room</p>
-          <p class="output-strong">Tuesday, May 26</p>
-          <p>Three things matter today.</p>
-          <ol>
-            <li><strong>Acme at 11.</strong> They want to renegotiate. You decided last week to hold at $180K. Maya has the talking points.</li>
-            <li><strong>Sarah Chen at 2.</strong> She still owes you the MSA. Walk in with the three pricing options (in your folder).</li>
-            <li><strong>Maya&rsquo;s 1:1 at 4.</strong> She flagged frustration with the marketing handoff in Slack on Friday. Worth raising.</li>
-          </ol>
-          <p class="output-footer">Else: six emails need you (drafts queued). Two follow-ups overdue: Atlas (5 days), Brookline (3 days).</p>
-        </div>
-      </div>
-    </article>
-
-    <!-- Task iv: Email reply -->
-    <article class="example-c">
-      <header class="example-c-head">
-        <p class="example-c-num"><span>iv.</span> Email reply</p>
-        <p class="example-c-prompt">You ask, <em>&ldquo;Draft a reply to David at Brookline. He wants to push the kickoff to June 10.&rdquo;</em></p>
-      </header>
-
-      <div class="cols-c">
-        <div class="col-c col-c--else">
-          <p class="col-c-label">Generic AI</p>
-          <p>Dear David,</p>
-          <p>Thank you for reaching out regarding the kickoff date. I appreciate you letting me know in advance. After careful consideration, I&rsquo;m happy to accommodate your request and push the kickoff to June 10. Please don&rsquo;t hesitate to let me know if there&rsquo;s anything else I can do to support a smooth transition.</p>
-          <p>Best regards,</p>
-        </div>
-
-        <div class="col-c col-c--cr">
-          <p class="col-c-label">Command Room</p>
-          <p>David,</p>
-          <p>June 10 works. Quick heads-up: that pushes our design review into the same week as your board meeting. We hit that last time and it didn&rsquo;t help anyone. Want me to slot the review for June 17 instead?</p>
-          <p>Either way I&rsquo;ll send the revised schedule Friday.</p>
-          <p>M</p>
-          <p class="output-footer">Drafted in your voice. Sign-off &ldquo;M.&rdquo; Caught the board-week collision automatically.</p>
-        </div>
-      </div>
-    </article>
-
-    <!-- Task v: Synthesis - across a deal -->
-    <article class="example-c example-c--feature">
-      <header class="example-c-head">
-        <p class="example-c-num"><span>v.</span> Joining the dots <span class="task-emphasis">&middot; across a deal</span></p>
-        <p class="example-c-prompt">You ask, <em>&ldquo;What&rsquo;s really going on with Atlas?&rdquo;</em></p>
-      </header>
-
-      <div class="cols-c">
-        <div class="col-c col-c--else">
-          <p class="col-c-label">Generic AI</p>
-          <p>I don&rsquo;t have access to your accounts, calendar, or email. If you share details about Atlas &mdash; the company, the deal, recent communications &mdash; I&rsquo;d be glad to help summarize!</p>
-        </div>
-
-        <div class="col-c col-c--cr">
-          <p class="col-c-label">Command Room</p>
-          <p class="output-strong">Atlas &middot; <em>stuck at the pricing question.</em></p>
-          <p>Three signals from the last 30 days:</p>
-          <ol>
-            <li><strong>Apr 22 meeting.</strong> Sarah asked you to revisit Tier 2 pricing.</li>
-            <li><strong>May 9 email.</strong> You sent the MSA. No reply.</li>
-            <li><strong>May 18 email.</strong> She replied <em>&ldquo;let me think&rdquo;</em> to the Q3 forecast.</li>
-          </ol>
-          <p>The pattern: every time the conversation reaches numbers, the thread goes quiet. The MSA isn&rsquo;t the blocker. Pricing is.</p>
-          <p class="output-strong">What I&rsquo;d do.</p>
-          <p>Drop the MSA chase. Send the three Tier 2 options Monday with a one-line note. That&rsquo;s the unlock.</p>
-          <p class="output-footer">Drawn from: 3 meetings (Apr 22, Mar 14, Feb 28), 11 emails, 2 logged decisions, last 90 days.</p>
-        </div>
-      </div>
-    </article>
-
-    <!-- Task vi: Follow-up tracking -->
-    <article class="example-c">
-      <header class="example-c-head">
-        <p class="example-c-num"><span>vi.</span> Follow-up tracking</p>
-        <p class="example-c-prompt">You ask, <em>&ldquo;Who haven&rsquo;t I heard back from?&rdquo;</em></p>
-      </header>
-
-      <div class="cols-c">
-        <div class="col-c col-c--else">
-          <p class="col-c-label">Generic AI</p>
-          <p>I&rsquo;m not able to see your inbox &mdash; you can usually review your sent folder and check which messages haven&rsquo;t received a reply. Happy to help you sort once you share!</p>
-        </div>
-
-        <div class="col-c col-c--cr">
-          <p class="col-c-label">Command Room</p>
-          <p class="output-strong">Stale follow-ups, ranked by what&rsquo;s at stake.</p>
-          <ol>
-            <li><strong>Sarah Chen (Atlas)</strong> &middot; revised MSA &middot; 17 days &middot; nudge drafted</li>
-            <li><strong>John Walsh (Board)</strong> &middot; your strategy memo &middot; 11 days &middot; escalate; matters more than the rest combined</li>
-            <li><strong>Linda Park (Vector)</strong> &middot; intro thread Maya started &middot; 8 days &middot; suggest dropping</li>
-            <li><strong>Tom Reed (Brookline)</strong> &middot; kickoff confirmation &middot; 5 days &middot; low risk, nudge Friday</li>
-          </ol>
-          <p class="output-footer">Drafts queued. Approve any to send.</p>
-        </div>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-
-<!-- ============================================================
-     SCHEDULED TASK WIDGETS
-     The actual chat artifacts your Chief of Staff fires through
-     the week. Real format, scrambled identities.
+     ACT 1 — WHAT RUNS ON ITS OWN
+     The five scheduled-task widgets. Real chat-artifact format,
+     anonymized data.
      ============================================================ -->
 <section class="examples-widgets" id="examples-widgets">
   <div class="wrap">
     <header class="widgets-head">
-      <p class="widgets-marker">The scheduled chats</p>
+      <p class="widgets-marker">01 &middot; What runs on its own</p>
       <h2 class="widgets-title">Five chats. The <em>whole week.</em></h2>
       <p class="widgets-lede">
         Once installed, your Chief of Staff runs five scheduled chats &mdash; four daily, one weekly. Each fires on its own, reads from your working folder, and posts a finished artifact you read like any other message.
@@ -816,6 +670,339 @@
         </div>
       </article>
     </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     ACT 2 — WHAT YOU ASK IT FOR
+     On-demand synthesis. Opens with the iMessage "who is this
+     customer?" example, then six side-by-side comparisons
+     (Generic AI vs Command Room).
+     ============================================================ -->
+<section class="examples-set" id="examples-on-demand">
+  <div class="wrap">
+
+    <header class="ondemand-head">
+      <p class="ondemand-marker">02 &middot; What you ask it for</p>
+      <h2 class="ondemand-title">The other half &mdash; <em>ask anything.</em></h2>
+      <p class="ondemand-lede">
+        The five scheduled chats run on a clock. The rest of the time, you talk to Command Room the way you&rsquo;d talk to a Chief of Staff who&rsquo;s been with you for years. Forward an email. Drop in a meeting transcript. Ask what you should do about a customer who&rsquo;s gone quiet. The answer comes back with your full context loaded.
+      </p>
+
+      <ul class="legend">
+        <li>
+          <span class="legend-tag legend-tag--generic">Generic AI</span>
+          <span class="legend-text">A fresh chat. Knows nothing about you.</span>
+        </li>
+        <li>
+          <span class="legend-tag legend-tag--cr">Command Room</span>
+          <span class="legend-text">Knows you, your people, your last six months.</span>
+        </li>
+      </ul>
+    </header>
+
+
+    <!-- =====================================================
+         FEATURED EXAMPLE — "Who is this customer?"
+         iMessage from an unknown number → Command Room synthesis
+         ===================================================== -->
+    <article class="example-c example-c--featured">
+      <header class="example-c-head">
+        <p class="example-c-num"><span>0.</span> A moment in your day</p>
+        <p class="example-c-prompt">A text comes in from an unknown number. You ask, <em>&ldquo;Who is this and what did we talk about?&rdquo;</em></p>
+      </header>
+
+      <div class="im-flow">
+        <!-- iPhone-style iMessage mockup -->
+        <div class="imessage">
+          <div class="imessage-status">
+            <span>9:42</span>
+            <span class="im-status-icons">&#9679;&#9679;&#9679;&#9679;&#9679; LTE</span>
+          </div>
+          <div class="imessage-header">
+            <div class="imessage-avatar" aria-hidden="true">?</div>
+            <p class="imessage-sender">Unknown</p>
+            <p class="imessage-number">(415) 555&#8209;0143</p>
+          </div>
+          <div class="imessage-thread">
+            <div class="imessage-bubble">
+              Hey M &mdash; hope you&rsquo;re doing well. Wanted to circle back on what we talked about last year. Got time this week for a call?
+            </div>
+            <p class="imessage-time">Today 9:41 AM</p>
+          </div>
+        </div>
+
+        <!-- Transition -->
+        <div class="im-transition">
+          <p class="im-transition-label">You forward it to Command Room</p>
+          <div class="im-transition-prompt">
+            &ldquo;Who is this and what did we talk about?&rdquo;
+          </div>
+          <div class="im-transition-arrow" aria-hidden="true">
+            <svg width="20" height="48" viewBox="0 0 20 48" fill="none">
+              <path d="M10 0 V40 M3 33 L10 40 L17 33" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Command Room widget response -->
+        <article class="widget" aria-label="Live synthesis example">
+          <header class="widget-head">
+            <div class="widget-brand-block">
+              <div class="widget-brand">
+                <img class="widget-brand-mark" src="assets/mark.svg" alt="" aria-hidden="true">
+                <span class="widget-brand-text">Chalette &middot; Command Room</span>
+              </div>
+              <h4 class="widget-title">Live synthesis</h4>
+            </div>
+            <span class="widget-stamp">Mon &middot; 9:42 AM PT</span>
+          </header>
+          <div class="widget-body">
+
+            <p class="w-section-label">Who texted you</p>
+            <div class="w-item">
+              <p class="w-headline">
+                <strong>Lyra Sample</strong> &mdash; <em>former client, Category Bakery.</em>
+              </p>
+              <p class="w-sub">
+                Number matches the cell she signed off with in her September emails. Last contact: <strong>Oct 14, 219 days ago.</strong> She walked away quietly &mdash; no formal off-ramp, just stopped responding.
+              </p>
+            </div>
+
+            <p class="w-section-label">What you discussed</p>
+            <div class="w-item">
+              <p class="w-sub">
+                Three-store ops cadence project, Mar&ndash;Oct last year. You ran the Oakland pilot through Q3; the East Bay rollout was the next phase. She paused on Oct 14 citing &ldquo;a few internal things&rdquo; and asked to circle back &ldquo;in a couple weeks.&rdquo; She never did.
+              </p>
+              <div class="w-preview">
+                <p class="w-preview-meta">Last inbound &middot; Oct 14, 2025</p>
+                <em>&ldquo;Hey M &mdash; need to pause on the East Bay buildout for a few weeks. A few internal things I need to sort out first. Let&rsquo;s circle back end of October. Thanks for the patience.&rdquo;</em>
+              </div>
+            </div>
+
+            <p class="w-section-label">Why she likely went silent</p>
+            <div class="w-item">
+              <p class="w-sub">
+                Best read from the thread + LinkedIn: her co-founder Dustin Sample left Category Bakery in late October (confirmed via his profile change Nov 3). The &ldquo;internal things&rdquo; were probably that. She wouldn&rsquo;t have wanted to share it mid-engagement &mdash; she ran the company solo from October onward.
+              </p>
+            </div>
+
+            <p class="w-section-label">Open on your side</p>
+            <div class="w-item">
+              <ul style="list-style: none; padding: 0; margin: 0;">
+                <li class="w-mini-item"><strong>2 commitments never closed:</strong> the East Bay ops playbook draft (you owed her by Nov 1) and a P&amp;L benchmarking sheet for the Oakland store.</li>
+                <li class="w-mini-item"><strong>1 unsent draft</strong> in your archive: a check-in note dated Nov 9 you never finished.</li>
+              </ul>
+            </div>
+
+            <p class="w-section-label">Read on her, before you reply</p>
+            <div class="w-item">
+              <p class="w-sub">
+                She prefers async &mdash; pushed back on video calls twice last year and asked to keep things in writing. She also values directness over pleasantries; the warmest you got was &ldquo;love it.&rdquo; She&rsquo;s reaching out by text instead of email which is a deliberate shift toward less formal &mdash; she&rsquo;s feeling out whether to re-engage, not asking for a proposal yet.
+              </p>
+            </div>
+
+            <p class="w-section-label">Suggested response</p>
+            <div class="w-preview">
+              <p class="w-preview-meta">Drafted in your voice &middot; ready to send</p>
+              <em>&ldquo;Lyra &mdash; good to hear from you. I&rsquo;ve thought about Category a few times. Quick question before we set time: are you still thinking about the East Bay rollout, or is it something else now? Either way I&rsquo;ve got space this week. &mdash; M&rdquo;</em>
+            </div>
+            <div class="w-actions">
+              <button class="w-btn w-btn-primary">send as text</button>
+              <button class="w-btn">edit then send</button>
+              <button class="w-btn">draft a longer reply</button>
+              <button class="w-btn">re-open her file</button>
+            </div>
+
+            <div class="w-quickread">
+              <p class="w-qr-label">Worth knowing</p>
+              <p>This is a <strong>warm dormant re-open</strong>, not a cold lead. Treat it that way. The two open commitments matter &mdash; she may bring them up; you should bring them up first if she doesn&rsquo;t.</p>
+            </div>
+
+          </div>
+        </article>
+      </div>
+
+      <p class="im-footnote">
+        This is on-demand synthesis &mdash; the same engine the scheduled chats use, pointed at a single question. The brain folder is what makes it possible: Lyra&rsquo;s file, the Oct 14 thread, the open commitments, the voice match &mdash; all of it sat in your working folder waiting to be cross-referenced the moment you asked.
+      </p>
+    </article>
+
+
+    <!-- =====================================================
+         SIDE-BY-SIDE: GENERIC AI VS COMMAND ROOM
+         Six asks, two answers each.
+         ===================================================== -->
+    <p class="ondemand-divider">Six more, side by side</p>
+
+    <!-- Task i: Meeting prep -->
+    <article class="example-c">
+      <header class="example-c-head">
+        <p class="example-c-num"><span>i.</span> Meeting prep</p>
+        <p class="example-c-prompt">You ask, <em>&ldquo;Prep me for my 2pm with Sarah Chen.&rdquo;</em></p>
+      </header>
+
+      <div class="cols-c">
+        <div class="col-c col-c--else">
+          <p class="col-c-label">Generic AI</p>
+          <p>Of course! I&rsquo;d be happy to help you prepare. Could you tell me more about Sarah Chen, your relationship with her, the meeting&rsquo;s purpose, and any recent context I should know about?</p>
+        </div>
+
+        <div class="col-c col-c--cr">
+          <p class="col-c-label">Command Room</p>
+          <p class="output-strong">2pm &middot; Sarah Chen &middot; Atlas Partners</p>
+          <p>Last met April 22. She owes you the revised MSA. You pinged her May 9, no reply.</p>
+          <p>She replied <em>&ldquo;let me think&rdquo;</em> to the Q3 forecast you forwarded May 18.</p>
+          <p>Open thread: pricing on the Tier 2 package. You said you&rsquo;d come back with three options.</p>
+          <p class="output-footer">Walk in with: the three options, the MSA timeline, your read on whether they&rsquo;re stalling or just slow.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Task ii: Synthesis - across a project -->
+    <article class="example-c example-c--feature">
+      <header class="example-c-head">
+        <p class="example-c-num"><span>ii.</span> Joining the dots <span class="task-emphasis">&middot; across a project</span></p>
+        <p class="example-c-prompt">You ask, <em>&ldquo;Where are we on the pricing rollout?&rdquo;</em></p>
+      </header>
+
+      <div class="cols-c">
+        <div class="col-c col-c--else">
+          <p class="col-c-label">Generic AI</p>
+          <p>I don&rsquo;t have visibility into your pricing rollout. If you share what stage it&rsquo;s at, who&rsquo;s involved, and the recent status, I can help you organize the next steps!</p>
+        </div>
+
+        <div class="col-c col-c--cr">
+          <p class="col-c-label">Command Room</p>
+          <p class="output-strong">Pricing rollout &middot; <em>on track for June 15. Two blockers.</em></p>
+          <p class="output-strong">Where it stands.</p>
+          <ul>
+            <li>Three tiers approved at Tuesday&rsquo;s offsite (your decision, logged).</li>
+            <li>Maya finished the customer comms draft Friday. Awaiting your sign-off.</li>
+            <li>Legal cleared the new MSA language Monday.</li>
+          </ul>
+          <p class="output-strong">Open blockers.</p>
+          <ol>
+            <li><strong>Sales objection-handling doc.</strong> Owner: Tom. Due Friday, slipped. He flagged complexity on Tuesday&rsquo;s call.</li>
+            <li><strong>Legacy-account migration plan.</strong> Owner: you. Notes in your folder, not yet drafted.</li>
+          </ol>
+          <p>Pattern worth flagging: Tom&rsquo;s slip is his third missed deadline this quarter. Worth raising in your 1:1 Thursday.</p>
+          <p class="output-footer">Drawn from: 4 team meetings, 23 emails across the rollout group, 3 logged decisions, last 60 days.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Task iii: Morning brief -->
+    <article class="example-c">
+      <header class="example-c-head">
+        <p class="example-c-num"><span>iii.</span> Morning brief</p>
+        <p class="example-c-prompt">You ask, <em>&ldquo;What&rsquo;s my day look like?&rdquo;</em></p>
+      </header>
+
+      <div class="cols-c">
+        <div class="col-c col-c--else">
+          <p class="col-c-label">Generic AI</p>
+          <p>I don&rsquo;t have access to your calendar or email, but I&rsquo;d be glad to help you organize your day if you share your schedule and priorities!</p>
+        </div>
+
+        <div class="col-c col-c--cr">
+          <p class="col-c-label">Command Room</p>
+          <p class="output-strong">Tuesday, May 26</p>
+          <p>Three things matter today.</p>
+          <ol>
+            <li><strong>Acme at 11.</strong> They want to renegotiate. You decided last week to hold at $180K. Maya has the talking points.</li>
+            <li><strong>Sarah Chen at 2.</strong> She still owes you the MSA. Walk in with the three pricing options (in your folder).</li>
+            <li><strong>Maya&rsquo;s 1:1 at 4.</strong> She flagged frustration with the marketing handoff in Slack on Friday. Worth raising.</li>
+          </ol>
+          <p class="output-footer">Else: six emails need you (drafts queued). Two follow-ups overdue: Atlas (5 days), Brookline (3 days).</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Task iv: Email reply -->
+    <article class="example-c">
+      <header class="example-c-head">
+        <p class="example-c-num"><span>iv.</span> Email reply</p>
+        <p class="example-c-prompt">You ask, <em>&ldquo;Draft a reply to David at Brookline. He wants to push the kickoff to June 10.&rdquo;</em></p>
+      </header>
+
+      <div class="cols-c">
+        <div class="col-c col-c--else">
+          <p class="col-c-label">Generic AI</p>
+          <p>Dear David,</p>
+          <p>Thank you for reaching out regarding the kickoff date. I appreciate you letting me know in advance. After careful consideration, I&rsquo;m happy to accommodate your request and push the kickoff to June 10. Please don&rsquo;t hesitate to let me know if there&rsquo;s anything else I can do to support a smooth transition.</p>
+          <p>Best regards,</p>
+        </div>
+
+        <div class="col-c col-c--cr">
+          <p class="col-c-label">Command Room</p>
+          <p>David,</p>
+          <p>June 10 works. Quick heads-up: that pushes our design review into the same week as your board meeting. We hit that last time and it didn&rsquo;t help anyone. Want me to slot the review for June 17 instead?</p>
+          <p>Either way I&rsquo;ll send the revised schedule Friday.</p>
+          <p>M</p>
+          <p class="output-footer">Drafted in your voice. Sign-off &ldquo;M.&rdquo; Caught the board-week collision automatically.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Task v: Synthesis - across a deal -->
+    <article class="example-c example-c--feature">
+      <header class="example-c-head">
+        <p class="example-c-num"><span>v.</span> Joining the dots <span class="task-emphasis">&middot; across a deal</span></p>
+        <p class="example-c-prompt">You ask, <em>&ldquo;What&rsquo;s really going on with Atlas?&rdquo;</em></p>
+      </header>
+
+      <div class="cols-c">
+        <div class="col-c col-c--else">
+          <p class="col-c-label">Generic AI</p>
+          <p>I don&rsquo;t have access to your accounts, calendar, or email. If you share details about Atlas &mdash; the company, the deal, recent communications &mdash; I&rsquo;d be glad to help summarize!</p>
+        </div>
+
+        <div class="col-c col-c--cr">
+          <p class="col-c-label">Command Room</p>
+          <p class="output-strong">Atlas &middot; <em>stuck at the pricing question.</em></p>
+          <p>Three signals from the last 30 days:</p>
+          <ol>
+            <li><strong>Apr 22 meeting.</strong> Sarah asked you to revisit Tier 2 pricing.</li>
+            <li><strong>May 9 email.</strong> You sent the MSA. No reply.</li>
+            <li><strong>May 18 email.</strong> She replied <em>&ldquo;let me think&rdquo;</em> to the Q3 forecast.</li>
+          </ol>
+          <p>The pattern: every time the conversation reaches numbers, the thread goes quiet. The MSA isn&rsquo;t the blocker. Pricing is.</p>
+          <p class="output-strong">What I&rsquo;d do.</p>
+          <p>Drop the MSA chase. Send the three Tier 2 options Monday with a one-line note. That&rsquo;s the unlock.</p>
+          <p class="output-footer">Drawn from: 3 meetings (Apr 22, Mar 14, Feb 28), 11 emails, 2 logged decisions, last 90 days.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Task vi: Follow-up tracking -->
+    <article class="example-c">
+      <header class="example-c-head">
+        <p class="example-c-num"><span>vi.</span> Follow-up tracking</p>
+        <p class="example-c-prompt">You ask, <em>&ldquo;Who haven&rsquo;t I heard back from?&rdquo;</em></p>
+      </header>
+
+      <div class="cols-c">
+        <div class="col-c col-c--else">
+          <p class="col-c-label">Generic AI</p>
+          <p>I&rsquo;m not able to see your inbox &mdash; you can usually review your sent folder and check which messages haven&rsquo;t received a reply. Happy to help you sort once you share!</p>
+        </div>
+
+        <div class="col-c col-c--cr">
+          <p class="col-c-label">Command Room</p>
+          <p class="output-strong">Stale follow-ups, ranked by what&rsquo;s at stake.</p>
+          <ol>
+            <li><strong>Sarah Chen (Atlas)</strong> &middot; revised MSA &middot; 17 days &middot; nudge drafted</li>
+            <li><strong>John Walsh (Board)</strong> &middot; your strategy memo &middot; 11 days &middot; escalate; matters more than the rest combined</li>
+            <li><strong>Linda Park (Vector)</strong> &middot; intro thread Maya started &middot; 8 days &middot; suggest dropping</li>
+            <li><strong>Tom Reed (Brookline)</strong> &middot; kickoff confirmation &middot; 5 days &middot; low risk, nudge Friday</li>
+          </ol>
+          <p class="output-footer">Drafts queued. Approve any to send.</p>
+        </div>
+      </div>
+    </article>
 
   </div>
 </section>

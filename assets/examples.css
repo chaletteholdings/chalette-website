@@ -764,3 +764,375 @@ a.w-btn { line-height: 1; }
   .w-item .w-headline { font-size: 13.5px; }
   .w-btn { padding: 6px 10px; font-size: 11.5px; }
 }
+
+
+/* =============================================================
+   HERO — BRAIN FOLDER + TWO MODES
+   The new opener: explain the working folder (the substrate),
+   then introduce the two ways to use it (scheduled vs on-demand).
+   ============================================================= */
+
+/* "what's in the folder" chip row */
+.brain-folder {
+  list-style: none;
+  margin: var(--space-10) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+@media (min-width: 720px) {
+  .brain-folder {
+    grid-template-columns: repeat(5, 1fr);
+    border-top: 0;
+  }
+}
+.bf-card {
+  padding: var(--space-6) 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+@media (min-width: 720px) {
+  .bf-card {
+    padding: var(--space-6) var(--space-5);
+    border-bottom: 0;
+    border-left: 1px solid var(--border);
+  }
+  .bf-card:first-child { border-left: 0; padding-left: 0; }
+  .bf-card:last-child { padding-right: 0; }
+}
+.bf-label {
+  font: var(--type-meta);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin: 0;
+}
+.bf-text {
+  font: var(--type-serif);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--fg-2);
+  margin: 0;
+}
+
+/* The two-modes block — sets up Act 1 / Act 2 */
+.two-modes {
+  margin-top: var(--space-12);
+  padding-top: var(--space-10);
+  border-top: 2px solid var(--brass);
+}
+.two-modes-eyebrow {
+  font: var(--type-meta);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin: 0 0 var(--space-6);
+}
+.two-modes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+@media (min-width: 880px) {
+  .two-modes-grid { grid-template-columns: 1fr 1fr; gap: var(--space-8); }
+}
+.mode-card {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-8);
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--brass);
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--dur-base) var(--ease-editorial),
+              box-shadow var(--dur-base) var(--ease-editorial),
+              border-color var(--dur-base) var(--ease-editorial);
+}
+.mode-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-2);
+  border-color: var(--brass);
+}
+.mode-num {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 22px;
+  color: var(--brass);
+  margin: 0;
+  letter-spacing: 0;
+}
+.mode-title {
+  font: var(--type-h1);
+  font-size: clamp(24px, 2.6vw, 32px);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  margin: 0;
+  text-wrap: balance;
+}
+.mode-title em { font-style: italic; color: var(--brass); }
+.mode-text {
+  font: var(--type-serif);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--fg-2);
+  margin: 0;
+  max-width: 44ch;
+}
+.mode-link {
+  margin: var(--space-3) 0 0;
+  font: var(--type-meta);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--brass);
+  font-weight: 500;
+  transition: color var(--dur-base) var(--ease-editorial);
+}
+.mode-card:hover .mode-link { color: var(--ink); }
+
+
+/* =============================================================
+   ACT 2 — "WHAT YOU ASK IT FOR" head + iMessage feature
+   ============================================================= */
+
+.ondemand-head {
+  max-width: 760px;
+  margin: 0 auto var(--space-12);
+}
+.ondemand-marker {
+  font: var(--type-meta);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin: 0 0 var(--space-5);
+}
+.ondemand-title {
+  font: var(--type-display-2);
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--fg);
+  margin: 0 0 var(--space-6);
+  max-width: 22ch;
+  text-wrap: balance;
+}
+.ondemand-title em { font-style: italic; color: var(--brass); }
+.ondemand-lede {
+  font: var(--type-serif-lg);
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.55;
+  font-style: italic;
+  color: var(--fg-2);
+  margin: 0 0 var(--space-8);
+  max-width: 62ch;
+}
+.ondemand-head .legend {
+  margin: var(--space-6) 0 0;
+  padding-top: var(--space-6);
+  padding-bottom: 0;
+}
+
+/* a quiet divider between the iMessage feature and the six comparisons */
+.ondemand-divider {
+  font: var(--type-meta);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--brass);
+  text-align: center;
+  margin: var(--space-16) 0 var(--space-8);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--border);
+}
+
+
+/* ---------- featured example (the iMessage block) ---------- */
+.example-c--featured {
+  border-top: 2px solid var(--brass);
+  padding-top: var(--space-16);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+.example-c--featured .example-c-prompt em { color: var(--brass); }
+
+/* The stacked flow: iMessage screen → transition → CR widget */
+.im-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+/* ---------- iMessage mockup ----------
+   iPhone-style messages app frame. Narrow column, gray bubble. */
+.imessage {
+  background: #FFFFFF;
+  border-radius: 22px;
+  width: 100%;
+  max-width: 360px;
+  padding: 14px 16px 24px;
+  font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+  color: #000;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.06),
+    0 24px 48px -16px rgba(26,23,20,0.20),
+    0 8px 16px -8px rgba(26,23,20,0.10);
+  position: relative;
+}
+.imessage-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #000;
+  padding: 0 4px 12px;
+  letter-spacing: -0.01em;
+}
+.im-status-icons {
+  font-size: 9px;
+  letter-spacing: 0;
+  color: #000;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.imessage-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 0 16px;
+  border-bottom: 0.5px solid #E5E5EA;
+}
+.imessage-avatar {
+  width: 48px;
+  height: 48px;
+  background: #C7C7CC;
+  color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 500;
+  font-family: -apple-system, 'SF Pro Text', sans-serif;
+}
+.imessage-sender {
+  font-size: 13px;
+  font-weight: 500;
+  color: #000;
+  margin: 6px 0 0;
+  letter-spacing: -0.01em;
+}
+.imessage-number {
+  font-size: 11px;
+  font-weight: 400;
+  color: #8E8E93;
+  margin: 0;
+  letter-spacing: -0.005em;
+}
+.imessage-thread {
+  padding: 14px 4px 0;
+}
+.imessage-bubble {
+  background: #E9E9EB;
+  color: #000;
+  padding: 9px 14px;
+  border-radius: 18px;
+  font-size: 15px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  max-width: 86%;
+  position: relative;
+  word-wrap: break-word;
+}
+.imessage-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -7px;
+  width: 14px;
+  height: 14px;
+  background: #E9E9EB;
+  border-bottom-right-radius: 14px;
+  z-index: -1;
+}
+.imessage-time {
+  font-size: 11px;
+  color: #8E8E93;
+  text-align: center;
+  margin: 12px 0 0;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- the transition between the text and the widget ---------- */
+.im-transition {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: 520px;
+  margin: var(--space-4) 0;
+  text-align: center;
+}
+.im-transition-label {
+  font: var(--type-meta);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin: 0;
+}
+.im-transition-prompt {
+  font: italic 500 22px/1.35 var(--font-serif);
+  color: var(--fg);
+  max-width: 30ch;
+  text-wrap: balance;
+}
+.im-transition-arrow {
+  color: var(--brass);
+  margin-top: 2px;
+  opacity: 0.7;
+}
+
+/* widget inside the featured example uses full available width */
+.im-flow .widget { max-width: 720px; width: 100%; }
+
+/* sub-bullets inside the live-synthesis widget */
+.w-mini-item {
+  font: 400 13px/1.55 var(--font-sans);
+  color: var(--fg-2);
+  padding: 4px 0;
+  border-top: 1px solid var(--border-soft);
+}
+.w-mini-item:first-child { border-top: 0; padding-top: 0; }
+.w-mini-item strong { color: var(--fg); font-weight: 600; }
+
+/* the footnote line beneath the entire featured example */
+.im-footnote {
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border);
+  font: italic 400 17px/1.55 var(--font-serif);
+  color: var(--fg-2);
+  max-width: 64ch;
+  text-align: left;
+}
+
+@media (max-width: 720px) {
+  .imessage { max-width: 320px; padding: 12px 14px 18px; }
+  .imessage-bubble { font-size: 14px; }
+  .im-transition-prompt { font-size: 19px; }
+  .im-footnote { font-size: 16px; }
+}
