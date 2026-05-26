@@ -92,9 +92,12 @@
   --type-body:    400 15px/1.55 var(--font-body);
   --type-body-sm: 400 13px/1.5  var(--font-body);
 
-  /* Editorial serif body (long-form) */
-  --type-serif-lg: 400 20px/1.55 var(--font-serif);
-  --type-serif:    400 17px/1.6  var(--font-serif);
+  /* Editorial serif body (long-form). Weight 500 (not 400) for italic
+     legibility — Cormorant Italic at body sizes reads thin on screen
+     at the lighter weight. Bumping the baseline to 500 across the
+     site keeps the editorial tone but lifts on-screen readability. */
+  --type-serif-lg: 500 20px/1.55 var(--font-serif);
+  --type-serif:    500 17px/1.6  var(--font-serif);
 
   /* Meta / mono — uppercase tracked */
   --type-meta:    500 10px/1.4 var(--font-mono);

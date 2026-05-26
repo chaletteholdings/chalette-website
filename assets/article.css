@@ -36,6 +36,61 @@
 }
 .article-title em { font-style: italic; color: var(--brass); }
 
+/* All-caps single-color variant — used on the Security page so the
+   "Your data stays yours" headline lands as one bold statement rather
+   than splitting the emphasis across two colors. Per David Williams
+   feedback May 26 — "that's the big scare everybody has." */
+.article-title--caps {
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  color: var(--fg);
+  font-size: clamp(34px, 5vw, 58px);
+}
+.article-title--caps em {
+  font-style: normal;
+  color: var(--fg);
+}
+
+/* Security-page "Send this to your IT or security team" forward link.
+   Prominent brass button below the lede — the conversion path for
+   prospects who want their security team to vet the page first. */
+.security-it-forward {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+  padding: 16px 24px;
+  background: var(--brass);
+  color: var(--ink);
+  border: 1px solid var(--brass);
+  border-radius: var(--radius-3);
+  font: 600 16px/1.2 var(--font-sans);
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  transition: background var(--dur-base) var(--ease-editorial),
+              transform var(--dur-base) var(--ease-editorial),
+              box-shadow var(--dur-base) var(--ease-editorial);
+  box-shadow: 0 4px 14px -6px rgba(184,139,74,0.32);
+}
+.security-it-forward:hover {
+  background: #C99A57;
+  border-color: #C99A57;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px -10px rgba(184,139,74,0.48);
+}
+.security-it-forward-line { color: var(--ink); }
+.security-it-forward-arrow {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--ink);
+  line-height: 1;
+  transition: transform var(--dur-base) var(--ease-editorial);
+}
+.security-it-forward:hover .security-it-forward-arrow {
+  transform: translateX(4px);
+}
+
 .article-lede {
   font: var(--type-serif-lg);
   font-size: clamp(20px, 1.8vw, 24px);
@@ -195,28 +250,89 @@
   padding-bottom: 2px;
 }
 
-/* About-page closing block (below the Install/Train/Compound steps) */
-.about-close {
-  background: var(--cream);
+/* About-page in-article 3-step block — lands the "Install / Train /
+   Compound" rhythm right under the title so skimmers see the process
+   before the longer narrative below. Per David Williams feedback. */
+.article-steps {
+  margin: 0 0 var(--space-16);
+  padding: var(--space-10) 0;
   border-top: 1px solid var(--border);
-  padding-block: clamp(48px, 6vw, 80px);
-  text-align: center;
+  border-bottom: 1px solid var(--border);
 }
-.about-close .wrap {
+.article-steps-eyebrow {
+  font: var(--type-meta);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin: 0 0 var(--space-8);
+}
+.article-steps-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+@media (min-width: 880px) {
+  .article-steps-list {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--space-8);
+  }
+}
+.article-step {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--space-6);
+  gap: var(--space-2);
 }
-.about-close-line {
-  font: var(--type-serif-lg);
+.article-step-num {
+  font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(20px, 2.2vw, 28px);
-  line-height: 1.35;
+  font-weight: 500;
+  font-size: clamp(40px, 4vw, 56px);
+  color: var(--brass);
+  line-height: 0.9;
+  margin: 0 0 var(--space-3);
+}
+.article-step-title {
+  font: 600 22px/1.2 var(--font-sans);
+  letter-spacing: -0.005em;
   color: var(--fg);
   margin: 0;
-  max-width: 36ch;
+}
+.article-step-title em { font-style: italic; }
+.article-step-meta {
+  font: var(--type-meta);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin: 0 0 var(--space-2);
+}
+.article-step-body {
+  font: 400 15px/1.55 var(--font-sans);
+  color: var(--fg-2);
+  margin: 0;
+  max-width: 38ch;
+}
+.article-steps-close {
+  margin: var(--space-10) 0 0;
+  padding-top: var(--space-6);
+  border-top: 2px solid var(--brass);
+  font: var(--type-serif-lg);
+  font-size: clamp(18px, 1.8vw, 22px);
+  line-height: 1.45;
+  color: var(--fg);
+  max-width: 56ch;
   text-wrap: balance;
+}
+.article-steps-close em { font-style: italic; color: var(--brass); }
+.article-steps-close-label {
+  display: inline-block;
+  font: var(--type-meta);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-right: var(--space-3);
 }
 
 /* ---------- SECURITY (simple) — five claim blocks ---------- */

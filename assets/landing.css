@@ -83,6 +83,20 @@ section:first-of-type { border-top: 0; }
 }
 .section-title em { font-style: italic; color: var(--fg); }
 
+/* Inverted emphasis treatment: the central phrase is the dark anchor,
+   the framing words ("What your" / "does for you") are brass and
+   recede. Use .muted-frame on the framing words. Per David Williams
+   feedback May 26 — the role is what should pop, not the wrapper. */
+.section-title--invert {
+  color: var(--fg);
+  font-weight: 600;
+}
+.section-title--invert .muted-frame {
+  color: var(--brass);
+  font-style: italic;
+  font-weight: 500;
+}
+
 /* ---------- top nav ---------- */
 .nav {
   position: sticky;
