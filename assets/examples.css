@@ -421,13 +421,37 @@
   border-bottom: 1px solid var(--border);
   background: linear-gradient(180deg, var(--paper) 0%, color-mix(in oklab, var(--cream) 60%, var(--paper)) 100%);
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
   flex-wrap: wrap;
 }
+.widget-brand-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.widget-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.widget-brand-mark {
+  height: 18px;
+  width: 18px;
+  display: block;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+.widget-brand-text {
+  font: 500 10px/1.4 var(--font-mono);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
 .widget-head .widget-title {
-  font: 600 15px/1.3 var(--font-sans);
+  font: 600 16px/1.25 var(--font-sans);
   color: var(--fg);
   letter-spacing: -0.005em;
   margin: 0;
@@ -437,7 +461,37 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--fg-muted);
+  align-self: flex-end;
 }
+
+/* intro note inside a widget body (above the first section label) */
+.w-intro-note {
+  font: 400 13px/1.55 var(--font-sans);
+  color: var(--fg-2);
+  margin: 0 0 var(--space-5);
+  padding: 12px 16px;
+  background: var(--cream);
+  border-left: 2px solid var(--brass);
+  border-radius: 0 var(--radius-2) var(--radius-2) 0;
+}
+.w-intro-note em { font-family: var(--font-serif); font-size: 14.5px; font-style: italic; color: var(--fg); }
+.w-intro-note strong { color: var(--brass); font-weight: 600; }
+.w-intro-note a {
+  color: var(--brass);
+  border-bottom: 1px solid currentColor;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.w-intro-note a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+/* preview-meta is normally a static label, but can now also carry a file link */
+.w-preview .w-preview-meta a {
+  color: var(--info);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--info);
+  font-family: var(--font-mono);
+}
+.w-preview .w-preview-meta a:hover { opacity: 0.75; }
 
 .widget-body {
   padding: var(--space-5) var(--space-6);
@@ -533,6 +587,8 @@
   margin-top: 10px;
 }
 .w-btn {
+  display: inline-flex;
+  align-items: center;
   font: 500 12px/1 var(--font-sans);
   padding: 7px 12px;
   border: 1px solid var(--border-strong);
@@ -543,7 +599,9 @@
   letter-spacing: 0;
   transition: all var(--dur-base) var(--ease-editorial);
   font-family: var(--font-sans);
+  text-decoration: none;
 }
+a.w-btn { line-height: 1; }
 .w-btn:hover {
   background: var(--ink);
   color: var(--bone);
