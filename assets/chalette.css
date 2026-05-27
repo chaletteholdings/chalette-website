@@ -76,14 +76,16 @@
   --font-meta:    var(--font-mono);
 
   /* ---------- TYPE SCALE ---------- */
-  /* Display / editorial — serif, italic often */
-  --type-display-1: 500 84px/0.98 var(--font-display);   /* hero */
-  --type-display-2: 500 64px/1.02 var(--font-display);   /* section hero */
-  --type-display-3: 500 48px/1.05 var(--font-display);   /* page title */
+  /* Display / editorial — serif, italic often. Weight 600 (not 500)
+     because Cormorant Italic at display sizes still reads thin on
+     small viewports — the hero h1 italics in particular. */
+  --type-display-1: 600 84px/0.98 var(--font-display);   /* hero */
+  --type-display-2: 600 64px/1.02 var(--font-display);   /* section hero */
+  --type-display-3: 600 48px/1.05 var(--font-display);   /* page title */
 
   /* Headings */
-  --type-h1: 500 36px/1.15 var(--font-display);
-  --type-h2: 500 28px/1.2  var(--font-display);
+  --type-h1: 600 36px/1.15 var(--font-display);
+  --type-h2: 600 28px/1.2  var(--font-display);
   --type-h3: 600 20px/1.3  var(--font-sans);
   --type-h4: 600 16px/1.35 var(--font-sans);
 
@@ -92,12 +94,13 @@
   --type-body:    400 15px/1.55 var(--font-body);
   --type-body-sm: 400 13px/1.5  var(--font-body);
 
-  /* Editorial serif body (long-form). Weight 500 (not 400) for italic
+  /* Editorial serif body (long-form). Weight 600 (not 400/500) for italic
      legibility — Cormorant Italic at body sizes reads thin on screen
-     at the lighter weight. Bumping the baseline to 500 across the
-     site keeps the editorial tone but lifts on-screen readability. */
-  --type-serif-lg: 500 20px/1.55 var(--font-serif);
-  --type-serif:    500 17px/1.6  var(--font-serif);
+     until weight 600. The editorial tone holds at 600 since this body
+     copy sits next to display italics that are already 600-equivalent
+     when stretched onto giant headings. */
+  --type-serif-lg: 600 20px/1.55 var(--font-serif);
+  --type-serif:    600 17px/1.6  var(--font-serif);
 
   /* Meta / mono — uppercase tracked */
   --type-meta:    500 10px/1.4 var(--font-mono);
