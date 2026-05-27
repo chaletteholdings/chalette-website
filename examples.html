@@ -74,14 +74,14 @@
 
 <!-- ============================================================
      ACT 1 — WHAT RUNS ON ITS OWN
-     The five scheduled-task widgets. Real chat-artifact format,
+     The six scheduled-task widgets. Real chat-artifact format,
      anonymized data.
      ============================================================ -->
 <section class="examples-widgets" id="examples-widgets">
   <div class="wrap">
     <header class="widgets-head">
       <p class="widgets-marker">01 &middot; What runs on its own</p>
-      <h2 class="widgets-title">Five chats. The <em>whole week.</em></h2>
+      <h2 class="widgets-title">Six chats. The <em>whole week.</em></h2>
       <p class="widgets-note">
         Real output, with names and companies scrambled to placeholders (Sample family, Acme Co, Northstar Partners).
       </p>
@@ -89,11 +89,11 @@
 
 
     <!-- ---------- DAY TIMELINE STRIP ----------
-         Chronological clock-view of the 5 scheduled chats. Each
+         Chronological clock-view of the 6 scheduled chats. Each
          chip is a jump-link to its widget below. Surfaces the
          shape of the week before the long scroll.
          ============================================================ -->
-    <nav class="day-timeline" aria-label="When the five chats fire">
+    <nav class="day-timeline" aria-label="When the six chats fire">
       <div class="day-timeline-rail" aria-hidden="true"></div>
       <ol class="day-timeline-list">
         <li class="dt-chip">
@@ -118,6 +118,14 @@
             <span class="dt-cadence">Daily &middot; 3&times;</span>
             <span class="dt-name">Inbox Triage</span>
             <span class="dt-blurb">Sorted, drafted, in your voice.</span>
+          </a>
+        </li>
+        <li class="dt-chip">
+          <a href="#w-pulse">
+            <span class="dt-time">9:00 <span class="dt-ampm">AM</span></span>
+            <span class="dt-cadence">Daily</span>
+            <span class="dt-name">Pulse</span>
+            <span class="dt-blurb">Cracks before they widen.</span>
           </a>
         </li>
         <li class="dt-chip">
@@ -532,10 +540,189 @@
     </div>
 
 
-    <!-- ---------- 5. FRIDAY WRAP ---------- -->
+    <!-- ---------- 5. PULSE ---------- -->
+    <div class="widget-example" id="w-pulse">
+      <header class="we-head">
+        <p class="we-eyebrow"><span class="num">v.</span><span>Daily &middot; 9:00 AM weekdays</span></p>
+        <h3><em>Pulse</em></h3>
+        <p class="we-meta">Reads: people files &middot; <span class="dot">&middot;</span> events log &middot; <span class="dot">&middot;</span> gmail &middot; <span class="dot">&middot;</span> calendar</p>
+        <p class="we-desc">
+          Surfaces the cracks &mdash; relationships going quiet, projects gone still, intros you said you&rsquo;d follow up on. The nudge before the apology email.
+        </p>
+      </header>
+
+      <article class="widget" aria-label="Pulse example">
+        <header class="widget-head">
+          <div class="widget-brand-block">
+            <div class="widget-brand">
+              <img class="widget-brand-mark" src="assets/mark.svg" alt="" aria-hidden="true">
+              <span class="widget-brand-text">Chalette &middot; Command Room</span>
+            </div>
+            <h4 class="widget-title">Pulse</h4>
+          </div>
+          <span class="widget-stamp">Mon &middot; May 26 &middot; 9:00 AM PT</span>
+        </header>
+        <div class="widget-body">
+
+          <p class="w-intro-note">
+            <em>Every dormancy flag is double-checked against live Gmail and Calendar before it surfaces</em> &mdash; so you never get nudged about someone you emailed yesterday.
+          </p>
+
+          <p class="w-section-label w-section-label--alert">Going quiet <span class="count">&middot; 3 people</span></p>
+
+          <div class="w-item">
+            <p class="w-headline">
+              <span class="w-num">1.</span>
+              <span class="w-icon">&#9728;</span>
+              <strong>Bo Sample (Acme Restaurant)</strong> &mdash; <em>42 days since last contact</em>
+            </p>
+            <p class="w-sub">
+              Cadence was every 2&ndash;3 weeks for six months, then went dark after the Apr 14 call. You have a 2 PM today on the calendar &mdash; <em>no prep brief yet</em>. Worth a warm-up note before then?
+            </p>
+            <div class="w-preview">
+              <p class="w-preview-meta">Drafted note &middot; to: bo@acmerestaurant.example.com</p>
+              <em>&ldquo;Bo &mdash; looking forward to 2 PM. Wanted to circle back ahead of it: last time we talked, you were weighing whether to bring the second location online before Q3. Curious where that landed. &mdash; M&rdquo;</em>
+            </div>
+            <div class="w-actions">
+              <button class="w-btn w-btn-primary">send</button>
+              <button class="w-btn">edit then send</button>
+              <button class="w-btn">snooze 7d</button>
+              <button class="w-btn">skip</button>
+            </div>
+          </div>
+
+          <div class="w-item">
+            <p class="w-headline">
+              <span class="w-num">2.</span>
+              <span class="w-icon">&#9728;</span>
+              <strong>Lyra Sample</strong> &mdash; <em>21 days since the Adan intro</em>
+            </p>
+            <p class="w-sub">
+              You made the Lyra &harr; Adan Sample intro on May 5. Standard 30-day check-in window opens this week &mdash; did anything come of it on her side?
+            </p>
+            <div class="w-preview">
+              <p class="w-preview-meta">Drafted note &middot; to: lyra@sample.example.com</p>
+              <em>&ldquo;Lyra &mdash; circling back on the Adan intro from earlier this month. No pressure either way; just curious whether it went anywhere useful. &mdash; M&rdquo;</em>
+            </div>
+            <div class="w-actions">
+              <button class="w-btn w-btn-primary">send</button>
+              <button class="w-btn">edit then send</button>
+              <button class="w-btn">schedule catchup</button>
+              <button class="w-btn">skip</button>
+            </div>
+          </div>
+
+          <div class="w-item">
+            <p class="w-headline">
+              <span class="w-num">3.</span>
+              <span class="w-icon">&#9728;</span>
+              <strong>Dev Sample (Northstar board)</strong> &mdash; <em>recurring 1:1 dropped</em>
+            </p>
+            <p class="w-sub">
+              Standing every-other-Thursday slot got cancelled twice in a row &mdash; not rescheduled. Cadence break, not silence. <em>Schedule catchup</em> proposes Thu 3 PM or Fri 11 AM.
+            </p>
+            <div class="w-actions">
+              <button class="w-btn w-btn-primary">schedule catchup</button>
+              <button class="w-btn">draft check-in</button>
+              <button class="w-btn">snooze 14d</button>
+              <button class="w-btn">skip</button>
+            </div>
+          </div>
+
+          <p class="w-section-label">Projects gone still <span class="count">&middot; 2</span></p>
+
+          <div class="w-item">
+            <p class="w-headline">
+              <span class="w-num">4.</span>
+              <span class="w-icon">&#9678;</span>
+              <strong>Vendor consolidation memo</strong> &mdash; <em>no movement in 17 days</em>
+            </p>
+            <p class="w-sub">
+              Sam parked this in the Apr 14 call (revisit in June). Status is <em>parked, not stalled</em> &mdash; surfacing so it doesn&rsquo;t quietly slip past June.
+            </p>
+            <div class="w-actions">
+              <button class="w-btn">mark on-track</button>
+              <button class="w-btn">move to active</button>
+              <button class="w-btn">snooze to Jun 1</button>
+              <button class="w-btn">skip</button>
+            </div>
+          </div>
+
+          <div class="w-item">
+            <p class="w-headline">
+              <span class="w-num">5.</span>
+              <span class="w-icon">&#9678;</span>
+              <strong>Acme Bakery onboarding (Bowie Sample)</strong> &mdash; <em>no events in 12 days</em>
+            </p>
+            <p class="w-sub">
+              You moved Bowie from prospect to active last Thursday but no meetings, emails, or commitments logged since. First call is Tue &mdash; this resolves itself if that happens.
+            </p>
+            <div class="w-actions">
+              <button class="w-btn">mark on-track</button>
+              <button class="w-btn">draft warm-up</button>
+              <button class="w-btn">snooze 3d</button>
+              <button class="w-btn">skip</button>
+            </div>
+          </div>
+
+          <p class="w-section-label">Confirm before I file <span class="count">&middot; 2 low-confidence updates</span></p>
+
+          <div class="w-item">
+            <p class="w-headline">
+              <span class="w-num">6.</span>
+              <span class="w-icon">&#9998;</span>
+              <strong>Aria Sample</strong> &mdash; <em>title may have changed</em>
+            </p>
+            <p class="w-sub">
+              Her last three email signatures read &ldquo;VP Operations&rdquo; (was &ldquo;Director, Operations&rdquo;). Confidence is medium &mdash; could be a promotion, could be a long-running auto-sig drift.
+            </p>
+            <div class="w-actions">
+              <button class="w-btn w-btn-primary">confirm &amp; file</button>
+              <button class="w-btn">keep old title</button>
+              <button class="w-btn">skip</button>
+            </div>
+          </div>
+
+          <div class="w-item">
+            <p class="w-headline">
+              <span class="w-num">7.</span>
+              <span class="w-icon">&#9998;</span>
+              <strong>New person inferred</strong> &mdash; <em>Rai Sample (Acme Restaurant)</em>
+            </p>
+            <p class="w-sub">
+              CC&rsquo;d on three Acme Restaurant threads this week alongside Bo. Likely on Bo&rsquo;s team. No standalone signal yet &mdash; create the record or wait?
+            </p>
+            <div class="w-actions">
+              <button class="w-btn w-btn-primary">create record</button>
+              <button class="w-btn">wait for direct contact</button>
+              <button class="w-btn">skip</button>
+            </div>
+          </div>
+
+          <div class="w-quickread">
+            <p class="w-qr-label">Quick read</p>
+            <p>The shape this morning: <strong>Acme Restaurant is the live wire.</strong> Bo&rsquo;s 42-day gap and a new person on his threads both point the same direction. Five minutes on the prep brief before the 2 PM matters more than working through the rest of this list.</p>
+            <p>Suppressed (live-check caught): 2 people flagged by the substrate as dormant but you&rsquo;ve already emailed them in the last 48 hours.</p>
+          </div>
+
+          <div class="w-foot">
+            <span class="w-counter">Selections so far: <strong>0</strong> of 7</span>
+            <div class="w-foot-actions">
+              <button class="w-btn w-btn-primary">Apply all</button>
+              <button class="w-btn">Clear</button>
+              <button class="w-btn">Skip all</button>
+            </div>
+          </div>
+
+        </div>
+      </article>
+    </div>
+
+
+    <!-- ---------- 6. FRIDAY WRAP ---------- -->
     <div class="widget-example" id="w-friday-wrap">
       <header class="we-head">
-        <p class="we-eyebrow"><span class="num">v.</span><span>Weekly &middot; 4:00 PM Fridays</span></p>
+        <p class="we-eyebrow"><span class="num">vi.</span><span>Weekly &middot; 4:00 PM Fridays</span></p>
         <h3>Friday <em>Wrap</em></h3>
         <p class="we-meta">Reads: whole week &middot; <span class="dot">&middot;</span> decisions log &middot; <span class="dot">&middot;</span> commitments &middot; <span class="dot">&middot;</span> pulse</p>
         <p class="we-desc">
