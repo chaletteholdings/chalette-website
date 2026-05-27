@@ -33,6 +33,64 @@
   max-width: 50ch;
 }
 
+/* ---------- TAB TOGGLE — Scheduled vs On-demand ----------
+   Sits between the hero h1 and the two example sections.
+   JS hides the inactive section so the page stays short for
+   readers who only want one half. */
+.examples-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin: var(--space-8) 0 0;
+  padding: var(--space-2);
+  background: var(--bg-sunken);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-3);
+  max-width: 720px;
+}
+.examples-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+  text-align: left;
+  background: transparent;
+  border: 0;
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-2);
+  cursor: pointer;
+  color: var(--fg-2);
+  font-family: var(--font-sans);
+  transition: background var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out);
+}
+.examples-tab:hover { background: var(--bg-surface); }
+.examples-tab:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+.examples-tab-num {
+  font: var(--type-meta);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.examples-tab-name {
+  font: 600 17px/1.2 var(--font-sans);
+  letter-spacing: -0.005em;
+  color: var(--fg-2);
+}
+.examples-tab.is-active {
+  background: var(--ink);
+}
+.examples-tab.is-active .examples-tab-num,
+.examples-tab.is-active .examples-tab-name {
+  color: var(--bone);
+}
+.examples-tab.is-active .examples-tab-num {
+  color: var(--brass);
+}
+
 /* Legend strip: three chips explaining the three AIs */
 .legend {
   list-style: none;

@@ -65,9 +65,32 @@
     <h1 class="examples-h1">
       What Command Room <span class="brass-em">actually produces.</span>
     </h1>
-    <p class="examples-lede">
-      Real output, anonymized. New to this? <a href="how-it-works.html">Start with how it works &rarr;</a>
-    </p>
+
+    <!-- Tab toggle between the two example modes. JS at the bottom
+         of the page swaps which section is visible. Defaults to
+         Scheduled. -->
+    <nav class="examples-tabs" role="tablist" aria-label="Example mode">
+      <button
+        class="examples-tab is-active"
+        role="tab"
+        aria-selected="true"
+        aria-controls="examples-widgets"
+        data-tab-target="examples-widgets"
+      >
+        <span class="examples-tab-num">01</span>
+        <span class="examples-tab-name">What runs on its own</span>
+      </button>
+      <button
+        class="examples-tab"
+        role="tab"
+        aria-selected="false"
+        aria-controls="examples-on-demand"
+        data-tab-target="examples-on-demand"
+      >
+        <span class="examples-tab-num">02</span>
+        <span class="examples-tab-name">What you ask it for</span>
+      </button>
+    </nav>
   </div>
 </section>
 
@@ -77,7 +100,7 @@
      The six scheduled-task widgets. Real chat-artifact format,
      anonymized data.
      ============================================================ -->
-<section class="examples-widgets" id="examples-widgets">
+<section class="examples-widgets" id="examples-widgets" data-tab-pane>
   <div class="wrap">
     <header class="widgets-head">
       <p class="widgets-marker">01 &middot; What runs on its own</p>
@@ -802,7 +825,7 @@
      customer?" example, then six side-by-side comparisons
      (Generic AI vs Command Room).
      ============================================================ -->
-<section class="examples-set" id="examples-on-demand">
+<section class="examples-set" id="examples-on-demand" data-tab-pane hidden>
   <div class="wrap">
 
     <header class="ondemand-head">
@@ -827,12 +850,13 @@
 
     <!-- =====================================================
          FEATURED EXAMPLE — "Who is this customer?"
-         iMessage from an unknown number → Command Room synthesis
+         A named text that reads like a prospect — turns out to
+         be a former client who walked away silently.
          ===================================================== -->
     <article class="example-c example-c--featured">
       <header class="example-c-head">
         <p class="example-c-num"><span>0.</span> A moment in your day</p>
-        <p class="example-c-prompt">A text comes in from an unknown number. You ask, <em>&ldquo;Who is this and what did we talk about?&rdquo;</em></p>
+        <p class="example-c-prompt">A text comes in. The name half-rings a bell &mdash; new prospect? You ask, <em>&ldquo;Who is this and what did we talk about?&rdquo;</em></p>
       </header>
 
       <div class="im-flow">
@@ -843,8 +867,8 @@
             <span class="im-status-icons">&#9679;&#9679;&#9679;&#9679;&#9679; LTE</span>
           </div>
           <div class="imessage-header">
-            <div class="imessage-avatar" aria-hidden="true">?</div>
-            <p class="imessage-sender">Unknown</p>
+            <div class="imessage-avatar" aria-hidden="true">L</div>
+            <p class="imessage-sender">Lyra Sample</p>
             <p class="imessage-number">(415) 555&#8209;0143</p>
           </div>
           <div class="imessage-thread">
@@ -1073,6 +1097,7 @@
 </main>
 
 <script src="assets/nav.js" defer></script>
+<script src="assets/examples-tabs.js" defer></script>
 
 <!-- ============================================================
      FOOTER
