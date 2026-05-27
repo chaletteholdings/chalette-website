@@ -136,8 +136,61 @@
     </header>
 
 
+    <!-- ---------- DAY TIMELINE STRIP ----------
+         Chronological clock-view of the 5 scheduled chats. Each
+         chip is a jump-link to its widget below. Surfaces the
+         shape of the week before the long scroll.
+         ============================================================ -->
+    <nav class="day-timeline" aria-label="When the five chats fire">
+      <div class="day-timeline-rail" aria-hidden="true"></div>
+      <ol class="day-timeline-list">
+        <li class="dt-chip">
+          <a href="#w-meetings-upcoming">
+            <span class="dt-time">6:30 <span class="dt-ampm">AM</span></span>
+            <span class="dt-cadence">Daily</span>
+            <span class="dt-name">Upcoming Meetings</span>
+            <span class="dt-blurb">Briefs drafted for the day ahead.</span>
+          </a>
+        </li>
+        <li class="dt-chip">
+          <a href="#w-morning-brief">
+            <span class="dt-time">7:00 <span class="dt-ampm">AM</span></span>
+            <span class="dt-cadence">Daily</span>
+            <span class="dt-name">Morning Brief</span>
+            <span class="dt-blurb">The 60-second scan with coffee.</span>
+          </a>
+        </li>
+        <li class="dt-chip">
+          <a href="#w-inbox">
+            <span class="dt-time">7:15 <span class="dt-ampm">AM</span> <span class="dt-and">&middot; 11 &middot; 3</span></span>
+            <span class="dt-cadence">Daily &middot; 3&times;</span>
+            <span class="dt-name">Inbox Triage</span>
+            <span class="dt-blurb">Sorted, drafted, in your voice.</span>
+          </a>
+        </li>
+        <li class="dt-chip">
+          <a href="#w-meetings-past">
+            <span class="dt-time">5:00 <span class="dt-ampm">PM</span></span>
+            <span class="dt-cadence">Daily</span>
+            <span class="dt-name">Past Meetings</span>
+            <span class="dt-blurb">Decisions captured, follow-ups drafted.</span>
+          </a>
+        </li>
+        <li class="dt-chip dt-chip--weekly">
+          <a href="#w-friday-wrap">
+            <span class="dt-time">4:00 <span class="dt-ampm">PM</span></span>
+            <span class="dt-cadence">Fridays</span>
+            <span class="dt-name">Friday Wrap</span>
+            <span class="dt-blurb">The week in one page.</span>
+          </a>
+        </li>
+      </ol>
+      <p class="day-timeline-hint">Tap any to jump to the example &darr;</p>
+    </nav>
+
+
     <!-- ---------- 1. MORNING BRIEF ---------- -->
-    <div class="widget-example">
+    <div class="widget-example" id="w-morning-brief">
       <header class="we-head">
         <p class="we-eyebrow"><span class="num">i.</span><span>Daily &middot; 7:00 AM weekdays</span></p>
         <h3>Morning <em>Brief</em></h3>
@@ -192,7 +245,7 @@
 
 
     <!-- ---------- 2. UPCOMING MEETINGS ---------- -->
-    <div class="widget-example">
+    <div class="widget-example" id="w-meetings-upcoming">
       <header class="we-head">
         <p class="we-eyebrow"><span class="num">ii.</span><span>Daily &middot; 6:30 AM weekdays</span></p>
         <h3>Upcoming <em>Meetings</em></h3>
@@ -201,6 +254,12 @@
           Every meeting on the calendar ahead, with a prep brief drafted and one click to open the .docx. You walk in ready.
         </p>
       </header>
+
+      <a class="brief-cta brief-cta--above" href="example-brief-call-prep.html" target="_blank" rel="noopener">
+        <span class="brief-cta-eyebrow">Preview</span>
+        <span class="brief-cta-line">See what a Call Prep brief looks like</span>
+        <span class="brief-cta-arrow" aria-hidden="true">&rarr;</span>
+      </a>
 
       <article class="widget" aria-label="Upcoming Meetings example">
         <header class="widget-head">
@@ -290,15 +349,11 @@
         </div>
       </article>
 
-      <a class="brief-cta" href="example-brief-call-prep.html" target="_blank" rel="noopener">
-        <span class="brief-cta-line">Open an example Call Prep brief</span>
-        <span class="brief-cta-arrow" aria-hidden="true">&rarr;</span>
-      </a>
     </div>
 
 
     <!-- ---------- 3. PAST MEETINGS ---------- -->
-    <div class="widget-example">
+    <div class="widget-example" id="w-meetings-past">
       <header class="we-head">
         <p class="we-eyebrow"><span class="num">iii.</span><span>Daily &middot; 5:00 PM weekdays</span></p>
         <h3>Past <em>Meetings</em></h3>
@@ -307,6 +362,12 @@
           Processes every meeting from the day. Captures decisions, action items, and what got committed. Drafts the follow-ups before you&rsquo;ve stood up from your desk.
         </p>
       </header>
+
+      <a class="brief-cta brief-cta--above" href="example-brief-past-meeting.html" target="_blank" rel="noopener">
+        <span class="brief-cta-eyebrow">Preview</span>
+        <span class="brief-cta-line">See what a Past Meeting recap looks like</span>
+        <span class="brief-cta-arrow" aria-hidden="true">&rarr;</span>
+      </a>
 
       <article class="widget" aria-label="Past Meetings example">
         <header class="widget-head">
@@ -386,15 +447,11 @@
         </div>
       </article>
 
-      <a class="brief-cta" href="example-brief-past-meeting.html" target="_blank" rel="noopener">
-        <span class="brief-cta-line">Open an example Past Meeting recap</span>
-        <span class="brief-cta-arrow" aria-hidden="true">&rarr;</span>
-      </a>
     </div>
 
 
     <!-- ---------- 4. INBOX TRIAGE ---------- -->
-    <div class="widget-example">
+    <div class="widget-example" id="w-inbox">
       <header class="we-head">
         <p class="we-eyebrow"><span class="num">iv.</span><span>Daily &middot; 7:15 AM, 11 AM, 3 PM weekdays</span></p>
         <h3>Inbox <em>Triage</em></h3>
@@ -525,7 +582,7 @@
 
 
     <!-- ---------- 5. FRIDAY WRAP ---------- -->
-    <div class="widget-example">
+    <div class="widget-example" id="w-friday-wrap">
       <header class="we-head">
         <p class="we-eyebrow"><span class="num">v.</span><span>Weekly &middot; 4:00 PM Fridays</span></p>
         <h3>Friday <em>Wrap</em></h3>

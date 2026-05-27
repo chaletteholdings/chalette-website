@@ -348,6 +348,160 @@
 }
 .widgets-note strong { color: var(--brass); font-weight: 600; }
 
+
+/* =============================================================
+   DAY TIMELINE STRIP
+   Horizontal clock-view of the 5 scheduled chats, in
+   chronological order. Each chip is a jump-link to the widget
+   below. Acts as both a section table-of-contents and a visual
+   "shape of your week" anchor.
+   ============================================================= */
+
+.day-timeline {
+  position: relative;
+  margin: 0 0 var(--space-16);
+  padding: var(--space-4) 0 var(--space-2);
+}
+
+/* The thin horizontal rail behind the chips. Brass hairline. */
+.day-timeline-rail {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--border-strong) 12%,
+    var(--border-strong) 88%,
+    transparent 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.day-timeline-list {
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+/* Mobile: horizontal scroll. Chips stay legible at full width. */
+@media (max-width: 879px) {
+  .day-timeline {
+    margin-left: calc(var(--space-8) * -1);
+    margin-right: calc(var(--space-8) * -1);
+    padding-left: var(--space-8);
+    padding-right: var(--space-8);
+    padding-bottom: var(--space-4);
+  }
+  .day-timeline-list {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: var(--space-2);
+  }
+  .day-timeline-list::-webkit-scrollbar { height: 0; }
+  .day-timeline-list { scrollbar-width: none; }
+  .dt-chip {
+    flex: 0 0 220px;
+    scroll-snap-align: start;
+  }
+}
+
+.dt-chip a {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: var(--space-4) var(--space-4);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-2);
+  color: var(--fg);
+  text-decoration: none;
+  height: 100%;
+  transition: border-color var(--dur-base) var(--ease-editorial),
+              transform var(--dur-base) var(--ease-editorial),
+              box-shadow var(--dur-base) var(--ease-editorial);
+}
+.dt-chip a:hover {
+  border-color: var(--brass);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -10px rgba(184, 139, 74, 0.32);
+}
+.dt-chip a:hover .dt-time { color: var(--brass); }
+
+.dt-time {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--fg);
+  letter-spacing: -0.01em;
+  transition: color var(--dur-base) var(--ease-editorial);
+}
+.dt-time .dt-ampm {
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--fg-muted);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  margin-left: 2px;
+}
+.dt-time .dt-and {
+  font-size: 12px;
+  font-family: var(--font-sans);
+  color: var(--fg-muted);
+  letter-spacing: 0;
+  font-weight: 400;
+  margin-left: 4px;
+}
+.dt-cadence {
+  font: var(--type-meta);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.dt-name {
+  font: 600 14px/1.25 var(--font-sans);
+  letter-spacing: -0.005em;
+  color: var(--fg);
+  margin-top: 2px;
+}
+.dt-blurb {
+  font: var(--type-serif);
+  font-style: italic;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--fg-2);
+}
+
+/* The weekly chip gets a brass accent so it stands apart from
+   the four daily ones. */
+.dt-chip--weekly a {
+  border-color: var(--brass);
+  background: color-mix(in oklab, var(--brass) 6%, var(--bg));
+}
+.dt-chip--weekly .dt-cadence { color: var(--brass); }
+
+.day-timeline-hint {
+  margin: var(--space-5) 0 0;
+  font: var(--type-meta);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: var(--fg-muted);
+  text-align: center;
+}
+
+
 /* per-widget block — head + the widget card */
 .widget-example {
   margin-bottom: var(--space-16);
@@ -1204,4 +1358,48 @@ a.w-btn { line-height: 1; }
     font-size: 16px;
   }
   .brief-cta-arrow { font-size: 19px; }
+}
+
+/* "Above the widget" variant — same brass button, but with a small
+   PREVIEW eyebrow stacked above the line so users immediately
+   understand it's a click-through example, not the widget itself.
+   Sits between the we-head description and the widget article. */
+.brief-cta--above {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "eyebrow arrow"
+    "line    arrow";
+  column-gap: var(--space-4);
+  row-gap: 4px;
+  align-items: center;
+  justify-content: stretch;
+  text-align: left;
+  padding: 18px var(--space-6);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+.brief-cta--above .brief-cta-eyebrow {
+  grid-area: eyebrow;
+  font: var(--type-meta);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(58, 46, 38, 0.72);
+}
+.brief-cta--above .brief-cta-line {
+  grid-area: line;
+  font: 600 18px/1.25 var(--font-sans);
+  letter-spacing: -0.005em;
+}
+.brief-cta--above .brief-cta-arrow {
+  grid-area: arrow;
+  align-self: center;
+}
+
+@media (max-width: 720px) {
+  .brief-cta--above {
+    padding: 14px var(--space-5);
+  }
+  .brief-cta--above .brief-cta-line { font-size: 15px; }
 }
