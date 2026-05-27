@@ -1,6 +1,7 @@
 // Examples-page tab toggle. Two panes: scheduled vs on-demand.
 // Activates based on URL hash so deep links to widget anchors
-// inside either pane still open to the right tab.
+// inside either pane still open to the right tab — and we scroll
+// to the deep-linked target after activation so it actually lands.
 
 (function () {
   var tabs = document.querySelectorAll('.examples-tab');
@@ -24,13 +25,22 @@
       var active = t.dataset.tabTarget === targetId;
       t.classList.toggle('is-active', active);
       t.setAttribute('aria-selected', active ? 'true' : 'false');
+      t.setAttribute('tabindex', active ? '0' : '-1');
     });
     panes.forEach(function (p) {
-      p.hidden = p.id !== targetId;
+      var active = p.id === targetId;
+      // Use a class instead of [hidden]. [hidden] sets display:none, which
+      // means the browser can't resolve the URL hash to a position at load
+      // time — so deep-linking into a widget anchor inside the inactive
+      // pane silently fails to scroll. The class hides via visibility +
+      // sizing so the layout is still resolvable for scrollIntoView.
+      p.classList.toggle('is-active-pane', active);
+      p.classList.toggle('is-hidden-pane', !active);
+      p.setAttribute('aria-hidden', active ? 'false' : 'true');
     });
-    if (opts.scroll) {
-      var pane = document.getElementById(targetId);
-      if (pane) pane.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (opts.scrollTarget) {
+      var target = document.getElementById(opts.scrollTarget);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 
@@ -38,23 +48,34 @@
     tab.addEventListener('click', function () {
       var targetId = tab.dataset.tabTarget;
       if (!targetId) return;
-      activate(targetId, { scroll: false });
-      // Update hash without scrolling.
+      activate(targetId);
       if (history.replaceState) {
         history.replaceState(null, '', '#' + targetId);
       }
     });
   });
 
-  // On load: activate whichever pane contains the hash target,
-  // or default to the first tab.
+  // On load: open whichever pane contains the hash target, then —
+  // if the hash points to something *inside* the pane (a widget
+  // anchor like #w-pulse), scroll to that element specifically.
+  var hashId = (window.location.hash || '').replace(/^#/, '');
   var initial = paneIdForHash(window.location.hash) || tabs[0].dataset.tabTarget;
-  activate(initial, { scroll: false });
+  activate(initial);
+  if (hashId && hashId !== initial) {
+    // Defer one frame so the pane's is-active-pane styles are applied
+    // before we ask the browser for the element's resolved position.
+    requestAnimationFrame(function () {
+      var deep = document.getElementById(hashId);
+      if (deep) deep.scrollIntoView({ behavior: 'auto', block: 'start' });
+    });
+  }
 
-  // If the hash changes (e.g. user clicks a day-timeline chip into
-  // a widget that's in the other pane), switch panes accordingly.
+  // If the hash changes (user clicks a day-timeline chip into a
+  // widget that's in the other pane), switch panes and scroll to it.
   window.addEventListener('hashchange', function () {
+    var newHashId = (window.location.hash || '').replace(/^#/, '');
     var id = paneIdForHash(window.location.hash);
-    if (id) activate(id, { scroll: true });
+    if (!id) return;
+    activate(id, { scrollTarget: newHashId !== id ? newHashId : id });
   });
 })();
