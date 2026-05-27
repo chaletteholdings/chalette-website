@@ -339,48 +339,6 @@ body.nav-open { overflow: hidden; }
   flex-wrap: wrap;
 }
 
-/* Small breadcrumb under the CTAs that points down to the
-   guarantee ribbon. Brass dot + brass arrow, hairline underline
-   on hover only — quiet on first read, visible on scan. */
-.hero-guarantee-note {
-  margin: var(--space-5) 0 0;
-  font: var(--type-meta);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--fg-muted);
-}
-.hero-guarantee-note a {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--fg-2);
-  padding: 4px 0;
-  border-bottom: 1px solid transparent;
-  transition: color var(--dur-base) var(--ease-editorial),
-              border-color var(--dur-base) var(--ease-editorial);
-}
-.hero-guarantee-note a:hover {
-  color: var(--brass);
-  border-bottom-color: var(--brass);
-}
-.hero-guarantee-dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background: var(--brass);
-  border-radius: 999px;
-}
-.hero-guarantee-arrow {
-  font-family: var(--font-serif);
-  font-style: italic;
-  letter-spacing: 0;
-  color: var(--brass);
-  transition: transform var(--dur-base) var(--ease-editorial);
-}
-.hero-guarantee-note a:hover .hero-guarantee-arrow {
-  transform: translateY(2px);
-}
-
 /* hero content — single-column editorial.
    Don't constrain .hero-content itself: `22ch` resolves against the
    body font (Inter ~16px) which collapses the column to ~176px and
@@ -706,40 +664,45 @@ body.nav-open { overflow: hidden; }
 }
 .audience-list strong { color: var(--brass); font-weight: 600; font-style: italic; }
 
-/* ---------- GUARANTEE RIBBON ----------
-   A brass band that bridges audience (cream) and engagement (ink).
-   Big serif line, brass background, ink text. Reads as a single
-   sentence — the guarantee is the headline, not buried in a list. */
+/* ---------- GUARANTEE STRIP ----------
+   Slim brass band between audience (cream) and engagement (ink).
+   Single horizontal row: marker on the left, single-line statement
+   filling the rest. Hard to miss, doesn't compete with the
+   five-promises section above or the engagement card below. */
 .guarantee {
   background: var(--brass);
   color: var(--ink);
   border-top: 0;
-  padding-block: clamp(40px, 5vw, 72px);
+  padding-block: var(--space-5);
 }
-.guarantee .wrap { padding-inline: var(--space-8); }
-@media (min-width: 720px) { .guarantee .wrap { padding-inline: var(--space-12); } }
 .guarantee-inner {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
-  max-width: 880px;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+@media (min-width: 720px) {
+  .guarantee-inner {
+    flex-direction: row;
+    align-items: baseline;
+    gap: var(--space-6);
+  }
 }
 .guarantee-marker {
   font: var(--type-meta);
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(58, 46, 38, 0.7);
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
+  font-size: 11px;
+  color: rgba(58, 46, 38, 0.72);
+  flex-shrink: 0;
 }
 .guarantee-line {
-  font: var(--type-display-3);
   font-family: var(--font-serif);
   font-weight: 500;
-  font-size: clamp(28px, 3.6vw, 48px);
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  font-style: normal;
+  font-size: clamp(17px, 1.8vw, 22px);
+  line-height: 1.35;
+  letter-spacing: -0.005em;
   color: var(--ink);
   margin: 0;
   text-wrap: balance;
@@ -747,20 +710,6 @@ body.nav-open { overflow: hidden; }
 .guarantee-line em {
   font-style: italic;
   color: var(--ink);
-}
-.guarantee-line .brass-em {
-  color: var(--ink);
-  font-style: italic;
-  font-weight: 600;
-}
-.guarantee-sub {
-  font: var(--type-serif-lg);
-  font-style: italic;
-  font-size: clamp(16px, 1.4vw, 19px);
-  line-height: 1.5;
-  color: rgba(58, 46, 38, 0.85);
-  margin: var(--space-2) 0 0;
-  max-width: 64ch;
 }
 
 /* ---------- ENGAGEMENT ----------
