@@ -44,6 +44,15 @@
     }
   }
 
+  function focusTabByOffset(currentTab, offset) {
+    var list = Array.prototype.slice.call(tabs);
+    var i = list.indexOf(currentTab);
+    if (i < 0) return;
+    var next = list[(i + offset + list.length) % list.length];
+    next.focus();
+    next.click();
+  }
+
   tabs.forEach(function (tab) {
     tab.addEventListener('click', function () {
       var targetId = tab.dataset.tabTarget;
@@ -51,6 +60,23 @@
       activate(targetId);
       if (history.replaceState) {
         history.replaceState(null, '', '#' + targetId);
+      }
+    });
+    tab.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        focusTabByOffset(tab, 1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        focusTabByOffset(tab, -1);
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        tabs[0].focus();
+        tabs[0].click();
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        tabs[tabs.length - 1].focus();
+        tabs[tabs.length - 1].click();
       }
     });
   });

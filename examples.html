@@ -6,9 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="How Command Room works. The working folder that knows your business, the scheduled chats that run on their own, and what you can ask it for on demand.">
 
+  <link rel="canonical" href="https://chaletteholdings.com/examples.html">
+
   <meta property="og:type" content="article">
+  <meta property="og:url" content="https://chaletteholdings.com/examples.html">
   <meta property="og:title" content="Examples | Chalette Command Room">
-  <meta property="og:description" content="How Command Room works. What runs on its own. What you ask it for.">
+  <meta property="og:description" content="What Command Room actually produces. Six scheduled chats that run on their own, and the synthesis it does on demand.">
+  <meta property="og:site_name" content="Chalette">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Examples | Chalette Command Room">
+  <meta name="twitter:description" content="What Command Room actually produces. Six scheduled chats that run on their own, and the synthesis it does on demand.">
 
   <link rel="icon" href="assets/favicon.svg">
   <link rel="stylesheet" href="assets/chalette.css">
@@ -69,28 +77,34 @@
     <!-- Tab toggle between the two example modes. JS at the bottom
          of the page swaps which section is visible. Defaults to
          Scheduled. -->
-    <nav class="examples-tabs" role="tablist" aria-label="Example mode">
+    <div class="examples-tabs" role="tablist" aria-label="Example mode">
       <button
+        type="button"
+        id="examples-tab-widgets"
         class="examples-tab is-active"
         role="tab"
         aria-selected="true"
         aria-controls="examples-widgets"
+        tabindex="0"
         data-tab-target="examples-widgets"
       >
-        <span class="examples-tab-num">01</span>
+        <span class="examples-tab-num" aria-hidden="true">01</span>
         <span class="examples-tab-name">What runs on its own</span>
       </button>
       <button
+        type="button"
+        id="examples-tab-on-demand"
         class="examples-tab"
         role="tab"
         aria-selected="false"
         aria-controls="examples-on-demand"
+        tabindex="-1"
         data-tab-target="examples-on-demand"
       >
-        <span class="examples-tab-num">02</span>
+        <span class="examples-tab-num" aria-hidden="true">02</span>
         <span class="examples-tab-name">What you ask it for</span>
       </button>
-    </nav>
+    </div>
   </div>
 </section>
 
@@ -100,7 +114,7 @@
      The six scheduled-task widgets. Real chat-artifact format,
      anonymized data.
      ============================================================ -->
-<section class="examples-widgets" id="examples-widgets" data-tab-pane>
+<section class="examples-widgets" id="examples-widgets" role="tabpanel" aria-labelledby="examples-tab-widgets" data-tab-pane>
   <div class="wrap">
     <header class="widgets-head">
       <p class="widgets-marker">01 &middot; What runs on its own</p>
@@ -265,7 +279,7 @@
           <div class="w-item">
             <p class="w-headline">
               <span class="w-num">1.</span>
-              <span class="w-icon">&#9990;</span>
+              <span class="w-icon" aria-hidden="true">&#9990;</span>
               <strong>9:00 AM &middot; Acme Logistics weekly</strong> &mdash; Sam Sample
             </p>
             <p class="w-sub">
@@ -285,7 +299,7 @@
           <div class="w-item">
             <p class="w-headline">
               <span class="w-num">2.</span>
-              <span class="w-icon">&#9990;</span>
+              <span class="w-icon" aria-hidden="true">&#9990;</span>
               <strong>11:00 AM &middot; Northstar pipeline review</strong> &mdash; Quinn Sample, Mira Stone
             </p>
             <p class="w-sub">
@@ -307,7 +321,7 @@
           <div class="w-item">
             <p class="w-headline">
               <span class="w-num">3.</span>
-              <span class="w-icon">&#9990;</span>
+              <span class="w-icon" aria-hidden="true">&#9990;</span>
               <strong>Tue 10:00 AM &middot; Bowie Sample (Acme Bakery)</strong> &mdash; intro follow-up
             </p>
             <p class="w-sub">
@@ -373,7 +387,7 @@
           <div class="w-item">
             <p class="w-headline">
               <span class="w-num">1.</span>
-              <span class="w-icon">&#9990;</span>
+              <span class="w-icon" aria-hidden="true">&#9990;</span>
               <strong>9:00 AM &middot; Acme Logistics weekly</strong> &mdash; Sam Sample
             </p>
             <p class="w-sub">
@@ -394,7 +408,7 @@
           <div class="w-item">
             <p class="w-headline">
               <span class="w-num">2.</span>
-              <span class="w-icon">&#9990;</span>
+              <span class="w-icon" aria-hidden="true">&#9990;</span>
               <strong>11:00 AM &middot; Northstar pipeline review</strong> &mdash; Quinn Sample, Mira Stone
             </p>
             <p class="w-sub">
@@ -465,7 +479,7 @@
           <div class="w-item">
             <p class="w-headline">
               <span class="w-num">1.</span>
-              <span class="w-icon">&#9993;</span>
+              <span class="w-icon" aria-hidden="true">&#9993;</span>
               <strong>Sam Sample</strong> &mdash; <em>Re: renderer pipeline &mdash; one follow-on</em>
             </p>
             <p class="w-sub">
@@ -486,7 +500,7 @@
           <div class="w-item">
             <p class="w-headline">
               <span class="w-num">2.</span>
-              <span class="w-icon">&#9993;</span>
+              <span class="w-icon" aria-hidden="true">&#9993;</span>
               <strong>Quinn Sample (Northstar)</strong> &mdash; <em>vendor account update &mdash; cleared</em>
             </p>
             <p class="w-sub">
@@ -507,7 +521,7 @@
           <div class="w-item">
             <p class="w-headline">
               <span class="w-num">3.</span>
-              <span class="w-icon">&#9993;</span>
+              <span class="w-icon" aria-hidden="true">&#9993;</span>
               <strong>Aria Sample (Acme Co)</strong> &mdash; <em>Q2 review &mdash; can we push to Wed?</em>
             </p>
             <p class="w-sub">
@@ -526,7 +540,7 @@
           <div class="w-item">
             <p class="w-headline">
               <span class="w-num">4.</span>
-              <span class="w-icon">&#9993;</span>
+              <span class="w-icon" aria-hidden="true">&#9993;</span>
               <strong>Mira Stone (Northstar)</strong> &mdash; <em>term sheet redline &mdash; sec 4.2 + 7</em>
             </p>
             <p class="w-sub">
@@ -596,7 +610,7 @@
           <div class="w-item">
             <p class="w-headline">
               <span class="w-num">1.</span>
-              <span class="w-icon">&#9728;</span>
+              <span class="w-icon" aria-hidden="true">&#9728;</span>
               <strong>Bo Sample (Acme Restaurant)</strong> &mdash; <em>42 days since last contact</em>
             </p>
             <p class="w-sub">
@@ -617,7 +631,7 @@
           <div class="w-item">
             <p class="w-headline">
               <span class="w-num">2.</span>
-              <span class="w-icon">&#9728;</span>
+              <span class="w-icon" aria-hidden="true">&#9728;</span>
               <strong>Lyra Sample</strong> &mdash; <em>21 days since the Adan intro</em>
             </p>
             <p class="w-sub">
@@ -638,7 +652,7 @@
           <div class="w-item">
             <p class="w-headline">
               <span class="w-num">3.</span>
-              <span class="w-icon">&#9728;</span>
+              <span class="w-icon" aria-hidden="true">&#9728;</span>
               <strong>Dev Sample (Northstar board)</strong> &mdash; <em>recurring 1:1 dropped</em>
             </p>
             <p class="w-sub">
@@ -657,7 +671,7 @@
           <div class="w-item">
             <p class="w-headline">
               <span class="w-num">4.</span>
-              <span class="w-icon">&#9678;</span>
+              <span class="w-icon" aria-hidden="true">&#9678;</span>
               <strong>Vendor consolidation memo</strong> &mdash; <em>no movement in 17 days</em>
             </p>
             <p class="w-sub">
@@ -674,7 +688,7 @@
           <div class="w-item">
             <p class="w-headline">
               <span class="w-num">5.</span>
-              <span class="w-icon">&#9678;</span>
+              <span class="w-icon" aria-hidden="true">&#9678;</span>
               <strong>Acme Bakery onboarding (Bowie Sample)</strong> &mdash; <em>no events in 12 days</em>
             </p>
             <p class="w-sub">
@@ -693,7 +707,7 @@
           <div class="w-item">
             <p class="w-headline">
               <span class="w-num">6.</span>
-              <span class="w-icon">&#9998;</span>
+              <span class="w-icon" aria-hidden="true">&#9998;</span>
               <strong>Aria Sample</strong> &mdash; <em>title may have changed</em>
             </p>
             <p class="w-sub">
@@ -709,7 +723,7 @@
           <div class="w-item">
             <p class="w-headline">
               <span class="w-num">7.</span>
-              <span class="w-icon">&#9998;</span>
+              <span class="w-icon" aria-hidden="true">&#9998;</span>
               <strong>New person inferred</strong> &mdash; <em>Rai Sample (Acme Restaurant)</em>
             </p>
             <p class="w-sub">
@@ -825,7 +839,7 @@
      customer?" example, then six side-by-side comparisons
      (Generic AI vs Command Room).
      ============================================================ -->
-<section class="examples-set is-hidden-pane" id="examples-on-demand" data-tab-pane>
+<section class="examples-set is-hidden-pane" id="examples-on-demand" role="tabpanel" aria-labelledby="examples-tab-on-demand" data-tab-pane>
   <div class="wrap">
 
     <header class="ondemand-head">
@@ -862,7 +876,7 @@
       <div class="im-flow">
         <!-- iPhone-style iMessage mockup -->
         <div class="imessage">
-          <div class="imessage-status">
+          <div class="imessage-status" aria-hidden="true">
             <span>9:42</span>
             <span class="im-status-icons">&#9679;&#9679;&#9679;&#9679;&#9679; LTE</span>
           </div>
