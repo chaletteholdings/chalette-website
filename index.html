@@ -1,265 +1,1168 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Chalette | Executive AI Implementation</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Chalette is an Executive AI Implementation firm. We install Command Room (your AI Chief of Staff) and work alongside your team so AI actually pays off.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Command Room by Chalette — Value isn't installed. It's adopted.</title>
+<meta name="description" content="Command Room is an AI operator that knows your business. Chalette puts it in the hands of the people who run the company, and makes sure they use it.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 72'%3E%3Ccircle cx='36' cy='36' r='36' fill='%231A1714'/%3E%3Ctext x='36' y='50' font-family='Georgia,serif' font-weight='600' font-size='46' text-anchor='middle' fill='%23B88B4A'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bone:#F5F0E6; --paper:#FBF8F1; --cream:#EFE7D8;
+    --ink:#1A1714; --ink-2:#2A2620;
+    --fg-2:#574E43; --fg-muted:#8A7E6E;
+    --border:#E4DBCA; --border-soft:#EDE6D8;
+    --brass:#B88B4A; --brass-2:#C99A58; --brass-deep:#8B6A33;
+    --carmine:#9E3B3B; --forest:#4E7A63;
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --sans:'Inter',-apple-system,system-ui,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+    --maxw:1100px;
+    --shadow:0 1px 2px rgba(26,23,20,.04),0 14px 40px -22px rgba(26,23,20,.30);
+    --shadow-sm:0 1px 2px rgba(26,23,20,.05),0 6px 18px -12px rgba(26,23,20,.20);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bone); color:var(--ink);
+    font-family:var(--sans); font-size:16px; line-height:1.65;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  a{color:inherit; text-decoration:none}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px}
+  .eyebrow{
+    font:500 11px/1 var(--mono); letter-spacing:.26em; text-transform:uppercase;
+    color:var(--brass-deep); margin:0 0 18px;
+  }
+  h1,h2,h3{font-family:var(--serif); font-weight:600; color:var(--ink); margin:0; letter-spacing:-.01em}
+  h1{font-size:clamp(38px,5.8vw,66px); line-height:1.0}
+  h2{font-size:clamp(28px,4.2vw,46px); line-height:1.07}
+  h3{font-size:22px; line-height:1.2}
+  em{font-style:italic; color:var(--brass-deep)}
+  p{margin:0 0 16px}
+  .lead{font-family:var(--serif); font-size:clamp(19px,2.4vw,25px); line-height:1.5; color:var(--fg-2)}
+  .muted{color:var(--fg-muted)}
 
-  <link rel="canonical" href="https://chaletteholdings.com/">
+  /* mobile polish */
+  @media(max-width:540px){
+    .eyebrow{font-size:10px; letter-spacing:.16em; line-height:1.6}
+    .brandlock .descr .s{display:none}
+    .brandlock .word{font-size:22px}
+  }
 
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://chaletteholdings.com/">
-  <meta property="og:title" content="Chalette | Executive AI Implementation">
-  <meta property="og:description" content="We turn AI from a smart stranger into one that knows you and your business. Built for owner-operators and C-suite leaders who know AI matters and are tired of dabbling.">
-  <meta property="og:site_name" content="Chalette">
+  /* reveal */
+  .rv{opacity:0; transform:translateY(18px); transition:opacity .7s cubic-bezier(.16,.8,.3,1),transform .7s cubic-bezier(.16,.8,.3,1)}
+  .rv.in{opacity:1; transform:none}
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Chalette | Executive AI Implementation">
-  <meta name="twitter:description" content="We turn AI from a smart stranger into one that knows you and your business.">
+  /* pages */
+  .page{display:none}
+  .page.is-on{display:block}
 
-  <link rel="icon" href="assets/favicon.svg">
-  <link rel="stylesheet" href="assets/chalette.css">
-  <link rel="stylesheet" href="assets/landing.css">
+  /* ---- nav ---- */
+  .nav{position:sticky; top:0; z-index:60; background:color-mix(in oklab,var(--bone) 85%,transparent); backdrop-filter:blur(12px); border-bottom:1px solid var(--border)}
+  .nav-in{display:flex; align-items:center; justify-content:space-between; height:72px; gap:16px}
+  .brandlock{display:flex; align-items:center; gap:12px; cursor:pointer}
+  .brandlock svg{display:block}
+  .brandlock .word{font-family:var(--serif); font-size:25px; font-weight:500; letter-spacing:-.01em; line-height:1}
+  .brandlock .word .c{color:var(--brass)}
+  .brandlock .descr{display:flex; flex-direction:column; gap:4px; border-left:1px solid var(--border); padding-left:12px; margin-left:2px}
+  .brandlock .descr .p{font:500 10px/1 var(--mono); letter-spacing:.3em; text-transform:uppercase; color:var(--ink-2)}
+  .brandlock .descr .s{font:400 9px/1 var(--mono); letter-spacing:.18em; text-transform:uppercase; color:var(--fg-muted)}
+  .nav-links{display:none; gap:6px; align-items:center}
+  .nav-links .tab{font-size:13.5px; color:var(--fg-2); padding:9px 14px; border-radius:2px; cursor:pointer; border:1px solid transparent}
+  .nav-links .tab:hover{color:var(--ink); background:var(--cream)}
+  .nav-links .tab.on{color:var(--bone); background:var(--ink)}
+  .btn{display:inline-flex; align-items:center; gap:8px; font-family:var(--sans); font-size:14px; font-weight:500; padding:12px 22px; border:1px solid var(--ink); background:var(--ink); color:var(--bone); border-radius:2px; cursor:pointer; transition:all .15s; white-space:nowrap}
+  .btn:hover{background:var(--brass-deep); border-color:var(--brass-deep)}
+  .btn.ghost{background:transparent; color:var(--ink); border-color:var(--border)}
+  .btn.ghost:hover{background:var(--cream)}
+  .btn.lg{padding:15px 30px; font-size:15px}
+  .nav-cta{display:none}
+  @media(min-width:980px){.nav-links{display:flex} .nav-cta{display:inline-flex}}
+  /* mobile menu */
+  .burger{display:inline-flex; flex-direction:column; gap:5px; padding:10px; cursor:pointer; border:1px solid var(--border); border-radius:2px; background:transparent}
+  .burger span{display:block; width:18px; height:1.5px; background:var(--ink)}
+  @media(min-width:980px){.burger{display:none}}
+  .mobilemenu{display:none; border-top:1px solid var(--border); background:var(--paper)}
+  .mobilemenu.open{display:block}
+  .mobilemenu .tab{display:block; padding:15px 28px; font-size:15px; color:var(--fg-2); border-bottom:1px solid var(--border-soft); cursor:pointer}
+  .mobilemenu .tab.on{color:var(--ink); background:var(--cream)}
+
+  /* ---- hero ---- */
+  .hero{padding:84px 0 76px; border-bottom:1px solid var(--border)}
+  .hero-grid{display:grid; grid-template-columns:1fr; gap:48px; align-items:center}
+  @media(min-width:960px){.hero-grid{grid-template-columns:1.5fr 1fr}}
+  .hero h1 span.line{display:block}
+  .hero .hero-tag{font-family:var(--serif); font-style:italic; font-size:clamp(20px,2.6vw,27px); line-height:1.35; color:var(--brass-deep); margin:22px 0 0; max-width:640px}
+  .hero .lead{max-width:620px; margin-top:18px}
+  .hero-actions{display:flex; flex-wrap:wrap; gap:14px; margin-top:38px}
+  .hero-note{margin-top:30px; font:400 13px/1.5 var(--mono); color:var(--fg-muted); letter-spacing:.02em}
+  .hero-shot{display:none; background:var(--bone); border:1px solid var(--border); border-radius:6px; box-shadow:var(--shadow); overflow:hidden}
+  @media(min-width:960px){.hero-shot{display:block}}
+  .hero-shot .frag-body{padding:2px 20px 16px}
+  .shot-note{font:500 9px/1 var(--mono); letter-spacing:.2em; text-transform:uppercase; color:var(--brass-deep); margin:14px 0 2px; display:flex; align-items:center; gap:10px}
+  .shot-note::after{content:""; flex:1; height:1px; background:color-mix(in oklab,var(--brass) 35%,transparent)}
+  .hero-shot .pv-row{border-top:0; padding:8px 0 6px}
+
+  /* ---- stat band ---- */
+  .band{background:var(--ink); color:var(--bone)}
+  .band-in{display:grid; grid-template-columns:1fr; gap:0}
+  @media(min-width:760px){.band-in{grid-template-columns:repeat(4,1fr)}}
+  .band .s{padding:34px 28px; border-bottom:1px solid #322c24}
+  @media(min-width:760px){.band .s{border-bottom:0; border-right:1px solid #322c24} .band .s:last-child{border-right:0}}
+  .band .s .n{font-family:var(--serif); font-size:38px; line-height:1; color:var(--brass-2)}
+  .band .s .l{font-size:13px; color:#C7BCA7; margin-top:10px; line-height:1.45}
+
+  /* ---- pillars (four reasons) ---- */
+  .pillars{background:var(--paper); border-top:1px solid var(--border); border-bottom:1px solid var(--border)}
+  .pillars-in{display:grid; grid-template-columns:1fr; gap:0}
+  @media(min-width:560px){.pillars-in{grid-template-columns:1fr 1fr}}
+  @media(min-width:880px){.pillars-in{grid-template-columns:repeat(4,1fr)}}
+  .pillar{padding:40px 30px 38px; border-bottom:1px solid var(--border-soft)}
+  @media(min-width:560px){.pillar{border-left:1px solid var(--border-soft)} .pillar:nth-child(odd){border-left:0}}
+  @media(min-width:880px){.pillar{border-bottom:0; border-left:1px solid var(--border-soft)} .pillar:nth-child(odd){border-left:1px solid var(--border-soft)} .pillar:first-child{border-left:0}}
+  .pillar .pk{display:block; width:26px; height:2px; background:var(--brass); margin-bottom:18px}
+  .pillar .ph{font-family:var(--serif); font-size:24px; line-height:1.12; color:var(--ink); letter-spacing:-.01em}
+  .pillar .pd{font-size:13.5px; line-height:1.55; color:var(--fg-2); margin-top:12px}
+
+  /* ---- section frame ---- */
+  section{padding:88px 0}
+  .section-head{max-width:700px; margin-bottom:50px}
+  .section-head .lead{margin-top:18px}
+  .rule{height:1px; background:var(--border); border:0; margin:0}
+
+  /* ---- moments (a week with it) ---- */
+  .moments{background:var(--paper)}
+  .moment{display:grid; grid-template-columns:1fr; gap:22px; padding:44px 0; border-top:1px solid var(--border)}
+  .moment:first-of-type{border-top:0; padding-top:8px}
+  @media(min-width:880px){.moment{grid-template-columns:200px 1fr; gap:48px}}
+  .moment .when .d{font:500 11px/1 var(--mono); letter-spacing:.24em; text-transform:uppercase; color:var(--brass-deep)}
+  .moment .when .t{font-family:var(--serif); font-style:italic; font-size:34px; color:var(--ink); margin-top:10px; line-height:1}
+  .moment .body h3{font-size:23px; margin:0 0 10px}
+  .moment .body>p{font-size:15.5px; color:var(--fg-2); margin:0 0 20px; max-width:640px}
+  .frag{border:1px solid var(--border); background:var(--bone); border-radius:4px; box-shadow:var(--shadow-sm); overflow:hidden; max-width:640px}
+  .frag-bar{display:flex; align-items:center; gap:8px; padding:10px 16px; border-bottom:1px solid var(--border-soft); background:var(--paper)}
+  .frag-bar .dot{width:7px; height:7px; border-radius:50%; background:var(--border)}
+  .frag-bar .tt{margin-left:8px; font:500 9px/1 var(--mono); letter-spacing:.2em; text-transform:uppercase; color:var(--fg-muted)}
+  .frag-body{padding:6px 18px 12px}
+  .pv-row{display:grid; grid-template-columns:4px 1fr auto; gap:14px; align-items:center; padding:13px 0; border-top:1px solid var(--border-soft)}
+  .pv-row:first-child{border-top:0}
+  .pv-row .mk{width:4px; height:36px; background:var(--border); border-radius:2px}
+  .pv-row.u .mk{background:var(--carmine)}
+  .pv-row.s .mk{background:var(--brass)}
+  .pv-row .t{font-size:13.5px; font-weight:500; color:var(--ink)}
+  .pv-row .ss{font-size:12px; color:var(--fg-muted); margin-top:2px}
+  .pv-chip{font:500 9.5px/1 var(--mono); letter-spacing:.12em; text-transform:uppercase; padding:5px 9px; border-radius:2px; border:1px solid var(--border); color:var(--fg-muted); white-space:nowrap}
+  .pv-chip.c{color:var(--carmine); border-color:color-mix(in oklab,var(--carmine) 34%,transparent); background:color-mix(in oklab,var(--carmine) 8%,transparent)}
+  .pv-chip.b{color:var(--brass-deep); border-color:color-mix(in oklab,var(--brass) 36%,transparent); background:color-mix(in oklab,var(--brass) 12%,transparent)}
+  .pv-chip.f{color:var(--forest); border-color:color-mix(in oklab,var(--forest) 36%,transparent); background:color-mix(in oklab,var(--forest) 10%,transparent)}
+
+  /* ---- one thing ---- */
+  .onething .pair{display:grid; gap:1px; background:var(--border); border:1px solid var(--border); border-radius:3px; overflow:hidden; margin-top:8px}
+  @media(min-width:760px){.onething .pair{grid-template-columns:1fr 1fr}}
+  .onething .half{background:var(--bone); padding:34px 32px}
+  .onething .half .k{font:500 10px/1 var(--mono); letter-spacing:.24em; text-transform:uppercase; color:var(--brass-deep)}
+  .onething .half h3{font-size:22px; margin:14px 0 10px}
+  .onething .half p{font-size:14.5px; color:var(--fg-2); margin:0}
+  .onething .weld{margin-top:20px; border-left:3px solid var(--brass); background:var(--paper); border-radius:0 3px 3px 0; padding:24px 30px; font-family:var(--serif); font-size:19px; font-style:italic; color:var(--ink); line-height:1.5; max-width:100%}
+
+  /* ---- upstream / downstream ---- */
+  .split2{display:grid; gap:20px; grid-template-columns:1fr}
+  @media(min-width:760px){.split2{grid-template-columns:1fr 1fr}}
+  .col-card{border:1px solid var(--border); background:var(--bone); padding:30px 30px 32px; border-radius:3px}
+  .col-card.down{background:var(--cream)}
+  .col-card.up{border-color:color-mix(in oklab,var(--brass) 45%,var(--border)); box-shadow:var(--shadow)}
+  .col-card .tag{font:500 10px/1 var(--mono); letter-spacing:.24em; text-transform:uppercase; color:var(--fg-muted)}
+  .col-card.up .tag{color:var(--brass-deep)}
+  .col-card h3{margin:14px 0 12px}
+  .col-card p{font-size:15px; color:var(--fg-2); margin:0}
+  .col-card ul{margin:14px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:9px}
+  .col-card li{font-size:14.5px; color:var(--fg-2); padding-left:18px; position:relative}
+  .col-card li::before{content:""; position:absolute; left:0; top:9px; width:6px; height:6px; border-radius:50%; background:var(--fg-muted)}
+  .col-card.up li::before{background:var(--brass)}
+
+  /* ---- pull quote ---- */
+  .pull-in{padding:74px 0; text-align:center; max-width:860px; margin:0 auto}
+  .pull-in q{font-family:var(--serif); font-style:italic; font-size:clamp(26px,3.6vw,40px); line-height:1.28; color:var(--ink); quotes:none}
+  .pull-in cite{display:block; margin-top:22px; font:500 11px/1 var(--mono); letter-spacing:.24em; text-transform:uppercase; color:var(--brass-deep); font-style:normal}
+
+  /* ---- proof ---- */
+  .proof .grid{display:grid; gap:20px; grid-template-columns:1fr; margin-top:8px}
+  @media(min-width:760px){.proof .grid{grid-template-columns:repeat(3,1fr)}}
+  .proof-card{border:1px solid var(--border); background:var(--bone); border-radius:3px; padding:28px; box-shadow:var(--shadow-sm)}
+  .proof-card .big{font-family:var(--serif); font-style:italic; font-size:30px; color:var(--brass-deep); line-height:1}
+  .proof-card h3{font-size:18px; margin:16px 0 8px}
+  .proof-card p{font-size:14px; color:var(--fg-2); margin:0}
+  .proof-card .tag{display:block; margin-top:16px; font:500 9.5px/1 var(--mono); letter-spacing:.2em; text-transform:uppercase; color:var(--fg-muted)}
+
+  /* ---- engagement timeline ---- */
+  .session .tl{margin-top:10px; border-left:2px solid var(--border); padding-left:0}
+  .tl-item{display:grid; grid-template-columns:1fr; gap:6px; padding:0 0 34px 28px; position:relative; margin-left:1px}
+  .tl-item::before{content:""; position:absolute; left:-9px; top:4px; width:16px; height:16px; border-radius:50%; background:var(--bone); border:2px solid var(--brass)}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item .k{font:500 10px/1 var(--mono); letter-spacing:.2em; text-transform:uppercase; color:var(--brass-deep)}
+  .tl-item h3{font-size:21px}
+  .tl-item p{font-size:15px; color:var(--fg-2); margin:0; max-width:680px}
+
+  /* ---- it goes deep strip ---- */
+  .deep{margin-top:24px; border:1px solid var(--border); border-radius:3px; overflow:hidden}
+  .deep-row{display:grid; grid-template-columns:1fr; gap:4px; padding:18px 26px; background:var(--bone); border-bottom:1px solid var(--border-soft)}
+  @media(min-width:760px){.deep-row{grid-template-columns:220px 1fr; gap:20px; align-items:baseline}}
+  .deep-row:last-child{border-bottom:0}
+  .deep-row:nth-child(even){background:var(--paper)}
+  .deep-row .q{font:500 10.5px/1.5 var(--mono); letter-spacing:.18em; text-transform:uppercase; color:var(--brass-deep)}
+  .deep-row .a{font-size:14.5px; color:var(--fg-2)}
+
+  .conn{margin-top:24px; border:1px solid var(--border); border-radius:3px; background:var(--paper); padding:26px 28px; display:grid; gap:20px; grid-template-columns:1fr}
+  @media(min-width:820px){.conn{grid-template-columns:230px 1fr; align-items:center}}
+  .conn .lbl{font-family:var(--serif); font-size:19px; color:var(--ink); line-height:1.3}
+  .conn .lbl span{display:block; font:500 10px/1 var(--mono); letter-spacing:.2em; text-transform:uppercase; color:var(--brass-deep); margin-bottom:8px}
+  .conn .pills{display:flex; flex-wrap:wrap; gap:9px}
+  .conn .pill{font:500 11.5px/1 var(--mono); letter-spacing:.04em; color:var(--fg-2); border:1px solid var(--border); background:var(--bone); padding:9px 13px; border-radius:2px}
+
+  .cadence{margin-top:20px; border:1px solid var(--border); border-radius:3px; background:var(--ink); color:var(--bone); padding:30px 28px}
+  .cadence .top{font-family:var(--serif); font-size:21px; color:#F8F1E0; margin-bottom:4px}
+  .cadence .top span{display:block; font:500 10px/1 var(--mono); letter-spacing:.2em; text-transform:uppercase; color:var(--brass-2); margin-bottom:10px}
+  .cadence .steps{display:grid; gap:1px; background:#322c24; border:1px solid #322c24; border-radius:3px; overflow:hidden; margin-top:22px; grid-template-columns:1fr}
+  @media(min-width:640px){.cadence .steps{grid-template-columns:repeat(4,1fr)}}
+  .cadence .st{background:#1D1A15; padding:20px 18px}
+  .cadence .st .t{font:500 10px/1 var(--mono); letter-spacing:.16em; text-transform:uppercase; color:var(--brass-2)}
+  .cadence .st .h{font-size:15px; font-weight:500; color:#F4ECD9; margin:11px 0 5px}
+  .cadence .st .d{font-size:12.5px; color:#A99E8C; line-height:1.45}
+
+  /* ---- delivery ---- */
+  .deliv .dgrid{display:grid; gap:20px; grid-template-columns:1fr; margin-top:8px}
+  @media(min-width:920px){.deliv .dgrid{grid-template-columns:repeat(3,1fr)}}
+  .dcard{border:1px solid var(--border); background:var(--bone); border-radius:3px; padding:28px; display:flex; flex-direction:column}
+  .dcard.rec{border-color:color-mix(in oklab,var(--brass) 50%,var(--border)); box-shadow:var(--shadow)}
+  .dcard .badge{align-self:flex-start; font:500 9.5px/1 var(--mono); letter-spacing:.2em; text-transform:uppercase; color:var(--brass-deep); background:color-mix(in oklab,var(--brass) 14%,transparent); border:1px solid color-mix(in oklab,var(--brass) 34%,transparent); padding:5px 9px; border-radius:2px; margin-bottom:16px}
+  .dcard h3{font-size:21px; margin:0 0 6px}
+  .dcard .sub{font-size:13px; color:var(--fg-muted); margin:0 0 16px}
+  .dcard ul{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px}
+  .dcard li{font-size:14px; color:var(--fg-2); padding-left:18px; position:relative; line-height:1.5}
+  .dcard li::before{content:""; position:absolute; left:0; top:8px; width:6px; height:6px; border-radius:50%; background:var(--brass)}
+
+  /* ---- moat (dark) ---- */
+  .moat{background:#161310; color:#F4ECD9}
+  .moat .eyebrow{color:var(--brass-2)}
+  .moat h2,.moat h3{color:#F8F1E0}
+  .moat em{color:var(--brass-2)}
+  .moat .lead{color:#C7BCA7}
+  .moat .mgrid{display:grid; gap:20px; grid-template-columns:1fr; margin-top:46px}
+  @media(min-width:760px){.moat .mgrid{grid-template-columns:1fr 1fr}}
+  .mcard{border:1px solid #2C2720; background:#1D1A15; border-radius:3px; padding:30px}
+  .mcard h3{font-size:20px; margin:0 0 10px}
+  .mcard p{font-size:14.5px; color:#BBAF9A; margin:0}
+  .moat .assets{margin-top:20px; border:1px solid #2C2720; background:#1D1A15; border-radius:3px; padding:30px; display:grid; gap:22px; grid-template-columns:1fr}
+  @media(min-width:680px){.moat .assets{grid-template-columns:1fr 1fr}}
+  .asset .t{font-family:var(--serif); font-style:italic; font-size:23px; color:var(--brass-2)}
+  .asset p{font-size:14px; color:#BBAF9A; margin:8px 0 0}
+
+  /* ---- scorecard ---- */
+  .score .srow{display:grid; gap:18px; grid-template-columns:1fr; border-top:1px solid var(--border); padding:26px 0}
+  @media(min-width:760px){.score .srow{grid-template-columns:64px 1fr; align-items:start}}
+  .score .srow .num{font-family:var(--serif); font-style:italic; font-size:34px; color:var(--brass)}
+  .score .srow h3{font-size:21px; margin:0 0 8px}
+  .score .srow p{font-size:15px; color:var(--fg-2); margin:0}
+  .score .last{border-bottom:1px solid var(--border)}
+
+  /* ---- security ---- */
+  .sec-grid{display:grid; gap:20px; grid-template-columns:1fr; margin-top:8px}
+  @media(min-width:860px){.sec-grid{grid-template-columns:repeat(3,1fr)}}
+  .sec-card{border:1px solid var(--border); background:var(--bone); border-radius:3px; padding:30px 28px; box-shadow:var(--shadow-sm)}
+  .sec-card .ic{width:42px; height:42px; border-radius:50%; background:var(--ink); display:flex; align-items:center; justify-content:center; margin-bottom:18px}
+  .sec-card .ic svg{width:18px; height:18px; stroke:var(--brass-2); fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round}
+  .sec-card h3{font-size:20px; margin:0 0 10px}
+  .sec-card p{font-size:14.5px; color:var(--fg-2); margin:0}
+  .sec-flow{margin-top:24px; border:1px solid var(--border); border-radius:3px; background:var(--paper); padding:30px 28px}
+  .sec-flow .t{font-family:var(--serif); font-size:21px; margin-bottom:18px}
+  .sec-flow .steps{display:grid; gap:14px; grid-template-columns:1fr}
+  @media(min-width:760px){.sec-flow .steps{grid-template-columns:repeat(3,1fr); gap:0}}
+  .sec-flow .fs{padding:18px 20px; border:1px solid var(--border); background:var(--bone); border-radius:3px; position:relative}
+  @media(min-width:760px){
+    .sec-flow .fs{border-radius:0; border-right:0}
+    .sec-flow .fs:first-child{border-radius:3px 0 0 3px}
+    .sec-flow .fs:last-child{border-right:1px solid var(--border); border-radius:0 3px 3px 0}
+  }
+  .sec-flow .fs .k{font:500 9.5px/1 var(--mono); letter-spacing:.2em; text-transform:uppercase; color:var(--brass-deep)}
+  .sec-flow .fs .h{font-size:15px; font-weight:500; color:var(--ink); margin:10px 0 5px}
+  .sec-flow .fs .d{font-size:13px; color:var(--fg-2); line-height:1.5}
+  .it-list{margin-top:24px; border:1px solid var(--border); border-radius:3px; overflow:hidden}
+  .it-row{display:grid; grid-template-columns:1fr; gap:4px; padding:20px 26px; background:var(--bone); border-bottom:1px solid var(--border-soft)}
+  @media(min-width:760px){.it-row{grid-template-columns:260px 1fr; gap:20px; align-items:baseline}}
+  .it-row:last-child{border-bottom:0}
+  .it-row:nth-child(even){background:var(--paper)}
+  .it-row .q{font-weight:600; font-size:14.5px; color:var(--ink)}
+  .it-row .a{font-size:14.5px; color:var(--fg-2)}
+  .honest{margin-top:24px; border-left:3px solid var(--brass); background:var(--paper); border-radius:0 3px 3px 0; padding:26px 30px}
+  .honest .t{font-family:var(--serif); font-style:italic; font-size:21px; color:var(--ink); margin-bottom:10px}
+  .honest p{font-size:14.5px; color:var(--fg-2); margin:0 0 10px}
+  .honest p:last-child{margin:0}
+
+  /* ---- about ---- */
+  .about-grid{display:grid; gap:44px; grid-template-columns:1fr; align-items:start}
+  @media(min-width:920px){.about-grid{grid-template-columns:1.4fr 1fr}}
+  .about-story p{font-size:16px; color:var(--fg-2); line-height:1.75; margin:0 0 18px; max-width:640px}
+  .about-story p b{font-weight:600; color:var(--ink)}
+  .about-side{display:flex; flex-direction:column; gap:20px}
+  .founder-card{border:1px solid var(--border); background:var(--paper); border-radius:4px; box-shadow:var(--shadow); padding:34px 32px; text-align:center}
+  .founder-card .av{width:84px; height:84px; border-radius:50%; background:var(--ink); color:var(--brass-2); font-family:var(--serif); font-weight:600; font-size:34px; display:flex; align-items:center; justify-content:center; margin:0 auto 18px}
+  .founder-card .nm{font-family:var(--serif); font-size:26px; color:var(--ink); line-height:1.1}
+  .founder-card .rl{font:500 10px/1.6 var(--mono); letter-spacing:.22em; text-transform:uppercase; color:var(--brass-deep); margin-top:8px}
+  .founder-card .qq{font-family:var(--serif); font-style:italic; font-size:17px; line-height:1.5; color:var(--fg-2); margin-top:20px; padding-top:20px; border-top:1px solid var(--border)}
+  .about-facts{border:1px solid var(--border); border-radius:3px; overflow:hidden}
+  .about-facts .fr{display:grid; grid-template-columns:120px 1fr; gap:14px; padding:15px 20px; background:var(--bone); border-bottom:1px solid var(--border-soft); align-items:baseline}
+  .about-facts .fr:last-child{border-bottom:0}
+  .about-facts .fr:nth-child(even){background:var(--paper)}
+  .about-facts .fr .k{font:500 9.5px/1.5 var(--mono); letter-spacing:.18em; text-transform:uppercase; color:var(--brass-deep)}
+  .about-facts .fr .v{font-size:13.5px; color:var(--fg-2); line-height:1.5}
+
+  /* ---- sample downloads ---- */
+  .dl-grid{display:grid;gap:16px;grid-template-columns:1fr;margin-top:8px}
+  @media(min-width:760px){.dl-grid{grid-template-columns:repeat(2,1fr)}}
+  .dl{display:grid;grid-template-columns:44px 1fr auto;gap:16px;align-items:center;border:1px solid var(--border);background:var(--bone);border-radius:3px;padding:18px 20px;transition:border-color .15s,box-shadow .15s}
+  .dl:hover{border-color:color-mix(in oklab,var(--brass) 50%,var(--border));box-shadow:var(--shadow-sm)}
+  .dl .fic{width:44px;height:44px;border-radius:3px;background:var(--ink);display:flex;align-items:center;justify-content:center;font:600 9.5px/1 var(--mono);letter-spacing:.08em;color:var(--brass-2)}
+  .dl .t{font-size:14.5px;font-weight:600;color:var(--ink)}
+  .dl .d{font-size:12.5px;color:var(--fg-muted);margin-top:3px;line-height:1.5}
+  .dl .get{font:500 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--brass-deep);white-space:nowrap}
+
+  /* ---- polished output document ---- */
+  .docwrap{display:flex; flex-direction:column; gap:30px; margin-top:8px}
+  .doc{border:1px solid var(--border); border-radius:5px; background:var(--bone); box-shadow:var(--shadow); overflow:hidden}
+  .doc-top{padding:18px 26px; border-bottom:1px solid var(--border); background:var(--paper); display:flex; align-items:baseline; justify-content:space-between; gap:18px; flex-wrap:wrap}
+  .doc-top .dt-title{font-family:var(--serif); font-size:21px; color:var(--ink); line-height:1.1}
+  .doc-top .dt-meta{font:500 9.5px/1.6 var(--mono); letter-spacing:.16em; text-transform:uppercase; color:var(--fg-muted); text-align:right}
+  .doc-body{padding:6px 26px 26px}
+  .doc-sec{margin-top:22px}
+  .doc-sec .dh{font:500 10px/1 var(--mono); letter-spacing:.2em; text-transform:uppercase; color:var(--brass-deep); margin-bottom:6px; display:flex; align-items:center; gap:12px; padding-top:14px}
+  .doc-sec .dh::after{content:""; flex:1; height:1px; background:var(--border)}
+  .doc-line{display:grid; grid-template-columns:3px 1fr auto; gap:14px; align-items:center; padding:11px 0; border-top:1px solid var(--border-soft)}
+  .doc-line:first-of-type{border-top:0}
+  .doc-line .dm{width:3px; align-self:stretch; min-height:30px; border-radius:2px; background:var(--border)}
+  .doc-line.u .dm{background:var(--carmine)}
+  .doc-line.s .dm{background:var(--brass)}
+  .doc-line .dl-t{font-size:14px; color:var(--ink); font-weight:500; line-height:1.4}
+  .doc-line .dl-s{font-size:12.5px; color:var(--fg-muted); margin-top:3px; line-height:1.45}
+  .doc-line .dl-chip{font:500 9px/1 var(--mono); letter-spacing:.12em; text-transform:uppercase; padding:5px 8px; border-radius:2px; border:1px solid var(--border); color:var(--fg-muted); white-space:nowrap}
+  .doc-line .dl-chip.c{color:var(--carmine); border-color:color-mix(in oklab,var(--carmine) 34%,transparent)}
+  .doc-line .dl-chip.b{color:var(--brass-deep); border-color:color-mix(in oklab,var(--brass) 36%,transparent)}
+  .doc-para{font-size:14px; line-height:1.65; color:var(--fg-2); margin:12px 0 0}
+  .doc-para b{color:var(--ink); font-weight:600}
+  .doc-foot{padding:13px 26px; border-top:1px solid var(--border); background:var(--paper); font:500 10px/1 var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--fg-muted)}
+  .doc-cap{font:500 10px/1 var(--mono); letter-spacing:.2em; text-transform:uppercase; color:var(--brass-deep); margin:0 0 12px}
+
+  /* ---- faq ---- */
+  .faq{background:var(--paper)}
+  .faq .qa{border-top:1px solid var(--border); padding:26px 0}
+  .faq .qa:last-child{border-bottom:1px solid var(--border)}
+  .faq .qa h3{font-size:20px; margin:0 0 10px}
+  .faq .qa p{font-size:15px; color:var(--fg-2); margin:0; max-width:780px}
+
+  /* ---- smart stranger demo ---- */
+  .demo{max-width:900px}
+  .demo-prompt{display:flex;align-items:center;gap:12px;border:1px solid var(--border);background:var(--bone);border-radius:3px;padding:16px 20px;font:500 15px/1.4 var(--mono);color:var(--ink);box-shadow:var(--shadow-sm)}
+  .demo-prompt .ic{color:var(--brass-deep);font-weight:600}
+  .caret{display:inline-block;width:8px;height:18px;background:var(--brass);margin-left:2px;vertical-align:-3px;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .demo-panes{display:grid;gap:18px;grid-template-columns:1fr;margin-top:18px}
+  @media(min-width:820px){.demo-panes{grid-template-columns:1fr 1.15fr}}
+  .pane{border:1px solid var(--border);border-radius:3px;padding:22px 24px;min-height:190px}
+  .pane.generic{background:var(--cream)}
+  .pane.cr{background:var(--bone);border-color:color-mix(in oklab,var(--brass) 50%,var(--border));box-shadow:var(--shadow)}
+  .pane .ph{font:500 9.5px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--fg-muted);margin-bottom:14px}
+  .pane.cr .ph{color:var(--brass-deep)}
+  .pane .pt{font-size:14.5px;line-height:1.65;color:var(--fg-2);opacity:0;transform:translateY(8px);transition:opacity .7s ease,transform .7s ease}
+  .pane .pt.show{opacity:1;transform:none}
+  .pane.cr .pt{color:var(--ink-2)}
+  .out-meta{font:500 9.5px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--brass-deep);margin-bottom:10px}
+  .out-quote{border-left:2px solid var(--brass);padding:10px 14px;background:var(--paper);font-size:13.5px;line-height:1.6;color:var(--ink-2);margin-bottom:10px}
+  .out-quote .qhead{font-size:12px;color:var(--fg-muted);display:block;margin-bottom:6px}
+  .out-quote .qhead b{color:var(--ink);font-weight:600}
+  .out-note{font-size:12.5px;color:var(--fg-muted)}
+  .out-list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+  .out-list li{font-size:13.5px;line-height:1.55;color:var(--fg-2);padding-left:15px;position:relative}
+  .out-list li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--brass)}
+  .out-list li b{font-weight:600;color:var(--ink)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;opacity:0;transition:opacity .5s}
+  .chips.on{opacity:1}
+  .chips .chip{font:500 9.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--brass-deep);border:1px solid color-mix(in oklab,var(--brass) 34%,transparent);background:color-mix(in oklab,var(--brass) 12%,transparent);padding:5px 9px;border-radius:2px}
+
+  /* ---- substrate animation ---- */
+  .substrate{margin-top:46px;border:1px solid #2C2720;background:#1D1A15;border-radius:3px;padding:36px 28px 32px;text-align:center}
+  .sub-label{font:500 9px/1 var(--mono);letter-spacing:.24em;text-transform:uppercase;color:#80766A;display:block}
+  .sub-name{font-family:var(--serif);font-style:italic;font-size:30px;color:var(--brass-2);transition:opacity .4s,transform .4s;display:inline-block;margin-top:8px;min-height:38px}
+  .sub-name.swap{opacity:0;transform:translateY(8px)}
+  .sub-lines{display:grid;grid-template-columns:repeat(5,1fr);max-width:620px;margin:16px auto 14px}
+  .sub-line{width:1px;height:44px;margin:0 auto;background:repeating-linear-gradient(to bottom,#8B6A33 0 4px,transparent 4px 9px);animation:subflow 1s linear infinite}
+  @keyframes subflow{to{background-position:0 -9px}}
+  .sub-files{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:680px;margin:0 auto}
+  .sub-file{flex:0 0 118px;border:1px solid #2C2720;background:#161310;border-radius:3px;padding:14px 8px;font:500 9.5px/1.4 var(--mono);letter-spacing:.12em;color:#BCB19C;transition:border-color .5s,color .5s}
+  .sub-files.pulse .sub-file{border-color:color-mix(in oklab,var(--brass) 55%,#2C2720);color:var(--brass-2)}
+  .sub-file .ext{color:#80766A;display:block;font-size:8.5px;margin-top:4px;letter-spacing:.18em}
+  .sub-cap{margin-top:24px;font-family:var(--serif);font-style:italic;font-size:19px;color:#F4ECD9}
+
+  /* ---- compounding curve ---- */
+  .curve{max-width:720px;margin:44px auto 10px}
+  .curve svg{width:100%;height:auto;display:block;overflow:visible}
+  .curve .axis{stroke:#3A332A;stroke-width:1}
+  .curve .cpath{stroke:var(--brass-2);stroke-width:2.5;fill:none}
+  .cm{opacity:0;transition:opacity .7s}
+  .cm.on{opacity:1}
+  .cm circle{fill:var(--brass-2)}
+  .cm .l1{font:500 10px var(--mono);letter-spacing:.18em;text-transform:uppercase;fill:#8A7E6E}
+  .cm .l2{font:italic 600 16px var(--serif);fill:#F4ECD9}
+
+  /* ---- contact ---- */
+  .contact-mail{display:inline-block; font-family:var(--serif); font-size:clamp(24px,3.4vw,36px); color:var(--ink); border-bottom:2px solid var(--brass); padding-bottom:4px; transition:color .15s}
+  .contact-mail:hover{color:var(--brass-deep)}
+
+  /* ---- closing ---- */
+  .close{background:var(--ink); color:var(--bone); text-align:center}
+  .close .eyebrow{color:var(--brass-2)}
+  .close h2{font-size:clamp(30px,4.8vw,50px); color:#F8F1E0}
+  .close em{color:var(--brass-2)}
+  .close .lead{margin:24px auto 0; max-width:640px; color:#C7BCA7}
+  .close-in{max-width:780px; margin:0 auto}
+  .close .hero-actions{justify-content:center; margin-top:40px}
+  .close .btn.ghost{color:#F4ECD9; border-color:#3A332A}
+  .close .btn.ghost:hover{background:#221E18}
+  .close .hero-note{color:#8A7E6E}
+
+  /* ---- footer ---- */
+  footer{border-top:1px solid var(--border); padding:50px 0; background:var(--bone)}
+  .foot-in{display:flex; flex-wrap:wrap; gap:28px; justify-content:space-between; align-items:flex-start}
+  .foot-lock svg{display:block; width:150px; height:auto}
+  .foot-meta{font:400 12px/1.7 var(--mono); color:var(--fg-muted); letter-spacing:.03em; margin-top:14px}
+  .foot-links{display:flex; gap:24px; font-size:13px; color:var(--fg-2); flex-wrap:wrap}
+  .foot-links span{cursor:pointer}
+  .foot-links span:hover{color:var(--ink)}
+</style>
 </head>
 <body>
 
-<!-- ============================================================
-     NAV
-     ============================================================ -->
+<!-- ============ NAV ============ -->
 <header class="nav">
-  <div class="wrap nav-inner">
-    <a class="nav-logo" href="#top" aria-label="Chalette home">
-      <img src="assets/logo-lockup.svg" alt="Chalette">
-    </a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href="about.html">About us</a>
-      <a href="how-it-works.html">How it works</a>
-      <a href="examples.html">Examples</a>
-      <a href="security.html">Security</a>
-    </nav>
-    <div class="nav-actions">
-      <a class="btn btn-primary btn-sm nav-cta" href="mailto:Matthew@chaletteholdings.com">Contact</a>
-      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-      </button>
+  <div class="wrap nav-in">
+    <div class="brandlock" data-go="home">
+      <svg viewBox="0 0 72 72" width="38" height="38" aria-label="Chalette mark"><circle cx="36" cy="36" r="36" fill="#1A1714"/><text x="36" y="50" font-family="'Cormorant Garamond',Georgia,serif" font-weight="600" font-size="46" text-anchor="middle" fill="#B88B4A">C</text></svg>
+      <span class="word"><span class="c">C</span>halette</span>
+      <span class="descr"><span class="p">Command Room</span><span class="s">Executive AI Implementation</span></span>
     </div>
+    <nav class="nav-links">
+      <span class="tab on" data-go="home">Home</span>
+      <span class="tab" data-go="work">The work</span>
+      <span class="tab" data-go="examples">Examples</span>
+      <span class="tab" data-go="security">Security</span>
+      <span class="tab" data-go="about">About</span>
+    </nav>
+    <div style="display:flex; gap:12px; align-items:center;">
+      <a class="btn ghost nav-cta" data-contact>Start the conversation</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobilemenu" id="mobilemenu">
+    <span class="tab on" data-go="home">Home</span>
+    <span class="tab" data-go="work">The work</span>
+    <span class="tab" data-go="examples">Examples</span>
+    <span class="tab" data-go="security">Security</span>
+    <span class="tab" data-go="about">About</span>
+    <span class="tab" data-contact>Start the conversation</span>
   </div>
 </header>
-<div class="mobile-menu" id="mobile-menu" hidden>
-  <nav class="mobile-menu-links" aria-label="Mobile primary">
-    <a href="about.html">About us</a>
-    <a href="how-it-works.html">How it works</a>
-    <a href="examples.html">Examples</a>
-    <a href="security.html">Security</a>
-  </nav>
-  <a class="btn btn-primary mobile-menu-cta" href="mailto:Matthew@chaletteholdings.com">Contact</a>
-</div>
 
-<main id="top">
+<main>
 
-<!-- ============================================================
-     HERO
-     ============================================================ -->
-<section class="hero">
-  <div class="wrap">
-    <div class="hero-content">
-      <img class="hero-logo" src="assets/logo-stacked.svg" alt="Chalette Command Room">
-      <h1>
-        We turn AI from a <em>smart stranger</em> into one that knows you and your business <span class="brass">&mdash; and it&rsquo;s yours.</span>
-      </h1>
-      <p class="hero-sub">
-        <strong>Command Room</strong> is your <span class="brass-em">AI Chief of Staff</span>. A working folder on your desktop holds everything they know about your business. A library of custom skills runs the daily work: morning briefs, inbox triage, meeting notes, follow-ups. Installed and trained, shoulder to shoulder.
-      </p>
-      <div class="hero-ctas">
-        <a class="btn btn-primary" href="how-it-works.html">How it works</a>
-        <a class="btn btn-brass" href="examples.html">See examples</a>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- ████████████████████ PAGE · HOME ████████████████████ -->
+<div class="page is-on" data-page="home">
 
-
-<!-- ============================================================
-     THE FIVE PROMISES (canonical, from PRODUCT_STRATEGY_v3.md)
-     ============================================================ -->
-<section class="promises" id="what">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-marker"><span>The five promises</span></div>
-      <h2 class="section-title section-title--invert"><span class="muted-frame">What your</span> Chief of Staff <span class="muted-frame">does for you.</span></h2>
-    </div>
-
-    <ol class="promise-grid">
-      <li class="promise-card">
-        <div class="promise-meta">
-          <span class="promise-num">i.</span>
-          <span class="promise-cat">Meetings</span>
-        </div>
-        <h3>You walk into every meeting <em>prepped.</em> You never take notes again.</h3>
-        <p>Briefs drafted before. Recaps drafted after. Recall any meeting by person, topic, or date.</p>
-      </li>
-      <li class="promise-card">
-        <div class="promise-meta">
-          <span class="promise-num">ii.</span>
-          <span class="promise-cat">Projects &amp; people</span>
-        </div>
-        <h3>Your projects and your people, <em>organized and updating themselves.</em></h3>
-        <p>One live view of every workstream and key relationship. Always current.</p>
-      </li>
-      <li class="promise-card">
-        <div class="promise-meta">
-          <span class="promise-num">iii.</span>
-          <span class="promise-cat">Accountability</span>
-        </div>
-        <h3><em>Nothing slips.</em> Every commitment tracked, every decision recorded.</h3>
-        <p>A live ledger of what&rsquo;s owed. A searchable log of every decision and the reasoning behind it.</p>
-      </li>
-      <li class="promise-card">
-        <div class="promise-meta">
-          <span class="promise-num">iv.</span>
-          <span class="promise-cat">Inbox</span>
-        </div>
-        <h3>Your inbox is handled in <em>your voice.</em></h3>
-        <p>Replies drafted in your voice. A queue you can trust to send straight from.</p>
-      </li>
-      <li class="promise-card promise-card--feature">
-        <div class="promise-meta">
-          <span class="promise-num">v.</span>
-          <span class="promise-cat">Intelligence</span>
-        </div>
-        <h3>Your <span class="brass-em">Chief of Staff</span> gets <em>smarter every week,</em> surfacing what matters before you ask.</h3>
-        <p>The system learns your business. Soon it&rsquo;s flagging things you didn&rsquo;t know to look for.</p>
-      </li>
-    </ol>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     WHO IT'S FOR
-     ============================================================ -->
-<section class="audience" id="audience">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 class="section-title">Built for the <span class="brass-em">owner-operator.</span></h2>
-    </div>
-
-    <div class="audience-grid">
+  <section class="hero">
+    <div class="wrap hero-grid">
       <div>
-        <p class="audience-lede">
-          Owner-operators and C-suite leaders who <em>know AI matters</em> and are tired of dabbling.
-        </p>
-        <div class="audience-body">
-          <p>You&rsquo;ve tried the tools. You&rsquo;re getting maybe 60% of what should be possible, and you don&rsquo;t have time to lead the rollout yourself.</p>
-          <p>We take you to 80%, 90%, and beyond &mdash; without making you the project manager.</p>
+        <p class="eyebrow rv">Command Room by Chalette · AI for the people who run the business</p>
+        <h1 class="rv">
+          <span class="line">Value isn't installed.</span>
+          <span class="line"><em>It's adopted.</em></span>
+        </h1>
+        <p class="hero-tag rv">It compounds only when real people use it on real work.</p>
+        <p class="lead rv">Command Room hands you back real time each week, then points it at the decisions that grow the company. It pulls your email, calendar, meetings, and files into one organized, prioritized picture, with reasoning on top. Not to replace your judgment, to multiply it.</p>
+        <div class="hero-actions rv">
+          <a class="btn lg" data-contact>Start the conversation</a>
+          <span class="btn ghost lg" data-go="work">See how it works</span>
+        </div>
+      </div>
+      <div class="hero-shot rv">
+        <div class="frag-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="tt">Command Room · This morning</span></div>
+        <div class="frag-body">
+          <div class="shot-note">Your day, prioritized for you</div>
+          <div class="pv-row u"><span class="mk"></span><div><div class="t">Decide: vendor contract, sign or renegotiate</div><div class="ss">Raised by your head of ops · blocks the Q3 plan</div></div><span class="pv-chip c">Blocking</span></div>
+          <div class="shot-note">Written in your voice, ready to send</div>
+          <div class="pv-row"><span class="mk"></span><div><div class="t">Draft waiting: reply to the board chair</div><div class="ss">Review and send</div></div><span class="pv-chip">Draft</span></div>
+          <div class="shot-note">Caught before it cost you</div>
+          <div class="pv-row s"><span class="mk"></span><div><div class="t">A fee on the revised invoice that was not agreed</div><div class="ss">Flagged from the thread before it was paid</div></div><span class="pv-chip b">Flag</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="pillars">
+    <div class="wrap pillars-in">
+      <div class="pillar rv"><span class="pk"></span><div class="ph">For the people who run it</div><div class="pd">Built for the leaders running the company, not the busywork beneath them.</div></div>
+      <div class="pillar rv"><span class="pk"></span><div class="ph">Knows your business</div><div class="pd">Your people, projects, decisions, and commitments. Never a blank chat.</div></div>
+      <div class="pillar rv"><span class="pk"></span><div class="ph">Immediate value</div><div class="pd">Set up on your real work, producing inside the first 90 minutes.</div></div>
+      <div class="pillar rv"><span class="pk"></span><div class="ph">Backed by a guarantee</div><div class="pd">See real value by the second session.</div></div>
+    </div>
+  </div>
+
+  <!-- ===== SMART STRANGER DEMO ===== -->
+  <section id="demoSec" style="background:var(--bone); padding-bottom:72px;">
+    <div class="wrap">
+      <div class="section-head rv" style="margin-bottom:38px;">
+        <p class="eyebrow">See the difference</p>
+        <h2>The same question. <em>Two different AIs.</em></h2>
+      </div>
+      <div class="demo rv">
+        <div class="demo-prompt"><span class="ic">›</span><span id="demoQ"></span><span class="caret"></span></div>
+        <div class="demo-panes">
+          <div class="pane generic"><div class="ph">Any AI · no context</div><div class="pt" id="demoA"></div></div>
+          <div class="pane cr"><div class="ph">Command Room · knows your business</div><div class="pt" id="demoB"></div><div class="chips" id="demoChips"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THESIS ===== -->
+  <section style="background:var(--paper); padding-bottom:72px;">
+    <div class="wrap">
+      <div class="section-head rv" style="margin-bottom:38px;">
+        <p class="eyebrow">The thesis</p>
+        <h2>Everyone is automating the cheap work. <em>Nobody is equipping the expensive people.</em></h2>
+      </div>
+      <div class="split2">
+        <div class="col-card down rv">
+          <span class="tag">Downstream · crowded</span>
+          <h3>Where the energy goes</h3>
+          <ul>
+            <li>Workflow automation and chatbots</li>
+            <li>Tasks, not judgment</li>
+            <li>Tooling leadership never touches</li>
+            <li>Commoditized by the week</li>
+          </ul>
+        </div>
+        <div class="col-card up rv">
+          <span class="tag">Upstream · underserved</span>
+          <h3>Where Chalette points it</h3>
+          <ul>
+            <li>The owner, the operator, the leadership team</li>
+            <li>Their meetings, threads, and commitments</li>
+            <li>Their judgment, amplified</li>
+            <li>Fluency that compounds with use</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRODUCT + PEOPLE ===== -->
+  <section class="onething" style="padding-top:72px;">
+    <div class="wrap">
+      <div class="section-head rv" style="margin-bottom:38px;">
+        <p class="eyebrow">What you actually get</p>
+        <h2>Command Room, and the people <em>who make it stick.</em></h2>
+      </div>
+      <div class="pair">
+        <div class="half rv">
+          <div class="k">The product</div>
+          <h3>Command Room</h3>
+          <p>An AI operator that knows your business. It preps your meetings, drafts in your voice, tracks what is owed, and surfaces what is slipping.</p>
+        </div>
+        <div class="half rv">
+          <div class="k">The people</div>
+          <h3>Chalette, beside you</h3>
+          <p>People who understand business sit in your real work, point the tool where it pays, and train your team until they run it themselves.</p>
+        </div>
+      </div>
+      <div class="weld rv">Software alone gathers dust. Training alone fades. Together, it compounds.</div>
+      <div class="hero-actions rv" style="margin-top:30px;">
+        <span class="btn lg" data-go="examples">See it on real work</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== IN / ON THE BUSINESS ===== -->
+  <section class="moat">
+    <div class="wrap">
+      <div class="section-head rv">
+        <p class="eyebrow">Why daily use matters</p>
+        <h2>You can't lead what <em>you don't use.</em></h2>
+        <p class="lead">Every company is being told to transform with AI, and almost no one leading the charge actually uses it. Command Room earns a place in your daily work, then shows up for the strategic calls that make the company money.</p>
+      </div>
+      <div class="mgrid">
+        <div class="mcard rv">
+          <h3>The daily work</h3>
+          <p>Hours back, every week. Briefs, meeting prep, drafts in your voice, commitments tracked. The visible productivity that makes it a daily habit.</p>
+        </div>
+        <div class="mcard rv">
+          <h3>The decisions that grow the company</h3>
+          <p>The call that makes the year. An acquisition, a renegotiation, a pricing overhaul, a tough contract. The sessions point it at your real decisions, with someone who knows the business beside you.</p>
+        </div>
+      </div>
+      <div class="assets rv" style="grid-template-columns:1fr;">
+        <div class="asset">
+          <div class="t">One feeds the other</div>
+          <p>Daily use builds the fluency. The sessions point that fluency at your biggest decisions. That is how you end up leading the transition instead of signing off on it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THE STANDARD (one line) ===== -->
+  <section style="background:var(--bone); border-top:1px solid var(--border); padding:62px 0;">
+    <div class="wrap">
+      <p class="rv" style="font-family:var(--serif); font-style:italic; font-size:clamp(21px,3vw,30px); line-height:1.45; color:var(--ink); text-align:center; max-width:760px; margin:0 auto;">We measure ourselves on two things: <em>did it bring real value</em>, and <em>did you ask us back for your team.</em></p>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" style="background:var(--paper); border-top:1px solid var(--border);">
+    <div class="wrap">
+      <div class="section-head rv" style="margin-bottom:34px;">
+        <p class="eyebrow">Contact</p>
+        <h2>Start the conversation.</h2>
+      </div>
+      <a class="contact-mail rv" href="mailto:matthew@chaletteholdings.com?subject=Command%20Room">matthew@chaletteholdings.com</a>
+      <p class="rv" style="margin:26px 0 0; font-size:14.5px; color:var(--fg-2); max-width:680px;">For IT and security teams: <a href="docs/Command-Room-Security-Overview.pdf" target="_blank" style="color:var(--brass-deep); border-bottom:1px solid color-mix(in oklab,var(--brass) 45%,transparent);">the security overview</a>.</p>
+    </div>
+  </section>
+
+</div><!-- /home -->
+
+<!-- ████████████████████ PAGE · THE WORK ████████████████████ -->
+<div class="page" data-page="work">
+
+  <!-- ===== OPENING ===== -->
+  <section style="padding-bottom:54px;">
+    <div class="wrap">
+      <div class="section-head rv">
+        <p class="eyebrow">The work</p>
+        <h2>An engagement, <em>not a license.</em></h2>
+        <p class="lead">You get Command Room set up on your real work, and people who understand business beside you to point it. The standard is value, not seats sold. See it by the second session, or your money back.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ANATOMY ===== -->
+  <div class="pillars">
+    <div class="wrap pillars-in">
+      <div class="pillar rv"><span class="pk"></span><div class="ph">Command Room</div><div class="pd">The product, set up on your real work from day one.</div></div>
+      <div class="pillar rv"><span class="pk"></span><div class="ph">Four working sessions</div><div class="pd">Hands-on, in your actual problems. Not a course.</div></div>
+      <div class="pillar rv"><span class="pk"></span><div class="ph">A value guarantee</div><div class="pd">See real value by the second session, or your money back.</div></div>
+      <div class="pillar rv"><span class="pk"></span><div class="ph">Support</div><div class="pd">After the engagement, ongoing support and team training stay optional. Never a long contract.</div></div>
+    </div>
+  </div>
+
+  <!-- ===== HOW IT GOES ===== -->
+  <section class="session" style="background:var(--bone);">
+    <div class="wrap">
+      <div class="section-head rv">
+        <p class="eyebrow">How it goes</p>
+        <h2>From setup <em>to second nature.</em></h2>
+      </div>
+      <div class="tl">
+        <div class="tl-item rv">
+          <div class="k">Setup</div>
+          <h3>Command Room learns your world</h3>
+          <p>Your meetings, email, and projects become one memory, on your own machine.</p>
+        </div>
+        <div class="tl-item rv">
+          <div class="k">Session one</div>
+          <h3>It already knows you</h3>
+          <p>Briefs, prep, and drafts in your voice from day one. The generic answers stop.</p>
+        </div>
+        <div class="tl-item rv">
+          <div class="k">Session two</div>
+          <h3>A real win, guaranteed</h3>
+          <p>We aim Command Room at a decision that matters. See value by the end, or your money back.</p>
+        </div>
+        <div class="tl-item rv">
+          <div class="k">Sessions three and four</div>
+          <h3>You take the wheel</h3>
+          <p>You start pointing it at the things no one could have built for you.</p>
+        </div>
+        <div class="tl-item rv">
+          <div class="k">After</div>
+          <h3>Then your team</h3>
+          <p>Most clients come back wanting their leadership team on it next.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY IT LASTS (substrate-led) ===== -->
+  <section class="moat">
+    <div class="wrap">
+      <div class="section-head rv">
+        <p class="eyebrow">Why it lasts</p>
+        <h2>Nobody knows where AI is going. <em>This is built so that does not matter.</em></h2>
+        <p class="lead">What you build here is permanent: the memory of your business and your people's fluency with these tools. Both are yours to keep, and both get more valuable as the models get better. Command Room stores what it knows as plain files on your own computer, so any model you use next stacks right on top.</p>
+      </div>
+
+      <div class="substrate rv" id="substrate">
+        <span class="sub-label">Running on</span>
+        <span class="sub-name" id="subName">Claude</span>
+        <div class="sub-lines">
+          <span class="sub-line"></span><span class="sub-line"></span><span class="sub-line"></span><span class="sub-line"></span><span class="sub-line"></span>
+        </div>
+        <div class="sub-files" id="subFiles">
+          <div class="sub-file">PEOPLE<span class="ext">.MD</span></div>
+          <div class="sub-file">PROJECTS<span class="ext">.MD</span></div>
+          <div class="sub-file">DECISIONS<span class="ext">.MD</span></div>
+          <div class="sub-file">COMMITMENTS<span class="ext">.MD</span></div>
+          <div class="sub-file">VOICE<span class="ext">.MD</span></div>
+        </div>
+        <div class="sub-cap">The model changes. The memory stays yours.</div>
+      </div>
+
+      <div class="assets rv" style="margin-top:20px;">
+        <div class="asset">
+          <div class="t">Your people's fluency</div>
+          <p>Once a team can actually use these tools on their own work, that capability stays with them no matter what changes.</p>
+        </div>
+        <div class="asset">
+          <div class="t">Your business's memory</div>
+          <p>The structured record of how your business runs is yours to keep. Everything else, tool, model, billing, is replaceable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THE STANDARD ===== -->
+  <section class="score" style="background:var(--paper);">
+    <div class="wrap">
+      <div class="section-head rv">
+        <p class="eyebrow">The standard</p>
+        <h2>Measured on value, <em>not seats sold.</em></h2>
+      </div>
+      <div class="srow rv">
+        <div class="num">01</div>
+        <div>
+          <h3>Did it bring real value</h3>
+          <p>Hours back. What gets caught before it costs you. Insights you would not have produced alone. And whether your people start using it in ways no one could have designed for them.</p>
+        </div>
+      </div>
+      <div class="srow last rv">
+        <div class="num">02</div>
+        <div>
+          <h3>Did it earn the next room</h3>
+          <p>The honest scoreboard is the referral. When a client finishes and asks for their team next, the value was real. People who understand your business, not a software vendor. That is the whole difference.</p>
+        </div>
+      </div>
+      <p class="rv" style="margin:36px 0 0; font-size:14.5px; color:var(--fg-2); max-width:680px;">Start the conversation at <a href="mailto:matthew@chaletteholdings.com?subject=Command%20Room" style="color:var(--brass-deep); border-bottom:1px solid color-mix(in oklab,var(--brass) 45%,transparent);">matthew@chaletteholdings.com</a>.</p>
+    </div>
+  </section>
+
+</div><!-- /work -->
+
+<!-- ████████████████████ PAGE · EXAMPLES ████████████████████ -->
+<div class="page" data-page="examples">
+
+  <!-- ===== SAMPLE OUTPUTS ===== -->
+  <style>
+    .ex-grid{display:grid;gap:22px;grid-template-columns:1fr;margin-top:10px}
+    @media(min-width:680px){.ex-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:1000px){.ex-grid{grid-template-columns:repeat(3,1fr)}}
+    .ex-card{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:5px;overflow:hidden;background:var(--bone);text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s,transform .15s}
+    .ex-card:hover{border-color:color-mix(in oklab,var(--brass) 50%,var(--border));box-shadow:var(--shadow);transform:translateY(-3px)}
+    .ex-thumb{aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid var(--border);background:#0E0C0B}
+    .ex-thumb img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+    .ex-b{padding:18px 20px 20px;display:flex;flex-direction:column;gap:7px;flex:1}
+    .ex-tag{font:500 9.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--brass-deep)}
+    .ex-t{font-size:17px;font-weight:600;color:var(--ink);line-height:1.25}
+    .ex-d{font-size:13.5px;color:var(--fg-2);line-height:1.55;flex:1}
+    .ex-open{font:500 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--brass-deep);margin-top:4px}
+  </style>
+  <section style="background:var(--bone);">
+    <div class="wrap">
+      <div class="section-head rv" style="margin-bottom:30px;">
+        <p class="eyebrow">Examples</p>
+        <h2>What it actually produces.</h2>
+        <p class="lead">Representative outputs, fully fictionalized. No real client, person, or figure appears here. The depth, structure, and voice are exactly what the system produces when it is reading from the memory of your business. Open any one.</p>
+      </div>
+
+      <div class="ex-grid">
+
+        <a class="ex-card rv" href="samples/Sample-Morning-Brief.pdf" target="_blank">
+          <div class="ex-thumb"><img src="samples/thumbs/morning-brief.png" alt="Morning brief example" loading="lazy"></div>
+          <div class="ex-b"><span class="ex-tag">Daily rhythm</span><span class="ex-t">Morning brief</span><span class="ex-d">What needs you before noon, drafts already in your voice, and the things it caught overnight.</span><span class="ex-open">Open PDF &rarr;</span></div>
+        </a>
+
+        <a class="ex-card rv" href="samples/Sample-Meeting-Notes.pdf" target="_blank">
+          <div class="ex-thumb"><img src="samples/thumbs/meeting-notes.png" alt="Meeting notes example" loading="lazy"></div>
+          <div class="ex-b"><span class="ex-tag">After the meeting</span><span class="ex-t">Meeting notes</span><span class="ex-d">A tough negotiation turned into decisions, owners, and the buried pricing detail nobody flagged in the room.</span><span class="ex-open">Open PDF &rarr;</span></div>
+        </a>
+
+        <a class="ex-card rv" href="samples/Sample-Contract-Review.pdf" target="_blank">
+          <div class="ex-thumb"><img src="samples/thumbs/contract-review.png" alt="Document review example" loading="lazy"></div>
+          <div class="ex-b"><span class="ex-tag">The catch</span><span class="ex-t">Document review</span><span class="ex-d">A second read on an agreement your counsel already cleared. It found what slipped through, before signing.</span><span class="ex-open">Open PDF &rarr;</span></div>
+        </a>
+
+        <a class="ex-card rv" href="samples/Sample-Dormant-Customer.pdf" target="_blank">
+          <div class="ex-thumb"><img src="samples/thumbs/dormant-customer.png" alt="Relationship intelligence example" loading="lazy"></div>
+          <div class="ex-b"><span class="ex-tag">The catch</span><span class="ex-t">Relationship intelligence</span><span class="ex-d">A cold text, identified as a customer who quietly churned two years ago, with the win-back already mapped.</span><span class="ex-open">Open PDF &rarr;</span></div>
+        </a>
+
+        <a class="ex-card rv" href="samples/Sample-Research-Brief.pdf" target="_blank">
+          <div class="ex-thumb"><img src="samples/thumbs/research-brief.png" alt="Research brief example" loading="lazy"></div>
+          <div class="ex-b"><span class="ex-tag">Deep work</span><span class="ex-t">Research brief</span><span class="ex-d">Deep research that ends in a recommendation. Sources cited, tied back to your situation, not a summary.</span><span class="ex-open">Open PDF &rarr;</span></div>
+        </a>
+
+        <a class="ex-card rv" href="samples/Sample-Decision-Memo.pdf" target="_blank">
+          <div class="ex-thumb"><img src="samples/thumbs/decision-memo.png" alt="Decision memo example" loading="lazy"></div>
+          <div class="ex-b"><span class="ex-tag">Deep work</span><span class="ex-t">Decision memo</span><span class="ex-d">A clean A-versus-B on a real decision, with the data pulled from your own substrate and a clear call.</span><span class="ex-open">Open PDF &rarr;</span></div>
+        </a>
+
+        <a class="ex-card rv" href="samples/Sample-Board-Update.pdf" target="_blank">
+          <div class="ex-thumb"><img src="samples/thumbs/board-update.png" alt="Board update example" loading="lazy"></div>
+          <div class="ex-b"><span class="ex-tag">Reporting</span><span class="ex-t">Board update</span><span class="ex-d">A full board memo scaffolded overnight: KPIs against plan, wins, the honest concerns, and the ask.</span><span class="ex-open">Open PDF &rarr;</span></div>
+        </a>
+
+        <a class="ex-card rv" href="samples/Sample-1on1-Prep.pdf" target="_blank">
+          <div class="ex-thumb"><img src="samples/thumbs/1on1-prep.png" alt="1:1 prep example" loading="lazy"></div>
+          <div class="ex-b"><span class="ex-tag">People</span><span class="ex-t">1:1 prep</span><span class="ex-d">Open commitments, how to approach them, and what to listen for, ready before you walk in.</span><span class="ex-open">Open PDF &rarr;</span></div>
+        </a>
+
+        <a class="ex-card rv" href="samples/Sample-Prospect-Followup-Prep.pdf" target="_blank">
+          <div class="ex-thumb"><img src="samples/thumbs/prospect-followup.png" alt="Prospect follow-up example" loading="lazy"></div>
+          <div class="ex-b"><span class="ex-tag">Sales</span><span class="ex-t">Prospect follow-up</span><span class="ex-d">Pre-call prep on a prospect: the history, what was said, where it stands, and what to say next.</span><span class="ex-open">Open PDF &rarr;</span></div>
+        </a>
+
+      </div>
+
+      <p class="rv" style="margin:40px 0 0; font-size:14.5px; color:var(--fg-2); max-width:680px;">To see it on your own work, write to <a href="mailto:matthew@chaletteholdings.com?subject=Command%20Room" style="color:var(--brass-deep); border-bottom:1px solid color-mix(in oklab,var(--brass) 45%,transparent);">matthew@chaletteholdings.com</a>.</p>
+    </div>
+  </section>
+
+</div><!-- /examples -->
+
+<!-- ████████████████████ PAGE · SECURITY ████████████████████ -->
+<div class="page" data-page="security">
+
+  <section>
+    <div class="wrap">
+      <div class="section-head rv">
+        <p class="eyebrow">Security</p>
+        <h2>Built so your data has one home: <em>yours.</em></h2>
+        <p class="lead">The memory lives in plain files on your own computer. Chalette runs no servers, holds no database, and never takes possession of your data. The architecture is the security model.</p>
+      </div>
+
+      <div class="sec-grid">
+        <div class="sec-card rv">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></div>
+          <h3>Your files, on your machine</h3>
+          <p>Everything Command Room knows lives in a folder on your own computer, in plain files you can open, read, move, or delete at any time. There is no hidden store and no copy held elsewhere.</p>
+        </div>
+        <div class="sec-card rv">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h3>Chalette holds nothing</h3>
+          <p>No Chalette servers, no Chalette database, no data passing through Chalette systems. Engagements run under mutual NDA, and the product is delivered into your environment, not hosted from ours.</p>
+        </div>
+        <div class="sec-card rv">
+          <div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="1"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+          <h3>One policy that matters</h3>
+          <p>The core product runs natively in Claude on your own subscription. Your data is governed by Anthropic's enterprise policy: retained briefly, then deleted, and contractually never used to train models.</p>
         </div>
       </div>
 
-      <ul class="audience-list">
-        <li><span><strong>Shoulder-to-shoulder.</strong> We work alongside you and your team until the system is the way you work.</span></li>
-        <li><span><strong>Wins from week one.</strong> Real results on your actual decisions. Not a roadmap. Not a demo.</span></li>
-        <li><span><strong>Compounds every week.</strong> The system gets sharper. You ride every improvement instead of starting over.</span></li>
-      </ul>
+      <div class="sec-flow rv">
+        <div class="t">Where your data actually goes</div>
+        <div class="steps">
+          <div class="fs">
+            <div class="k">01 · Lives</div>
+            <div class="h">On your computer</div>
+            <div class="d">The memory substrate: people, projects, decisions, commitments, in files you own.</div>
+          </div>
+          <div class="fs">
+            <div class="k">02 · Reaches</div>
+            <div class="h">Anthropic, when you work</div>
+            <div class="d">Like any hosted AI, prompts reach the model provider under their enterprise terms. No training on your data, brief retention, then deletion.</div>
+          </div>
+          <div class="fs">
+            <div class="k">03 · Never</div>
+            <div class="h">Chalette, or anyone else</div>
+            <div class="d">No third party in the path. No reseller infrastructure. Nothing for Chalette to lose, because Chalette never has it.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="honest rv">
+        <div class="t">The honest version, because there are no magic bullets</div>
+        <p>Any hosted model means your prompts leave your environment to reach the provider. That is true of every AI product that is not a weak local model on your own servers. The question is who else is in the path, and here the answer is no one: your machine, Anthropic, done.</p>
+        <p>For organizations that cannot leave their own walls, including Microsoft-only and regulated environments, there is a path that runs inside your own tenant. It involves trade-offs, and they get named up front, not discovered later.</p>
+      </div>
+
+      <div class="it-list rv">
+        <div class="it-row"><div class="q">Where is the data stored</div><div class="a">In plain files in a folder on the user's own machine. No external database, no Chalette-side storage.</div></div>
+        <div class="it-row"><div class="q">Who processes it</div><div class="a">Anthropic, under the same enterprise policy as your Claude subscription. Chalette is not a data processor.</div></div>
+        <div class="it-row"><div class="q">Is it used to train models</div><div class="a">No. Anthropic's enterprise terms contractually exclude customer data from training.</div></div>
+        <div class="it-row"><div class="q">What does Chalette access</div><div class="a">Working sessions are screen-share, under mutual NDA. Chalette holds no credentials, no API keys, and no copies.</div></div>
+        <div class="it-row"><div class="q">What happens if we stop</div><div class="a">You keep everything. The memory is yours, in your files, readable by any tool you choose next.</div></div>
+        <div class="it-row"><div class="q">Microsoft-only environment</div><div class="a">A tenant-side path exists for organizations that cannot move data outside Microsoft. Raise it early and it gets scoped honestly.</div></div>
+      </div>
+
+      <p class="rv" style="margin:40px 0 0; font-size:14.5px; color:var(--fg-2); max-width:720px;">The full write-up, plain English up front and technical depth underneath, is here: <a href="docs/Command-Room-Security-Overview.pdf" target="_blank" style="color:var(--brass-deep); border-bottom:1px solid color-mix(in oklab,var(--brass) 45%,transparent);">Command Room security overview (PDF)</a>. Questions from your IT or security team go to <a href="mailto:matthew@chaletteholdings.com?subject=Command%20Room%20security" style="color:var(--brass-deep); border-bottom:1px solid color-mix(in oklab,var(--brass) 45%,transparent);">matthew@chaletteholdings.com</a> and get answered directly.</p>
     </div>
-  </div>
-</section>
+  </section>
 
+</div><!-- /security -->
 
-<!-- ============================================================
-     GUARANTEE RIBBON
-     A brass band between Who-it's-for and Engagement. The
-     guarantee is load-bearing for the sale — gets its own moment
-     instead of sitting buried as bullet 4 of 4.
-     ============================================================ -->
-<section class="guarantee" id="guarantee">
-  <div class="wrap">
-    <div class="guarantee-inner">
-      <span class="guarantee-marker">The guarantee</span>
-      <p class="guarantee-line">
-        The engagement is <em>guaranteed.</em> If the system isn&rsquo;t the way you work by the end of onboarding, you don&rsquo;t pay.
-      </p>
+<!-- ████████████████████ PAGE · ABOUT ████████████████████ -->
+<div class="page" data-page="about">
+
+  <section>
+    <div class="wrap">
+      <div class="section-head rv">
+        <p class="eyebrow">About</p>
+        <h2>Built by an operator <em>who needed it to exist.</em></h2>
+        <p class="lead">Command Room was not designed in a product meeting. It was built by someone running real businesses who wanted an AI that actually knew his work, and could not buy one anywhere.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-story rv">
+          <p><b>Matthew Davidov built Command Room for himself in January 2026.</b> Running Chalette Holdings, a consulting firm with operating businesses and deal flow underneath it, he wanted what every operator wants: an AI that knew his projects, his people, his meetings, and his commitments, instead of a smart stranger that starts from zero every conversation. It did not exist. So he built it, on top of a file-based memory that lives on his own desktop, and used it every day to run his own work.</p>
+          <p><b>The business found him.</b> He showed it to a business owner he was seeing deals with. A day later the question came back: are you selling this. The engagements that followed turned a personal tool into a practice. The first clients did not ask for more features. They asked him to do their executive teams next.</p>
+          <p><b>That experience set the model.</b> What made those engagements work was not the software alone. It was an operator who has sat in the chair, who can talk with the accountant who has never touched AI and with the IT team in the same afternoon, pointing the tool at what each person actually deals with. That is why Chalette sells the product and the working sessions as one thing, and why the standard is value delivered, not licenses sold.</p>
+          <p><b>Chalette today</b> delivers Command Room engagements under NDA inside some of the most demanding founder- and executive-led companies. The people who sit with clients are chosen for one ability: understanding the person across the table and the business they run. Builders support the product behind them. The conviction stays the same as it was in January: nobody knows which model wins, so the only things worth building on are your people's fluency and your business's memory.</p>
+        </div>
+
+        <div class="about-side">
+          <div class="founder-card rv">
+            <div class="av">MD</div>
+            <div class="nm">Matthew Davidov</div>
+            <div class="rl">Founder · Chalette Holdings</div>
+            <div class="qq">"I'm value-driven and people-driven, not product-driven. I've run a business; I know the difference."</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-actions rv" style="margin-top:48px;">
+        <a class="btn lg" data-contact>Start the conversation</a>
+        <span class="btn ghost lg" data-go="work">See how the work runs</span>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-
-<!-- ============================================================
-     ENGAGEMENT
-     ============================================================ -->
-<section id="engagement">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-marker"><span>The engagement</span></div>
-      <h2 class="section-title">How we <span class="brass-em">work with you.</span></h2>
-    </div>
-
-    <div class="engagement-grid">
-      <article class="engagement-card primary">
-        <div class="marker"><span class="dot"></span><span>The Chalette engagement</span></div>
-        <h3>Done <em>with</em> you.</h3>
-        <p>A hands-on install, then an ongoing partnership that evolves with the tools.</p>
-        <ul>
-          <li>Install and onboarding for you and your team</li>
-          <li>A weekly working session inside your actual decisions</li>
-          <li>New capabilities added as models and tools evolve</li>
-          <li>Capability transferred. Your team owns it.</li>
-        </ul>
-        <a class="btn btn-primary" href="mailto:Matthew@chaletteholdings.com">Contact</a>
-        <p class="footer-note">We&rsquo;ll walk you through it on the call.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
+</div><!-- /about -->
 
 </main>
 
-<script src="assets/nav.js" defer></script>
-
-<!-- ============================================================
-     FOOTER
-     ============================================================ -->
+<!-- ============ FOOTER ============ -->
 <footer>
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <img src="assets/logo-lockup-reversed.svg" alt="Chalette">
-        <p>Executive AI Implementation</p>
+  <div class="wrap foot-in">
+    <div>
+      <div class="foot-lock">
+        <svg viewBox="0 0 300 206" aria-label="Command Room by Chalette">
+          <circle cx="150" cy="46" r="40" fill="#1A1714"></circle>
+          <text x="150" y="63" font-family="'Cormorant Garamond', Georgia, serif" font-weight="600" font-size="51" text-anchor="middle" fill="#B88B4A">C</text>
+          <text x="150" y="150" font-family="'Cormorant Garamond', Georgia, serif" font-weight="500" font-size="48" text-anchor="middle" letter-spacing="-0.5"><tspan fill="#B88B4A">C</tspan><tspan fill="#1A1714">halette</tspan></text>
+          <line x1="95" y1="158" x2="205" y2="158" stroke="#B88B4A" stroke-width="1.5"></line>
+          <text x="150" y="181" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-weight="500" font-size="11" letter-spacing="3.4" fill="#2A2420">COMMAND ROOM</text>
+        </svg>
       </div>
-      <div class="footer-col">
-        <h5>Firm</h5>
-        <ul>
-          <li><a href="about.html">About us</a></li>
-          <li><a href="how-it-works.html#how">How we work</a></li>
-          <li><a href="#what">What you get</a></li>
-          <li><a href="#audience">Who it&rsquo;s for</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Product</h5>
-        <ul>
-          <li><a href="#what">Command Room</a></li>
-          <li><a href="how-it-works.html">How it works</a></li>
-          <li><a href="examples.html">Examples</a></li>
-          <li><a href="#engagement">Engagement</a></li>
-          <li><a href="security.html">Security</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Contact</h5>
-        <ul>
-          <li><a href="mailto:Matthew@chaletteholdings.com">Matthew@chaletteholdings.com</a></li>
-        </ul>
-      </div>
+      <div class="foot-meta">Command Room is the product. Chalette is the firm behind it.<br>Executive AI Implementation · Chalette Holdings</div>
     </div>
-    <div class="footer-meta">
-      <span>&copy; Chalette</span>
+    <div class="foot-links">
+      <span data-go="home">Home</span>
+      <span data-go="work">The work</span>
+      <span data-go="examples">Examples</span>
+      <span data-go="security">Security</span>
+      <span data-go="about">About</span>
+      <a href="mailto:matthew@chaletteholdings.com">Contact</a>
     </div>
   </div>
 </footer>
+
+<script>
+  // ---- reveal on scroll ----
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rv').forEach((el,i)=>{
+    el.style.transitionDelay = Math.min((i%6)*40,200)+'ms';
+    io.observe(el);
+  });
+
+  // ---- page router ----
+  const pages = document.querySelectorAll('.page');
+  const tabs = document.querySelectorAll('[data-go]');
+  const menu = document.getElementById('mobilemenu');
+  const valid = ['home','work','examples','security','about'];
+
+  function go(name, push){
+    if(!valid.includes(name)) name = 'home';
+    pages.forEach(p=>p.classList.toggle('is-on', p.dataset.page===name));
+    document.querySelectorAll('.tab[data-go]').forEach(t=>t.classList.toggle('on', t.dataset.go===name));
+    menu.classList.remove('open');
+    if(push!==false){ try{ history.pushState(null,'','#'+name); }catch(e){} }
+    window.scrollTo(0,0);
+  }
+
+  tabs.forEach(t=>t.addEventListener('click', ()=>go(t.dataset.go)));
+
+  document.querySelectorAll('[data-contact]').forEach(b=>b.addEventListener('click',(e)=>{
+    e.preventDefault();
+    menu.classList.remove('open');
+    const onHome=document.querySelector('.page[data-page="home"]').classList.contains('is-on');
+    if(!onHome) go('home');
+    setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}), onHome?0:80);
+  }));
+
+  document.getElementById('burger').addEventListener('click',()=>menu.classList.toggle('open'));
+
+  window.addEventListener('popstate',()=>go((location.hash||'#home').slice(1), false));
+
+  // initial route
+  go((location.hash||'#home').slice(1), false);
+
+  // ---- fable widgets ----
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const sleep = ms => new Promise(r=>setTimeout(r,ms));
+
+  // 1 · smart stranger demo
+  const PAIRS = [
+    {
+      q: "Draft a reply to David about the contract.",
+      a: "Happy to help. Who is David, and which contract are you referring to? If you can share the details and what you want to say, I can draft something.",
+      b: '<div class="out-meta">Draft ready · your voice · saved to Gmail drafts</div>'
+       + '<div class="out-quote"><span class="qhead"><b>To:</b> David Reiner · <b>Subject:</b> Re: Services Agreement, redline</span>'
+       + 'David, good speaking Tuesday. We are aligned on the revised payment terms, net 45 with the quarterly true-up. Section 4.2 stays out as discussed. Redline attached, let us target signature by Friday.</div>'
+       + '<div class="out-note">Flag: you still owe David the intro to your banker, from May 28. Want a line added?</div>',
+      chips: ["Tuesday's transcript","Your voice","Open commitments"]
+    },
+    {
+      q: "Prep me for my 10:00.",
+      a: "I don't have access to your calendar. Could you tell me who the meeting is with and what you would like to cover?",
+      b: '<div class="out-meta">1:1 prep · Sarah · 10:00 · brief saved to your folder</div>'
+       + '<ul class="out-list">'
+       + '<li><b>Acknowledge:</b> she shipped the pricing proposal a day early</li>'
+       + '<li><b>Raise:</b> pipeline at 1.8x against the 3x target, ask what she is cutting</li>'
+       + '<li><b>You owe her:</b> the Bridgewater intro, committed Jun 7</li>'
+       + '<li><b>Listen for:</b> she flagged stretched in the last pulse, leave room</li>'
+       + '</ul>',
+      chips: ["Calendar","Last 1:1","Email threads","Team pulse"]
+    },
+    {
+      q: "What did we decide on pricing?",
+      a: "I don't have a record of your pricing decisions. If you give me the background, I can help you think it through.",
+      b: '<div class="out-meta">Decision log · March 14</div>'
+       + '<ul class="out-list">'
+       + '<li><b>Decided:</b> usage-based tiers for new accounts only</li>'
+       + '<li><b>Existing accounts:</b> grandfathered through Q4</li>'
+       + '<li><b>Why:</b> protect renewals while testing price elasticity on new logos</li>'
+       + '<li><b>Raised by</b> your VP of sales, after the scenario review</li>'
+       + '</ul>',
+      chips: ["Decision log","Meeting notes"]
+    }
+  ];
+  const qEl=document.getElementById('demoQ'), aEl=document.getElementById('demoA'),
+        bEl=document.getElementById('demoB'), chipsEl=document.getElementById('demoChips');
+  function typeText(el, text, speed){
+    return new Promise(res=>{
+      let i=0;
+      const t=setInterval(()=>{
+        el.textContent=text.slice(0,++i);
+        if(i>=text.length){clearInterval(t);res();}
+      },speed);
+    });
+  }
+  function setChips(chips){
+    chipsEl.innerHTML='';
+    chips.forEach(c=>{const s=document.createElement('span');s.className='chip';s.textContent=c;chipsEl.appendChild(s);});
+  }
+  async function runDemo(){
+    let pi=0;
+    for(;;){
+      const p=PAIRS[pi++ % PAIRS.length];
+      aEl.classList.remove('show'); bEl.classList.remove('show');
+      chipsEl.classList.remove('on');
+      qEl.textContent='';
+      await sleep(900);
+      aEl.textContent=''; bEl.innerHTML='';
+      await typeText(qEl,p.q,60);
+      await sleep(900);
+      aEl.textContent=p.a; aEl.classList.add('show');
+      await sleep(1400);
+      bEl.innerHTML=p.b; bEl.classList.add('show');
+      await sleep(900);
+      setChips(p.chips);
+      chipsEl.classList.add('on');
+      await sleep(9000);
+    }
+  }
+  if(qEl){
+    if(RM){
+      const p=PAIRS[0];
+      qEl.textContent=p.q; aEl.textContent=p.a; bEl.innerHTML=p.b;
+      aEl.classList.add('show'); bEl.classList.add('show');
+      setChips(p.chips); chipsEl.classList.add('on');
+    } else {
+      let started=false;
+      new IntersectionObserver((es,obs)=>{
+        es.forEach(e=>{ if(e.isIntersecting && !started){ started=true; runDemo(); obs.disconnect(); } });
+      },{threshold:0.25}).observe(document.getElementById('demoSec'));
+    }
+  }
+
+  // 2 · substrate model cycle
+  const subName=document.getElementById('subName'), subFiles=document.getElementById('subFiles');
+  if(subName && !RM){
+    const MODELS=['Claude','the next model','the one after that'];
+    let mi=0;
+    setInterval(async ()=>{
+      subName.classList.add('swap');
+      await sleep(420);
+      mi=(mi+1)%MODELS.length;
+      subName.textContent=MODELS[mi];
+      subName.classList.remove('swap');
+      subFiles.classList.add('pulse');
+      await sleep(900);
+      subFiles.classList.remove('pulse');
+    },3000);
+  }
+
+  // 3 · compounding curve
+  const cPath=document.getElementById('curvePath');
+  if(cPath){
+    const L=cPath.getTotalLength();
+    [['cm1',0.06],['cm2',0.48],['cm3',0.96]].forEach(([id,fr])=>{
+      const pt=cPath.getPointAtLength(L*fr);
+      const c=document.getElementById(id).querySelector('circle');
+      c.setAttribute('cx',pt.x); c.setAttribute('cy',pt.y);
+    });
+    if(RM){
+      ['cm1','cm2','cm3'].forEach(id=>document.getElementById(id).classList.add('on'));
+    } else {
+      cPath.style.strokeDasharray=L;
+      cPath.style.strokeDashoffset=L;
+      let drawn=false;
+      new IntersectionObserver((es,obs)=>{
+        es.forEach(e=>{
+          if(e.isIntersecting && !drawn){
+            drawn=true;
+            cPath.style.transition='stroke-dashoffset 2s cubic-bezier(.4,0,.2,1)';
+            requestAnimationFrame(()=>{ cPath.style.strokeDashoffset='0'; });
+            setTimeout(()=>document.getElementById('cm1').classList.add('on'),400);
+            setTimeout(()=>document.getElementById('cm2').classList.add('on'),1100);
+            setTimeout(()=>document.getElementById('cm3').classList.add('on'),1900);
+            obs.disconnect();
+          }
+        });
+      },{threshold:0.4}).observe(document.getElementById('curveWrap'));
+    }
+  }
+</script>
 
 </body>
 </html>
