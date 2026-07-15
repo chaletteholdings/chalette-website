@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Command Room by Chalette — Value isn't installed. It's adopted.</title>
-<meta name="description" content="Command Room is an AI operator that knows your business. Chalette puts it in the hands of the people who run the company, and makes sure they use it.">
+<title>Command Room by Chalette. An operating system built around you and your business.</title>
+<meta name="description" content="A done-with-you operating system for the people who run the business. Built by operators, delivered beside you, on a memory of your business you own. Value isn't installed, it's adopted.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 72'%3E%3Ccircle cx='36' cy='36' r='36' fill='%231A1714'/%3E%3Ctext x='36' y='50' font-family='Georgia,serif' font-weight='600' font-size='46' text-anchor='middle' fill='%23B88B4A'%3EC%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -99,6 +99,12 @@
   .hero .hero-tag{font-family:var(--serif); font-style:italic; font-size:clamp(20px,2.6vw,27px); line-height:1.35; color:var(--brass-deep); margin:22px 0 0; max-width:640px}
   .hero .lead{max-width:620px; margin-top:18px}
   .hero-actions{display:flex; flex-wrap:wrap; gap:14px; margin-top:38px}
+  .hero-top{display:flex; gap:52px; align-items:flex-start}
+  .hero-copy{max-width:780px; flex:1; min-width:0}
+  .hero-rail{width:214px; flex:none; border-left:1px solid var(--border); padding-left:28px; display:flex; flex-direction:column; gap:30px; margin-top:8px}
+  .hero-rail .hs .n{font-family:var(--serif); font-size:46px; line-height:1; color:var(--brass-deep)}
+  .hero-rail .hs .l{font-size:12.5px; color:var(--fg-2); margin-top:8px; line-height:1.5}
+  @media(max-width:860px){.hero-top{flex-direction:column; gap:34px} .hero-rail{width:100%; border-left:0; border-top:1px solid var(--border); padding-left:0; padding-top:26px; flex-direction:row; gap:40px} .hero-rail .hs{flex:1}}
   .hero-note{margin-top:30px; font:400 13px/1.5 var(--mono); color:var(--fg-muted); letter-spacing:.02em}
   .hero-shot{display:none; background:var(--bone); border:1px solid var(--border); border-radius:6px; box-shadow:var(--shadow); overflow:hidden}
   @media(min-width:960px){.hero-shot{display:block}}
@@ -110,11 +116,15 @@
   /* ---- stat band ---- */
   .band{background:var(--ink); color:var(--bone)}
   .band-in{display:grid; grid-template-columns:1fr; gap:0}
-  @media(min-width:760px){.band-in{grid-template-columns:repeat(4,1fr)}}
+  @media(min-width:760px){.band-in{grid-template-columns:repeat(2,1fr); max-width:820px; margin:0 auto}}
   .band .s{padding:34px 28px; border-bottom:1px solid #322c24}
   @media(min-width:760px){.band .s{border-bottom:0; border-right:1px solid #322c24} .band .s:last-child{border-right:0}}
   .band .s .n{font-family:var(--serif); font-size:38px; line-height:1; color:var(--brass-2)}
   .band .s .l{font-size:13px; color:#C7BCA7; margin-top:10px; line-height:1.45}
+  .band-quote{padding:76px 0}
+  .band-quote .bq{max-width:860px; margin:0 auto; text-align:center}
+  .band-quote .bq q{font-family:var(--serif); font-style:italic; font-size:clamp(26px,3.6vw,40px); line-height:1.28; color:var(--bone); quotes:none; display:block}
+  .band-quote .bq cite{display:block; margin-top:22px; font:600 11px/1 var(--mono); letter-spacing:.24em; text-transform:uppercase; color:var(--brass-2); font-style:normal}
 
   /* ---- pillars (four reasons) ---- */
   .pillars{background:var(--paper); border-top:1px solid var(--border); border-bottom:1px solid var(--border)}
@@ -164,7 +174,7 @@
   .onething .pair{display:grid; gap:1px; background:var(--border); border:1px solid var(--border); border-radius:3px; overflow:hidden; margin-top:8px}
   @media(min-width:760px){.onething .pair{grid-template-columns:1fr 1fr}}
   .onething .half{background:var(--bone); padding:34px 32px}
-  .onething .half .k{font:500 10px/1 var(--mono); letter-spacing:.24em; text-transform:uppercase; color:var(--brass-deep)}
+  .onething .half .k{font:600 13.5px/1.2 var(--mono); letter-spacing:.16em; text-transform:uppercase; color:var(--brass-deep)}
   .onething .half h3{font-size:22px; margin:14px 0 10px}
   .onething .half p{font-size:14.5px; color:var(--fg-2); margin:0}
   .onething .weld{margin-top:20px; border-left:3px solid var(--brass); background:var(--paper); border-radius:0 3px 3px 0; padding:24px 30px; font-family:var(--serif); font-size:19px; font-style:italic; color:var(--ink); line-height:1.5; max-width:100%}
@@ -173,6 +183,8 @@
   .split2{display:grid; gap:20px; grid-template-columns:1fr}
   @media(min-width:760px){.split2{grid-template-columns:1fr 1fr}}
   .col-card{border:1px solid var(--border); background:var(--bone); padding:30px 30px 32px; border-radius:3px}
+  .col-card .tq{font-family:var(--serif); font-style:normal; font-size:20px; line-height:1.6; color:var(--ink); margin:0}
+  .col-card .ta{margin-top:16px; font:600 11.5px/1.4 var(--mono); letter-spacing:.1em; text-transform:uppercase; color:var(--brass-deep)}
   .col-card.down{background:var(--cream)}
   .col-card.up{border-color:color-mix(in oklab,var(--brass) 45%,var(--border)); box-shadow:var(--shadow)}
   .col-card .tag{font:500 10px/1 var(--mono); letter-spacing:.24em; text-transform:uppercase; color:var(--fg-muted)}
@@ -370,10 +382,11 @@
   @keyframes blink{50%{opacity:0}}
   .demo-panes{display:grid;gap:18px;grid-template-columns:1fr;margin-top:18px}
   @media(min-width:820px){.demo-panes{grid-template-columns:1fr 1.15fr}}
-  .pane{border:1px solid var(--border);border-radius:3px;padding:22px 24px;min-height:190px}
+  .pane{border:1px solid var(--border);border-radius:3px;padding:22px 24px;min-height:380px}
+  @media(min-width:820px){.pane{min-height:300px}}
   .pane.generic{background:var(--cream)}
   .pane.cr{background:var(--bone);border-color:color-mix(in oklab,var(--brass) 50%,var(--border));box-shadow:var(--shadow)}
-  .pane .ph{font:500 9.5px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--fg-muted);margin-bottom:14px}
+  .pane .ph{font:600 13px/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--fg-2);margin-bottom:14px}
   .pane.cr .ph{color:var(--brass-deep)}
   .pane .pt{font-size:14.5px;line-height:1.65;color:var(--fg-2);opacity:0;transform:translateY(8px);transition:opacity .7s ease,transform .7s ease}
   .pane .pt.show{opacity:1;transform:none}
@@ -460,7 +473,7 @@
       <span class="tab" data-go="about">About</span>
     </nav>
     <div style="display:flex; gap:12px; align-items:center;">
-      <a class="btn ghost nav-cta" data-contact>Start the conversation</a>
+      <a class="btn ghost nav-cta" data-contact>Contact</a>
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -470,7 +483,7 @@
     <span class="tab" data-go="examples">Examples</span>
     <span class="tab" data-go="security">Security</span>
     <span class="tab" data-go="about">About</span>
-    <span class="tab" data-contact>Start the conversation</span>
+    <span class="tab" data-contact>Contact</span>
   </div>
 </header>
 
@@ -480,51 +493,23 @@
 <div class="page is-on" data-page="home">
 
   <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <p class="eyebrow rv">Command Room by Chalette · AI for the people who run the business</p>
+    <div class="wrap">
+      <div class="hero-top">
+        <div class="hero-copy">
+        <p class="eyebrow rv" style="font-size:13.5px; letter-spacing:.2em; margin-bottom:22px;">Command Room by Chalette</p>
         <h1 class="rv">
-          <span class="line">Value isn't installed.</span>
-          <span class="line"><em>It's adopted.</em></span>
+          <span class="line">An operating system,</span>
+          <span class="line"><em>built around you and your business.</em></span>
         </h1>
-        <p class="hero-tag rv">It compounds only when real people use it on real work.</p>
-        <p class="lead rv">Command Room hands you back real time each week, then points it at the decisions that grow the company. It pulls your email, calendar, meetings, and files into one organized, prioritized picture, with reasoning on top. Not to replace your judgment, to multiply it.</p>
+        <p class="hero-tag rv">Done with you, not just handed to you.</p>
+        <p class="lead rv">AI value is not installed. It is adopted. Most companies spend downstream, automating workflows, and see little of it reach the P&amp;L. The return lives upstream, with the people who actually run the business, and it only compounds once they use it on real work every day. Command Room is the operating system that gets it there.</p>
         <div class="hero-actions rv">
-          <a class="btn lg" data-contact>Start the conversation</a>
+          <a class="btn lg" data-contact>Contact</a>
           <span class="btn ghost lg" data-go="work">See how it works</span>
         </div>
-      </div>
-      <div class="hero-shot rv">
-        <div class="frag-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="tt">Command Room · This morning</span></div>
-        <div class="frag-body">
-          <div class="shot-note">Your day, prioritized for you</div>
-          <div class="pv-row u"><span class="mk"></span><div><div class="t">Decide: vendor contract, sign or renegotiate</div><div class="ss">Raised by your head of ops · blocks the Q3 plan</div></div><span class="pv-chip c">Blocking</span></div>
-          <div class="shot-note">Written in your voice, ready to send</div>
-          <div class="pv-row"><span class="mk"></span><div><div class="t">Draft waiting: reply to the board chair</div><div class="ss">Review and send</div></div><span class="pv-chip">Draft</span></div>
-          <div class="shot-note">Caught before it cost you</div>
-          <div class="pv-row s"><span class="mk"></span><div><div class="t">A fee on the revised invoice that was not agreed</div><div class="ss">Flagged from the thread before it was paid</div></div><span class="pv-chip b">Flag</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="pillars">
-    <div class="wrap pillars-in">
-      <div class="pillar rv"><span class="pk"></span><div class="ph">For the people who run it</div><div class="pd">Built for the leaders running the company, not the busywork beneath them.</div></div>
-      <div class="pillar rv"><span class="pk"></span><div class="ph">Knows your business</div><div class="pd">Your people, projects, decisions, and commitments. Never a blank chat.</div></div>
-      <div class="pillar rv"><span class="pk"></span><div class="ph">Immediate value</div><div class="pd">Set up on your real work, producing inside the first 90 minutes.</div></div>
-      <div class="pillar rv"><span class="pk"></span><div class="ph">Backed by a guarantee</div><div class="pd">See real value by the second session.</div></div>
-    </div>
-  </div>
-
-  <!-- ===== SMART STRANGER DEMO ===== -->
-  <section id="demoSec" style="background:var(--bone); padding-bottom:72px;">
-    <div class="wrap">
-      <div class="section-head rv" style="margin-bottom:38px;">
-        <p class="eyebrow">See the difference</p>
-        <h2>The same question. <em>Two different AIs.</em></h2>
-      </div>
-      <div class="demo rv">
+        </div><!-- /hero-copy -->
+      </div><!-- /hero-top -->
+      <div id="demoSec" class="demo rv" style="margin-top:64px;">
         <div class="demo-prompt"><span class="ic">›</span><span id="demoQ"></span><span class="caret"></span></div>
         <div class="demo-panes">
           <div class="pane generic"><div class="ph">Any AI · no context</div><div class="pt" id="demoA"></div></div>
@@ -534,86 +519,71 @@
     </div>
   </section>
 
-  <!-- ===== THESIS ===== -->
-  <section style="background:var(--paper); padding-bottom:72px;">
+  <div class="band band-quote">
     <div class="wrap">
-      <div class="section-head rv" style="margin-bottom:38px;">
-        <p class="eyebrow">The thesis</p>
-        <h2>Everyone is automating the cheap work. <em>Nobody is equipping the expensive people.</em></h2>
-      </div>
-      <div class="split2">
-        <div class="col-card down rv">
-          <span class="tag">Downstream · crowded</span>
-          <h3>Where the energy goes</h3>
-          <ul>
-            <li>Workflow automation and chatbots</li>
-            <li>Tasks, not judgment</li>
-            <li>Tooling leadership never touches</li>
-            <li>Commoditized by the week</li>
-          </ul>
-        </div>
-        <div class="col-card up rv">
-          <span class="tag">Upstream · underserved</span>
-          <h3>Where Chalette points it</h3>
-          <ul>
-            <li>The owner, the operator, the leadership team</li>
-            <li>Their meetings, threads, and commitments</li>
-            <li>Their judgment, amplified</li>
-            <li>Fluency that compounds with use</li>
-          </ul>
-        </div>
+      <div class="bq rv">
+        <q>Your most effective day becomes your everyday.</q>
+        <cite>A transformation, not a faster assistant</cite>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ===== PRODUCT + PEOPLE ===== -->
-  <section class="onething" style="padding-top:72px;">
+  <!-- ===== WHAT YOU BECOME (the outcome) ===== -->
+  <section class="onething" style="background:var(--paper);">
     <div class="wrap">
       <div class="section-head rv" style="margin-bottom:38px;">
-        <p class="eyebrow">What you actually get</p>
-        <h2>Command Room, and the people <em>who make it stick.</em></h2>
+        <h2>From doing it all, <em>to conducting it all.</em></h2>
+        <p class="lead">The engagement builds Command Room around your real work. The system brings the hands: your prep, your drafts, your analysis, your follow-ups, all worked at once, in your voice, to your standards. You conduct, and nothing slips.</p>
       </div>
       <div class="pair">
         <div class="half rv">
-          <div class="k">The product</div>
-          <h3>Command Room</h3>
-          <p>An AI operator that knows your business. It preps your meetings, drafts in your voice, tracks what is owed, and surfaces what is slipping.</p>
+          <div class="k">Doing it all</div>
+          <h3>Your day is a queue</h3>
+          <p>Every draft, every prep, every answer runs through your hands, one at a time, and the queue never empties.</p>
         </div>
         <div class="half rv">
-          <div class="k">The people</div>
-          <h3>Chalette, beside you</h3>
-          <p>People who understand business sit in your real work, point the tool where it pays, and train your team until they run it themselves.</p>
+          <div class="k">Conducting it all</div>
+          <h3>The queue becomes a team</h3>
+          <p>The system works it simultaneously, in your voice, to your standards. You set direction, judge the output, and stay ahead of it.</p>
         </div>
-      </div>
-      <div class="weld rv">Software alone gathers dust. Training alone fades. Together, it compounds.</div>
-      <div class="hero-actions rv" style="margin-top:30px;">
-        <span class="btn lg" data-go="examples">See it on real work</span>
       </div>
     </div>
   </section>
 
-  <!-- ===== IN / ON THE BUSINESS ===== -->
-  <section class="moat">
+  <hr class="rule">
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="onething" style="background:var(--bone); border-top:1px solid var(--border); padding-bottom:76px;">
     <div class="wrap">
-      <div class="section-head rv">
-        <p class="eyebrow">Why daily use matters</p>
-        <h2>You can't lead what <em>you don't use.</em></h2>
-        <p class="lead">Every company is being told to transform with AI, and almost no one leading the charge actually uses it. Command Room earns a place in your daily work, then shows up for the strategic calls that make the company money.</p>
+      <div class="section-head rv" style="margin-bottom:38px;">
+        <h2>In their words, <em>not ours.</em></h2>
+        <p class="lead">Most of our business has come by warm referral: owners who felt it sending the next owner. Every quote below is verbatim from a client call, names withheld.</p>
       </div>
-      <div class="mgrid">
-        <div class="mcard rv">
-          <h3>The daily work</h3>
-          <p>Hours back, every week. Briefs, meeting prep, drafts in your voice, commitments tracked. The visible productivity that makes it a daily habit.</p>
+      <div class="weld rv" style="margin-top:0; font-style:normal; font-size:22px; line-height:1.6;">"It doesn't just make things easier. It makes you more effective. This just supercharges you as a person and what you can do. If everybody else stays in the same place and they're dabbling with things, you can surpass people tremendously with these opportunities right now."<span style="display:block; margin-top:18px; font:600 11px/1 var(--mono); letter-spacing:.16em; text-transform:uppercase; color:var(--brass-deep); font-style:normal;">Owner · Building materials distributor</span></div>
+      <div class="split2" style="margin-top:20px;">
+        <div class="col-card rv">
+          <p class="tq">"I sent a contract to my attorney and he said it looked good. Then I had it take a look, and it found errors he missed. I sent that back and he said, you must have a really bad attorney, because I should have caught that."</p>
+          <p class="ta">CEO · Heavy equipment distributor</p>
         </div>
-        <div class="mcard rv">
-          <h3>The decisions that grow the company</h3>
-          <p>The call that makes the year. An acquisition, a renegotiation, a pricing overhaul, a tough contract. The sessions point it at your real decisions, with someone who knows the business beside you.</p>
+        <div class="col-card rv">
+          <p class="tq">"Even if I had all the hours in the day, I could not have done this myself."</p>
+          <p class="ta">Executive coach · Leadership advisory practice</p>
         </div>
-      </div>
-      <div class="assets rv" style="grid-template-columns:1fr;">
-        <div class="asset">
-          <div class="t">One feeds the other</div>
-          <p>Daily use builds the fluency. The sessions point that fluency at your biggest decisions. That is how you end up leading the transition instead of signing off on it.</p>
+        <div class="col-card rv">
+          <p class="tq">"For most people, it gets them operating in AI right now rather than next week, next month. This gets you from zero to 35 miles an hour quickly."</p>
+          <p class="ta">CEO · Industrial products manufacturer</p>
+        </div>
+        <div class="col-card rv">
+          <p class="tq">"I feel like I have a better control of what's going on. I'm getting back to my team quicker, a lot quicker. That's huge value, holding people accountable right away."</p>
+          <p class="ta">Senior executive · Heavy equipment distributor</p>
+        </div>
+        <div class="col-card rv">
+          <p class="tq">"I did a financial review with my COO and plugged in a ton of documents. It gave me a 12-page executive report on all the issues, the concerns, and the questions to ask. It was amazing."</p>
+          <p class="ta">Owner · Building materials distributor</p>
+        </div>
+        <div class="col-card rv">
+          <p class="tq">"It's a big shift in how I work, and not just the way I'm working, but the way I'm thinking."</p>
+          <p class="ta">Founder · Consumer wellness brand</p>
         </div>
       </div>
     </div>
@@ -622,7 +592,7 @@
   <!-- ===== THE STANDARD (one line) ===== -->
   <section style="background:var(--bone); border-top:1px solid var(--border); padding:62px 0;">
     <div class="wrap">
-      <p class="rv" style="font-family:var(--serif); font-style:italic; font-size:clamp(21px,3vw,30px); line-height:1.45; color:var(--ink); text-align:center; max-width:760px; margin:0 auto;">We measure ourselves on two things: <em>did it bring real value</em>, and <em>did you ask us back for your team.</em></p>
+      <p class="rv" style="font-family:var(--serif); font-style:italic; font-size:clamp(21px,3vw,30px); line-height:1.45; color:var(--ink); text-align:center; max-width:760px; margin:0 auto;">We measure ourselves on two things: <em>did it bring real value</em>, and <em>did it earn a referral, to your team or beyond.</em></p>
     </div>
   </section>
 
@@ -630,10 +600,13 @@
   <section id="contact" style="background:var(--paper); border-top:1px solid var(--border);">
     <div class="wrap">
       <div class="section-head rv" style="margin-bottom:34px;">
-        <p class="eyebrow">Contact</p>
-        <h2>Start the conversation.</h2>
+        <h2>Speed to <em>value.</em></h2>
+        <p class="lead">Start with a live demo, we are glad to show it. Then one working session puts it on your own business, and the clock is the point: real work handled before that session ends, real value by the second, or your money back.</p>
       </div>
-      <a class="contact-mail rv" href="mailto:matthew@chaletteholdings.com?subject=Command%20Room">matthew@chaletteholdings.com</a>
+      <div class="hero-actions rv" style="margin-top:4px; margin-bottom:28px;">
+        <a class="btn lg" href="mailto:matthew@chaletteholdings.com?subject=Command%20Room%20demo">Contact</a>
+      </div>
+      <a class="contact-mail rv" href="mailto:matthew@chaletteholdings.com?subject=Command%20Room%20demo">matthew@chaletteholdings.com</a>
       <p class="rv" style="margin:26px 0 0; font-size:14.5px; color:var(--fg-2); max-width:680px;">For IT and security teams: <a href="docs/Command-Room-Security-Overview.pdf" target="_blank" style="color:var(--brass-deep); border-bottom:1px solid color-mix(in oklab,var(--brass) 45%,transparent);">the security overview</a>.</p>
     </div>
   </section>
@@ -647,9 +620,8 @@
   <section style="padding-bottom:54px;">
     <div class="wrap">
       <div class="section-head rv">
-        <p class="eyebrow">The work</p>
         <h2>An engagement, <em>not a license.</em></h2>
-        <p class="lead">You get Command Room set up on your real work, and people who understand business beside you to point it. The standard is value, not seats sold. See it by the second session, or your money back.</p>
+        <p class="lead">Operator-first, not tech-first. A Chalette operator works beside you across four working sessions, building Command Room around your real work until it is adopted, not just installed. Feel real value by the second session, or your money back.</p>
       </div>
     </div>
   </section>
@@ -657,18 +629,42 @@
   <!-- ===== ANATOMY ===== -->
   <div class="pillars">
     <div class="wrap pillars-in">
-      <div class="pillar rv"><span class="pk"></span><div class="ph">Command Room</div><div class="pd">The product, set up on your real work from day one.</div></div>
-      <div class="pillar rv"><span class="pk"></span><div class="ph">Four working sessions</div><div class="pd">Hands-on, in your actual problems. Not a course.</div></div>
-      <div class="pillar rv"><span class="pk"></span><div class="ph">A value guarantee</div><div class="pd">See real value by the second session, or your money back.</div></div>
-      <div class="pillar rv"><span class="pk"></span><div class="ph">Support</div><div class="pd">After the engagement, ongoing support and team training stay optional. Never a long contract.</div></div>
+      <div class="pillar rv"><span class="pk"></span><div class="ph">Built with you</div><div class="pd">An operator beside you until this is how you work. Not handed to you.</div></div>
+      <div class="pillar rv"><span class="pk"></span><div class="ph">Knows your business</div><div class="pd">Command Room is built on your real work: your people, projects, decisions, and commitments. Never a blank chat.</div></div>
+      <div class="pillar rv"><span class="pk"></span><div class="ph">Adoption on the line</div><div class="pd">Feel real value by the second session, or your money back.</div></div>
+      <div class="pillar rv"><span class="pk"></span><div class="ph">A concierge after</div><div class="pd">Ongoing support and team training stay optional. Never a long contract.</div></div>
     </div>
   </div>
+
+  <!-- ===== PRODUCT + PEOPLE ===== -->
+  <section class="onething" style="padding-top:72px;">
+    <div class="wrap">
+      <div class="section-head rv" style="margin-bottom:38px;">
+        <h2>An operator, and the system <em>they build around you.</em></h2>
+        <p class="lead">It is an operating system for the people who run the business. But it arrives as an operator working beside you, never as software handed over.</p>
+      </div>
+      <div class="pair">
+        <div class="half rv">
+          <div class="k">The operator</div>
+          <h3>An operator, not a technician</h3>
+          <p>A Chalette operator builds this around your business across four one-on-one working sessions, then stays beside you as your concierge: tuning what it captures, correcting its voice, finding wins you did not think of. The approach is operator-first because that is what gets it adopted, where self-serve AI gathers dust.</p>
+        </div>
+        <div class="half rv">
+          <div class="k">The system</div>
+          <h3>Command Room</h3>
+          <p>Permissioned connectors to your email, calendar, meetings, and files let it be present for your real work. It writes what matters, your people, projects, decisions, and commitments, into a memory you own on your own machine, then produces finished work on a schedule: the morning brief before the day starts, meeting prep before the call, the follow-up drafted before the coffee is poured, a flag when a client goes quiet. It compounds. Month three knows what week one did not.</p>
+        </div>
+      </div>
+      <div class="hero-actions rv" style="margin-top:30px;">
+        <span class="btn lg" data-go="examples">See it on real work</span>
+      </div>
+    </div>
+  </section>
 
   <!-- ===== HOW IT GOES ===== -->
   <section class="session" style="background:var(--bone);">
     <div class="wrap">
       <div class="section-head rv">
-        <p class="eyebrow">How it goes</p>
         <h2>From setup <em>to second nature.</em></h2>
       </div>
       <div class="tl">
@@ -689,13 +685,13 @@
         </div>
         <div class="tl-item rv">
           <div class="k">Sessions three and four</div>
-          <h3>You take the wheel</h3>
-          <p>You start pointing it at the things no one could have built for you.</p>
+          <h3>You start conducting</h3>
+          <p>You stop doing the work one piece at a time and start directing it in parallel, pointed at the things no one could have built for you.</p>
         </div>
         <div class="tl-item rv">
           <div class="k">After</div>
           <h3>Then your team</h3>
-          <p>Most clients come back wanting their leadership team on it next.</p>
+          <p>Most clients come back wanting their leadership team on it next. Your operator stays as concierge either way.</p>
         </div>
       </div>
     </div>
@@ -705,7 +701,6 @@
   <section class="moat">
     <div class="wrap">
       <div class="section-head rv">
-        <p class="eyebrow">Why it lasts</p>
         <h2>Nobody knows where AI is going. <em>This is built so that does not matter.</em></h2>
         <p class="lead">What you build here is permanent: the memory of your business and your people's fluency with these tools. Both are yours to keep, and both get more valuable as the models get better. Command Room stores what it knows as plain files on your own computer, so any model you use next stacks right on top.</p>
       </div>
@@ -733,34 +728,10 @@
         </div>
         <div class="asset">
           <div class="t">Your business's memory</div>
-          <p>The structured record of how your business runs is yours to keep. Everything else, tool, model, billing, is replaceable.</p>
+          <p>The structured record of how your business runs is yours to keep, as plain files on your own machine. Delete the app and keep your data. Everything else, tool, model, billing, is replaceable.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ===== THE STANDARD ===== -->
-  <section class="score" style="background:var(--paper);">
-    <div class="wrap">
-      <div class="section-head rv">
-        <p class="eyebrow">The standard</p>
-        <h2>Measured on value, <em>not seats sold.</em></h2>
-      </div>
-      <div class="srow rv">
-        <div class="num">01</div>
-        <div>
-          <h3>Did it bring real value</h3>
-          <p>Hours back. What gets caught before it costs you. Insights you would not have produced alone. And whether your people start using it in ways no one could have designed for them.</p>
-        </div>
-      </div>
-      <div class="srow last rv">
-        <div class="num">02</div>
-        <div>
-          <h3>Did it earn the next room</h3>
-          <p>The honest scoreboard is the referral. When a client finishes and asks for their team next, the value was real. People who understand your business, not a software vendor. That is the whole difference.</p>
-        </div>
-      </div>
-      <p class="rv" style="margin:36px 0 0; font-size:14.5px; color:var(--fg-2); max-width:680px;">Start the conversation at <a href="mailto:matthew@chaletteholdings.com?subject=Command%20Room" style="color:var(--brass-deep); border-bottom:1px solid color-mix(in oklab,var(--brass) 45%,transparent);">matthew@chaletteholdings.com</a>.</p>
+      <p class="rv" style="margin:40px 0 0; font-size:14.5px; color:#C7BCA7; max-width:680px;">Book a demo at <a href="mailto:matthew@chaletteholdings.com?subject=Command%20Room%20demo" style="color:var(--brass-2); border-bottom:1px solid color-mix(in oklab,var(--brass) 45%,transparent);">matthew@chaletteholdings.com</a>.</p>
     </div>
   </section>
 
@@ -783,11 +754,21 @@
     .ex-t{font-size:17px;font-weight:600;color:var(--ink);line-height:1.25}
     .ex-d{font-size:13.5px;color:var(--fg-2);line-height:1.55;flex:1}
     .ex-open{font:500 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--brass-deep);margin-top:4px}
+    .ex-card{cursor:pointer}
+    /* PDF lightbox */
+    .pdf-modal{position:fixed;inset:0;z-index:1000;display:none}
+    .pdf-modal.open{display:block}
+    .pdf-backdrop{position:absolute;inset:0;background:rgba(10,8,7,.74);backdrop-filter:blur(2px)}
+    .pdf-dialog{position:absolute;inset:3vh 3vw;background:var(--bone);border-radius:8px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);display:flex}
+    .pdf-pages{flex:1;width:100%;overflow-y:auto;background:#312d29;padding:26px 20px;display:flex;flex-direction:column;align-items:center;gap:16px}
+    .pdf-pages img{width:100%;max-width:900px;height:auto;display:block;box-shadow:0 6px 22px rgba(0,0,0,.45);border-radius:2px}
+    .pdf-x{position:absolute;top:12px;right:16px;z-index:2;width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:#fff;color:var(--ink);font-size:24px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.25);transition:transform .12s}
+    .pdf-x:hover{transform:scale(1.07)}
+    @media(max-width:640px){.pdf-dialog{inset:0;border-radius:0}}
   </style>
   <section style="background:var(--bone);">
     <div class="wrap">
       <div class="section-head rv" style="margin-bottom:30px;">
-        <p class="eyebrow">Examples</p>
         <h2>What it actually produces.</h2>
         <p class="lead">Representative outputs, fully fictionalized. No real client, person, or figure appears here. The depth, structure, and voice are exactly what the system produces when it is reading from the memory of your business. Open any one.</p>
       </div>
@@ -853,7 +834,6 @@
   <section>
     <div class="wrap">
       <div class="section-head rv">
-        <p class="eyebrow">Security</p>
         <h2>Built so your data has one home: <em>yours.</em></h2>
         <p class="lead">The memory lives in plain files on your own computer. Chalette runs no servers, holds no database, and never takes possession of your data. The architecture is the security model.</p>
       </div>
@@ -924,7 +904,6 @@
   <section>
     <div class="wrap">
       <div class="section-head rv">
-        <p class="eyebrow">About</p>
         <h2>Built by an operator <em>who needed it to exist.</em></h2>
         <p class="lead">Command Room was not designed in a product meeting. It was built by someone running real businesses who wanted an AI that actually knew his work, and could not buy one anywhere.</p>
       </div>
@@ -948,13 +927,22 @@
       </div>
 
       <div class="hero-actions rv" style="margin-top:48px;">
-        <a class="btn lg" data-contact>Start the conversation</a>
+        <a class="btn lg" data-contact>Contact</a>
         <span class="btn ghost lg" data-go="work">See how the work runs</span>
       </div>
     </div>
   </section>
 
 </div><!-- /about -->
+
+<!-- ============ PDF LIGHTBOX ============ -->
+<div id="pdfModal" class="pdf-modal" aria-hidden="true">
+  <div class="pdf-backdrop" data-pdf-close></div>
+  <div class="pdf-dialog" role="dialog" aria-modal="true" aria-label="Example document">
+    <button class="pdf-x" data-pdf-close aria-label="Close">&times;</button>
+    <div id="pdfPages" class="pdf-pages"></div>
+  </div>
+</div>
 
 </main>
 
@@ -1026,6 +1014,32 @@
   // initial route
   go((location.hash||'#home').slice(1), false);
 
+  // ---- example lightbox (image pages, renders inline in any browser) ----
+  const PDF_PAGES = {
+    "Sample-Morning-Brief.pdf":["samples/pages/Sample-Morning-Brief-1.png","samples/pages/Sample-Morning-Brief-2.png","samples/pages/Sample-Morning-Brief-3.png"],
+    "Sample-Meeting-Notes.pdf":["samples/pages/Sample-Meeting-Notes-1.png","samples/pages/Sample-Meeting-Notes-2.png","samples/pages/Sample-Meeting-Notes-3.png","samples/pages/Sample-Meeting-Notes-4.png"],
+    "Sample-Contract-Review.pdf":["samples/pages/Sample-Contract-Review-1.png","samples/pages/Sample-Contract-Review-2.png","samples/pages/Sample-Contract-Review-3.png","samples/pages/Sample-Contract-Review-4.png"],
+    "Sample-Dormant-Customer.pdf":["samples/pages/Sample-Dormant-Customer-1.png","samples/pages/Sample-Dormant-Customer-2.png","samples/pages/Sample-Dormant-Customer-3.png","samples/pages/Sample-Dormant-Customer-4.png"],
+    "Sample-Research-Brief.pdf":["samples/pages/Sample-Research-Brief-1.png","samples/pages/Sample-Research-Brief-2.png","samples/pages/Sample-Research-Brief-3.png","samples/pages/Sample-Research-Brief-4.png"],
+    "Sample-Decision-Memo.pdf":["samples/pages/Sample-Decision-Memo-1.png","samples/pages/Sample-Decision-Memo-2.png","samples/pages/Sample-Decision-Memo-3.png","samples/pages/Sample-Decision-Memo-4.png"],
+    "Sample-Board-Update.pdf":["samples/pages/Sample-Board-Update-1.png","samples/pages/Sample-Board-Update-2.png","samples/pages/Sample-Board-Update-3.png"],
+    "Sample-1on1-Prep.pdf":["samples/pages/Sample-1on1-Prep-1.png","samples/pages/Sample-1on1-Prep-2.png","samples/pages/Sample-1on1-Prep-3.png"],
+    "Sample-Prospect-Followup-Prep.pdf":["samples/pages/Sample-Prospect-Followup-Prep-1.png","samples/pages/Sample-Prospect-Followup-Prep-2.png","samples/pages/Sample-Prospect-Followup-Prep-3.png","samples/pages/Sample-Prospect-Followup-Prep-4.png"]
+  };
+  const pdfModal=document.getElementById('pdfModal'), pdfPages=document.getElementById('pdfPages');
+  function openPdf(href){
+    const pages = PDF_PAGES[href.split('/').pop()];
+    pdfPages.innerHTML='';
+    if(pages){ pages.forEach(p=>{ const img=new Image(); img.src=p; img.alt='Example page'; pdfPages.appendChild(img); }); }
+    else { window.open(href,'_blank'); return; }
+    pdfPages.scrollTop=0;
+    pdfModal.classList.add('open'); pdfModal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
+  }
+  function closePdf(){ pdfModal.classList.remove('open'); pdfModal.setAttribute('aria-hidden','true'); pdfPages.innerHTML=''; document.body.style.overflow=''; }
+  document.querySelectorAll('.ex-card').forEach(a=>a.addEventListener('click',e=>{ e.preventDefault(); openPdf(a.getAttribute('href')); }));
+  pdfModal.querySelectorAll('[data-pdf-close]').forEach(el=>el.addEventListener('click',closePdf));
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape' && pdfModal.classList.contains('open')) closePdf(); });
+
   // ---- fable widgets ----
   const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const sleep = ms => new Promise(r=>setTimeout(r,ms));
@@ -1033,9 +1047,21 @@
   // 1 · smart stranger demo
   const PAIRS = [
     {
+      q: "What needs my attention before I start?",
+      a: "I don't have access to your inbox, calendar, or tasks, so I can't tell you what needs attention. If you tell me what you are working on, I can help you prioritize.",
+      b: '<div class="out-meta">Morning read · pulled from your mail, calendar, and open commitments</div>'
+       + '<ul class="out-list">'
+       + '<li><b>Deal going cold:</b> the Whitfield redline has been quiet 9 days, you said Monday and it never went out</li>'
+       + '<li><b>You owe today:</b> the banker intro you promised David on May 28 is still open</li>'
+       + '<li><b>Before your 2:00:</b> Sarah shipped the pricing proposal a day early, worth acknowledging</li>'
+       + '<li><b>Client drifting:</b> Meridian has not replied since the QBR, a nudge is overdue</li>'
+       + '</ul>',
+      chips: ["Inbox","Calendar","Commitments","Deal signals"]
+    },
+    {
       q: "Draft a reply to David about the contract.",
       a: "Happy to help. Who is David, and which contract are you referring to? If you can share the details and what you want to say, I can draft something.",
-      b: '<div class="out-meta">Draft ready · your voice · saved to Gmail drafts</div>'
+      b: '<div class="out-meta">Draft ready · your voice · saved to Drafts</div>'
        + '<div class="out-quote"><span class="qhead"><b>To:</b> David Reiner · <b>Subject:</b> Re: Services Agreement, redline</span>'
        + 'David, good speaking Tuesday. We are aligned on the revised payment terms, net 45 with the quarterly true-up. Section 4.2 stays out as discussed. Redline attached, let us target signature by Friday.</div>'
        + '<div class="out-note">Flag: you still owe David the intro to your banker, from May 28. Want a line added?</div>',
