@@ -1,19 +1,19 @@
-# Chalette · Command Room — Marketing Site
+# Chalette · Command Room: Marketing Site
 
-Single-file static site for **Chalette · Command Room · AI for the people who run the business**.
-Deployed to Cloudflare (static assets, `wrangler.jsonc`) at `chaletteholdings.com`, auto-deployed on push to `main`.
+Static site for **Chalette · Command Room**. Deployed to Cloudflare (static assets, `wrangler.jsonc`) at
+`chaletteholdings.com`, auto-deployed on push to `main`.
 
 ## Structure
 
-- `index.html` — the entire site. One file: all sections (home, work, examples, security, about)
-  are `data-page` divs with `#hash` routing. CSS and JS are inline. Inline data-URI favicon.
-- `samples/` — example deliverable PDFs (fully fictional) shown in the Examples gallery.
-- `samples/thumbs/` — gallery thumbnail images for each example.
-- `docs/Command-Room-Security-Overview.pdf` — linked from the Security section.
+- `index.html` (Home), `command-room.html` (The Product), `working-sessions.html` (The Service),
+  `results.html` (Results), `about.html` (About), `security.html` (Security, linked from About and The Service),
+  `partners.html` (Partners, in the footer), `book.html` (Book a working session). CSS and the homepage animation are inline.
+- `share.png`: the image for link previews.
+- `samples/` and `docs/`: earlier example PDFs and the security overview PDF, kept so existing links keep working.
 
-Canonical editing source lives in the Command Room workspace at `_CURRENT/Website/`;
-`index.html` here is the deployed copy. The prior multi-page build is in git history before this commit.
+Canonical editing source is the Chalette Rebrand folder (`site/build_site.py` then `site/build_pages.py`);
+the pages here are deployed copies. The previous single-file site is in git history before this commit.
 
 ## Preview locally
 
-Open `index.html` directly, or `python -m http.server 8000` then visit `http://localhost:8000`.
+`python -m http.server 8000`, then visit `http://localhost:8000`.
